@@ -1,0 +1,22 @@
+# General
+streamlit
+requests
+
+# Utils
+tqdm
+kaggle
+
+# Data and Visualisations
+opencv_python_headless
+numpy
+matplotlib
+plotly
+pandas
+
+# Algorithms
+keras
+scikit_learn
+scipy
+tensorflow
+transformers
+torch

@@ -1,0 +1,16 @@
+__pycache__/
+
+# Datasets
+Data/Datasets/IMDB/Data/
+
+# Models
+_models/
+
+# Evaluations
+_evaluations/
+
+# API Keys
+_credentials/
+
+# Deployment
+_deploy/
