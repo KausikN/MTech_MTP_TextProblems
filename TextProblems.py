@@ -28,6 +28,7 @@ Outputs:
 # Segmenter Imports
 from Methods.SentimentAnalysis import TextProblems_SentimentAnalysis_XLNet
 # Dataset Imports
+from Data.Datasets.DefaultDataset import DatasetUtils as DatasetUtils_Default
 from Data.Datasets.IMDB import DatasetUtils as DatasetUtils_IMDB
 
 # Main Functions
@@ -44,3 +45,4 @@ TASK_MODULES = {
 DATASETS = {
     "IMDB": DatasetUtils_IMDB
 }
+DATASET_DEFAULT = DatasetUtils_Default

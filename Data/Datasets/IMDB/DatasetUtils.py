@@ -24,7 +24,10 @@ DATASET_ITEMPATHS = {
 }
 DATASET_DATA = {
     "Sentiment Analysis": {
-        "output_type": "binary",
+        "output_type": {
+            "type": "category",
+            "categories": ["negative", "positive"]
+        },
         "cols": {
             "all": ["review", "sentiment"],
             "keep": ["review"],

@@ -140,7 +140,7 @@ def UI_DisplayVisData(OutData):
         st.markdown(f"### {k}")
         st.write(OutData["data"][k])
 
-def UI_LoadDataset(TASK, dataset_params=None):
+def UI_LoadDataset(TASK, dataset_params=None, keep_cols=None, display=True):
     '''
     Load Dataset
     '''
@@ -161,6 +161,7 @@ def UI_LoadDataset(TASK, dataset_params=None):
     # Load Dataset
     DATASET = DATASET_MODULE.DATASET_FUNCS["full"](
         task=TASK,
+        keep_cols=keep_cols,
         other_params=dataset_params
     )
     N = DATASET["N"]
@@ -169,7 +170,7 @@ def UI_LoadDataset(TASK, dataset_params=None):
     cols = st.columns(2)
     USERINPUT_Options = {
         "n_samples": cols[0].markdown(f"Count: **{N}**"),
-        "display": cols[1].checkbox("Display Dataset", value=True)
+        "display": cols[1].checkbox("Display Dataset", value=display)
     }
 
     # Display
@@ -255,33 +256,69 @@ def UI_TrainModel(DATA):
 
     return USERINPUT_Model, DATA
 
-def UI_LoadTaskInput(DATA):
+def UI_LoadTaskInput(TASK):
     '''
     Load Task Input
     '''
     # Init
-    DATASET, DATASET_MODULE = DATA["dataset"], DATA["module"]
+
     # Load Input
     st.markdown("## Load Input")
-    # Select Input
-    N = DATASET["N"]
-    USERINPUT_ViewSampleIndex = st.slider(f"Select Input ({N} Samples)", 0, N-1, 0, 1)
-    DisplayData = DATASET_MODULE.DATASET_FUNCS["display"](DATASET, [USERINPUT_ViewSampleIndex, USERINPUT_ViewSampleIndex+1]).to_dict()
-    st.table([{k: DisplayData[k][list(DisplayData[k].keys())[0]] for k in DisplayData.keys()}])
-    # Encode Input
-    InputData = DATASET_MODULE.DATASET_FUNCS["test"](
-        N=[USERINPUT_ViewSampleIndex, USERINPUT_ViewSampleIndex+1],
-        keep_cols=DATA["other_params"]["keep_cols"],
-        task=DATA["task"],
-        other_params=DATA["params"]
-    )
-    Input_Fs, Input_Ls, FEATURES_INFO = DATASET_MODULE.DATASET_FUNCS["encode"](InputData)
+    # Select Input Mode
+    USERINPUT_InputMode = st.selectbox("Select Input Mode", ["Input", "Dataset"])
+    if USERINPUT_InputMode == "Input":
+        if TASK == "Sentiment Analysis":
+            USERINPUT_Input = st.text_input("Enter Input")
+            Input_Fs = {
+                "input": [USERINPUT_Input]
+            }
+            Input_Ls = None
+            FEATURES_INFO = {
+                "input": {
+                    "name": "text",
+                    "type": {
+                        "type": "text"
+                    }
+                },
+                "target": {
+                    "name": "sentiment",
+                    "type": {
+                        "type": "category"
+                    }
+                }
+            }
+    else:
+        # Select Dataset
+        DATA = UI_LoadDataset(TASK, display=False)
+        KeepCols = DATA["module"].DATASET_DATA[TASK]["cols"]["keep"]
+        KeepCols_Default = DATA["module"].DATASET_DATA[TASK]["cols"]["keep_default"]
+        DATA["other_params"] = {
+            "keep_cols": st.multiselect(
+                "Keep Columns", 
+                list(KeepCols),
+                default=list(KeepCols_Default)
+            )
+        }
+        DATASET, DATASET_MODULE = DATA["dataset"], DATA["module"]
+        # Select Input
+        N = DATASET["N"]
+        USERINPUT_ViewSampleIndex = st.slider(f"Select Input ({N} Samples)", 0, N-1, 0, 1)
+        DisplayData = DATASET_MODULE.DATASET_FUNCS["display"](DATASET, [USERINPUT_ViewSampleIndex, USERINPUT_ViewSampleIndex+1]).to_dict()
+        st.table([{k: DisplayData[k][list(DisplayData[k].keys())[0]] for k in DisplayData.keys()}])
+        # Encode Input
+        InputData = DATASET_MODULE.DATASET_FUNCS["full"](
+            N=[USERINPUT_ViewSampleIndex, USERINPUT_ViewSampleIndex+1],
+            keep_cols=DATA["other_params"]["keep_cols"],
+            task=DATA["task"],
+            other_params=DATA["params"]
+        )
+        Input_Fs, Input_Ls, FEATURES_INFO = DATASET_MODULE.DATASET_FUNCS["encode"](InputData)
+
     USERINPUT_Input = {
         "F": Input_Fs,
         "L": Input_Ls,
         "features_info": FEATURES_INFO
     }
-
     return USERINPUT_Input
 
 # Load / Save Model Functions
@@ -294,7 +331,7 @@ def Model_SaveModelData(USERINPUT_Model, DATA, suffix="1"):
     data_name = name_to_path(DATA["name"])
     module_name = name_to_path(DATA["model_params"]["module_name"])
     method_name = name_to_path(DATA["model_params"]["method_name"])
-    dir_path = os.path.join(PATHS["models"], task_name, data_name, module_name, method_name, suffix)
+    dir_path = os.path.join(PATHS["models"], task_name, module_name, method_name, data_name + "_" + suffix)
     # Create Dirs
     if not os.path.exists(dir_path): os.makedirs(dir_path)
     # Save Model Data
@@ -322,7 +359,7 @@ def Model_LoadModelData(path):
     session_data = pickle.load(open(os.path.join(path, "session_data.p"), "rb"))
     # Load Dataset Data
     load_params = json.load(open(os.path.join(path, "params.json"), "r"))
-    load_params["model_params"]["method_params"]["model_params"]["load_path"] = ""
+    load_params["model_params"]["method_params"]["model_params"]["load_pretrained"] = False
     # Load Model Data
     # Load Model Base
     USERINPUT_ModelBase = TASK_MODULES[load_params["task"]][load_params["model_params"]["module_name"]][load_params["model_params"]["method_name"]]
@@ -332,7 +369,7 @@ def Model_LoadModelData(path):
     return USERINPUT_Model, load_params, session_data
 
 # Main Functions
-def textproblems_init_basic(TASK="Sentiment Analysis"):
+def textproblems_pretrained_basic(TASK="Sentiment Analysis"):
     # Title
     st.markdown(f"# Text Problems - {TASK} - Pretrained")
 
@@ -342,9 +379,16 @@ def textproblems_init_basic(TASK="Sentiment Analysis"):
         "overall": ProgressBar("Started", 4)
     }
     USERINPUT_MODELSUFFIX = "pretrained"
-    # Load Dataset
-    PROGRESS_BARS["overall"].update("Loading Dataset...") # 1
-    DATA = UI_LoadDataset(TASK)
+    # Load Dataset - Default
+    PROGRESS_BARS["overall"].update("Loading Default Dataset...") # 1
+    DATA = {
+        "task": TASK,
+        "name": "Default",
+        "module": DATASET_DEFAULT,
+        "params": DATASET_DEFAULT.DATASET_PARAMS,
+        "model_params": None,
+        "other_params": None
+    }
     # Load Model
     PROGRESS_BARS["overall"].update("Loading Model...") # 2
     USERINPUT_Module = st.selectbox("Select Task Module", list(TASK_MODULES[TASK].keys()))
@@ -419,37 +463,36 @@ def textproblems_test_basic(TASK="Sentiment Analysis"):
     PROGRESS_BARS = {
         "overall": ProgressBar("Started", 7)
     }
-    # Load Dataset
-    PROGRESS_BARS["overall"].update("Loading Dataset...") # 1
-    DATA = UI_LoadDataset(TASK)
-    # Load Model
-    PROGRESS_BARS["overall"].update("Loading Model...") # 2
-    task_name = name_to_path(DATA["task"])
-    data_name = name_to_path(DATA["name"])
+    # Select Model
+    PROGRESS_BARS["overall"].update("Selecting Model...") # 1
+    task_name = name_to_path(TASK)
     cols = st.columns(2)
-    USERINPUT_Module = cols[0].selectbox("Select Task Module", list(TASK_MODULES[DATA["task"]].keys()))
+    USERINPUT_Module = cols[0].selectbox("Select Task Module", list(TASK_MODULES[TASK].keys()))
     USERINPUT_MethodName = cols[1].selectbox(
         "Select Task Method",
-        list(TASK_MODULES[DATA["task"]][USERINPUT_Module].keys())
+        list(TASK_MODULES[TASK][USERINPUT_Module].keys())
     )
     module_name = name_to_path(USERINPUT_Module)
     method_name = name_to_path(USERINPUT_MethodName)
-    parent_dir_path = os.path.join(PATHS["models"], task_name, data_name, module_name, method_name)
-    suffix = st.selectbox("Select Model", os.listdir(parent_dir_path))
-    dir_path = os.path.join(parent_dir_path, suffix)
-    USERINPUT_Model, LOAD_PARAMS, SESSION_DATA = Model_LoadModelData(dir_path)
-    if USERINPUT_Model is None:
-        st.error("No Model Found")
-        return
-    DATA["module"].DATASET_SESSION_DATA = SESSION_DATA
-    DATA["params"] = LOAD_PARAMS["dataset_params"]
-    DATA["model_params"] = LOAD_PARAMS["model_params"]
-    DATA["other_params"] = LOAD_PARAMS["other_params"]
+    parent_dir_path = os.path.join(PATHS["models"], task_name, module_name, method_name)
+    USERINPUT_ModelName = st.selectbox("Select Model", os.listdir(parent_dir_path))
+    MODEL_DIR_PATH = os.path.join(parent_dir_path, USERINPUT_ModelName)
     # Input
-    PROGRESS_BARS["overall"].update("Loading Input...") # 3
-    USERINPUT_TaskInput = UI_LoadTaskInput(DATA)
+    PROGRESS_BARS["overall"].update("Loading Input...") # 2
+    USERINPUT_TaskInput = UI_LoadTaskInput(TASK)
 
+    # Process Check
+    USERINPUT_Process = st.checkbox("Stream Process", value=False)
+    if not USERINPUT_Process: USERINPUT_Process = st.button("Process")
+    if not USERINPUT_Process: st.stop()
     # Process Inputs
+    # Load Model
+    PROGRESS_BARS["overall"].update("Loading Model...") # 3
+    USERINPUT_Model, LOAD_PARAMS, SESSION_DATA = Model_LoadModelData(MODEL_DIR_PATH)
+    # DATA["module"].DATASET_SESSION_DATA = SESSION_DATA
+    # DATA["params"] = LOAD_PARAMS["dataset_params"]
+    # DATA["model_params"] = LOAD_PARAMS["model_params"]
+    # DATA["other_params"] = LOAD_PARAMS["other_params"]
     # Predict
     PROGRESS_BARS["overall"].update("Predicting...") # 4
     TaskOutput = USERINPUT_Model.predict(USERINPUT_TaskInput["F"])[0]
@@ -468,7 +511,7 @@ def textproblems_test_basic(TASK="Sentiment Analysis"):
 # Mode Vars
 APP_MODES = {
     "Text Problems - Sentiment Analysis": {
-        "Pretrained": functools.partial(textproblems_init_basic, TASK="Sentiment Analysis"),
+        "Pretrained": functools.partial(textproblems_pretrained_basic, TASK="Sentiment Analysis"),
         "Train": functools.partial(textproblems_train_basic, TASK="Sentiment Analysis"),
         "Test": functools.partial(textproblems_test_basic, TASK="Sentiment Analysis")
     }

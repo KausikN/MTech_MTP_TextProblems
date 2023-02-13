@@ -90,6 +90,7 @@ class TextProblems_SentimentAnalysis_XLNet(TextProblems_SentimentAnalysis_Base):
     },
     model_params={
         "load_path": None,
+        "load_pretrained": True
     },
     random_state=0,
 
@@ -120,10 +121,7 @@ class TextProblems_SentimentAnalysis_XLNet(TextProblems_SentimentAnalysis_Base):
         # History
         self.history = {
             "history": [],
-            "best_model_info": {
-                "train": {},
-                "val": {}
-            }
+            "best_model_info": None
         }
         # Tokenizer
         self.tokenizer = XLNetTokenizer.from_pretrained("xlnet-base-cased")
@@ -143,9 +141,8 @@ class TextProblems_SentimentAnalysis_XLNet(TextProblems_SentimentAnalysis_Base):
         # Model
         self.model = {"model": None}
         if self.model_params["load_path"] is not None:
-            if os.path.exists(self.model_params["load_path"]):
-                self.model["model"] = torch.load(self.model_params["load_path"])
-        else:
+            self.model["model"] = torch.load(self.model_params["load_path"])
+        elif self.model_params["load_pretrained"]:
             self.model["model"] = XLNetForSequenceClassification.from_pretrained("xlnet-base-cased", num_labels=self.n_classes)
 
     def train(self,
@@ -460,6 +457,7 @@ TASK_FUNCS = {
             },
             "model_params": {
                 "load_path": None,
+                "load_pretrained": True
             },
             "random_state": 0
         }
