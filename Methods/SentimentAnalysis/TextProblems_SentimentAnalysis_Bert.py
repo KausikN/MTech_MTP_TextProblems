@@ -1,18 +1,18 @@
 """
-Text Problems - Sentiment Analysis - XLNet
+Text Problems - Sentiment Analysis - Bert
 
 References:
-https://medium.com/swlh/using-xlnet-for-sentiment-classification-cfa948e65e85
+
 """
 
 # Imports
-from transformers import XLNetTokenizer, XLNetForSequenceClassification
+from transformers import BertTokenizer, BertForSequenceClassification
 
 from .Utils import *
 
 # Main Classes
 # XLNet
-class TextProblems_SentimentAnalysis_XLNetBase(TextProblems_SentimentAnalysis_Base):
+class TextProblems_SentimentAnalysis_BertBase(TextProblems_SentimentAnalysis_Base):
     def __init__(self,
     n_classes=2,
     dataset_params={
@@ -37,7 +37,7 @@ class TextProblems_SentimentAnalysis_XLNetBase(TextProblems_SentimentAnalysis_Ba
     **params
     ):
         '''
-        Text Problems - Sentiment Analysis - XLNet Base
+        Text Problems - Sentiment Analysis - Bert Base
 
         Params:
          - n_classes : Number of classes
@@ -49,8 +49,8 @@ class TextProblems_SentimentAnalysis_XLNetBase(TextProblems_SentimentAnalysis_Ba
         '''
         # Init
         self.base_params = {
-            "tokenizer": XLNetTokenizer.from_pretrained("xlnet-base-cased"),
-            "pretrained_model": functools.partial(XLNetForSequenceClassification.from_pretrained, "xlnet-base-cased"),
+            "tokenizer": BertTokenizer.from_pretrained("bert-base-uncased"),
+            "pretrained_model": functools.partial(BertForSequenceClassification.from_pretrained, "bert-base-uncased"),
             "dataset_loader": DatasetLoader_SentimentAnalysis_Base
         }
         # Call Parent
@@ -66,8 +66,8 @@ class TextProblems_SentimentAnalysis_XLNetBase(TextProblems_SentimentAnalysis_Ba
 
 # Main Vars
 TASK_FUNCS = {
-    "XLNet Base": {
-        "class": TextProblems_SentimentAnalysis_XLNetBase,
+    "BERT Base": {
+        "class": TextProblems_SentimentAnalysis_BertBase,
         "params": {
             "n_classes": 2,
             "dataset_params": {

@@ -475,7 +475,9 @@ def textproblems_test_basic(TASK="Sentiment Analysis"):
     module_name = name_to_path(USERINPUT_Module)
     method_name = name_to_path(USERINPUT_MethodName)
     parent_dir_path = os.path.join(PATHS["models"], task_name, module_name, method_name)
+    if not os.path.exists(parent_dir_path): os.makedirs(parent_dir_path)
     USERINPUT_ModelName = st.selectbox("Select Model", os.listdir(parent_dir_path))
+    if not USERINPUT_ModelName: st.stop()
     MODEL_DIR_PATH = os.path.join(parent_dir_path, USERINPUT_ModelName)
     # Input
     PROGRESS_BARS["overall"].update("Loading Input...") # 2

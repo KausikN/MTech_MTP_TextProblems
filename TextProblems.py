@@ -27,6 +27,7 @@ Outputs:
 # Imports
 # Segmenter Imports
 from Methods.SentimentAnalysis import TextProblems_SentimentAnalysis_XLNet
+from Methods.SentimentAnalysis import TextProblems_SentimentAnalysis_Bert
 # Dataset Imports
 from Data.Datasets.DefaultDataset import DatasetUtils as DatasetUtils_Default
 from Data.Datasets.IMDB import DatasetUtils as DatasetUtils_IMDB
@@ -38,7 +39,10 @@ TASK_MODULES = {
     "Sentiment Analysis": {
         "XLNet": {
             **TextProblems_SentimentAnalysis_XLNet.TASK_FUNCS
-        }
+        },
+        "BERT": {
+            **TextProblems_SentimentAnalysis_Bert.TASK_FUNCS
+        },
     }
 }
 
