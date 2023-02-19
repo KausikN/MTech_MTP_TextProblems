@@ -1,5 +1,6 @@
 {
     "tqdm_notebook": false,
     "eval_dir": "_evaluations/",
-    "eval_dir_local": "../Evaluations/_evaluations/"
+    "eval_dir_local": "../Evaluations/_evaluations/",
+    "model_dir": "_models/"
 }

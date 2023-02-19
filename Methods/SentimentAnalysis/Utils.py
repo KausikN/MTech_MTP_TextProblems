@@ -20,7 +20,7 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 from torch.utils.data import TensorDataset, RandomSampler, SequentialSampler
 
-from keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 from transformers import AdamW, get_linear_schedule_with_warmup
 
 # TQDM

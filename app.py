@@ -63,7 +63,7 @@ def CacheData_TrainedModel(
     '''
     # Load Dataset
     DATASET_MODULE = DATASETS[dataset["name"]]
-    DATASET = DATASET_MODULE.DATASET_FUNCS["test"](
+    DATASET = DATASET_MODULE.DATASET_FUNCS["full"](
         keep_cols=keep_cols,
         task=dataset["task"],
         other_params=dataset["params"]
@@ -359,7 +359,10 @@ def Model_LoadModelData(path):
     session_data = pickle.load(open(os.path.join(path, "session_data.p"), "rb"))
     # Load Dataset Data
     load_params = json.load(open(os.path.join(path, "params.json"), "r"))
-    load_params["model_params"]["method_params"]["model_params"]["load_pretrained"] = False
+    try:
+        load_params["model_params"]["method_params"]["model_params"]["load_pretrained"] = False
+    except:
+        pass
     # Load Model Data
     # Load Model Base
     USERINPUT_ModelBase = TASK_MODULES[load_params["task"]][load_params["model_params"]["module_name"]][load_params["model_params"]["method_name"]]

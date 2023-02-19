@@ -28,7 +28,11 @@ class TextProblems_SentimentAnalysis_AutoBase(TextProblems_SentimentAnalysis_Bas
         "learning_rate": 3e-5,
         "save_dir": "_models/temp/"
     },
-    model_id="xlnet-base-cased",
+    model_params={
+        "model_id": "xlnet-base-cased",
+        "load_path": None,
+        "load_pretrained": True
+    },
     random_state=0,
 
     **params
@@ -40,20 +44,15 @@ class TextProblems_SentimentAnalysis_AutoBase(TextProblems_SentimentAnalysis_Bas
          - n_classes : Number of classes
          - dataset_params : Dataset Parameters
          - train_params : Training Parameters
-         - model_id : Huggingface Model ID
+         - model_params : Model Parameters
          - random_state : Random State
 
         '''
         # Init
         self.base_params = {
-            "tokenizer": AutoTokenizer.from_pretrained(model_id),
-            "pretrained_model": functools.partial(AutoModelForSequenceClassification.from_pretrained, model_id),
+            "tokenizer": AutoTokenizer.from_pretrained(model_params["model_id"]),
+            "pretrained_model": functools.partial(AutoModelForSequenceClassification.from_pretrained, model_params["model_id"]),
             "dataset_loader": DatasetLoader_SentimentAnalysis_Base
-        }
-        # Update Model Params
-        model_params = {
-            "load_path": None,
-            "load_pretrained": True
         }
         # Call Parent
         super().__init__(
@@ -85,7 +84,11 @@ TASK_FUNCS = {
                 "learning_rate": 3e-5,
                 "save_dir": "_models/temp/"
             },
-            "model_id": "xlnet-base-cased",
+            "model_params": {
+                "model_id": "xlnet-base-cased",
+                "load_path": None,
+                "load_pretrained": True
+            },
             "random_state": 0
         }
     }
