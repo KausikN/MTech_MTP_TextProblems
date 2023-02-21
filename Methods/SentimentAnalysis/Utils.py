@@ -127,6 +127,7 @@ class TextProblems_SentimentAnalysis_Base:
         # Time Params
         self.time_data = {
             "train": {},
+            "test": {},
             "predict": {}
         }
         # History
@@ -361,6 +362,7 @@ class TextProblems_SentimentAnalysis_Base:
         Outputs:
             - Metrics : Test Metrics
         '''
+        self.time_data["test"] = Time_Record("Model - Test")
         # Init
         Fs = np.array(Fs["input"])
         Ls = np.array(Ls)
@@ -370,17 +372,20 @@ class TextProblems_SentimentAnalysis_Base:
             Fs, Ls,
             self.tokenizer, self.dataset_params["max_len"]
         )
+        self.time_data["test"] = Time_Record("Data Preprocess", self.time_data["test"])
         TestData = EvalModel_Basic(
             MODEL,
             DATA_LOADER_TEST,
             self.device
         )
+        self.time_data["test"] = Time_Record("Model Testing", self.time_data["test"])
         # Record
         N_CUREPOCH_HISTORY_TEST = TestData["counter"]
         METRICS = {
             k: np.mean([TestData["metrics"][i][k] for i in range(N_CUREPOCH_HISTORY_TEST)])
             for k in TestData["metrics"][0].keys()
         }
+        self.time_data["test"] = Time_Record("", self.time_data["test"], finish=True)
 
         return METRICS
 
@@ -400,6 +405,7 @@ class TextProblems_SentimentAnalysis_Base:
         Outputs:
             - Ls : Label Distributions (N_Samples, Label_Dim)
         '''
+        self.time_data["predict"] = Time_Record("Model - Predict")
         # Init
         N_CLASSES = self.n_classes
         Fs = np.array(Fs["input"])
@@ -440,10 +446,13 @@ class TextProblems_SentimentAnalysis_Base:
         ATTENTION_MASKS = torch.cat(ATTENTION_MASKS, dim=0)
         INPUT_IDS = INPUT_IDS.reshape(-1, MAX_LEN).to(self.device)
         ATTENTION_MASKS = ATTENTION_MASKS.reshape(-1, MAX_LEN).to(self.device)
+        self.time_data["predict"] = Time_Record("Data Preprocess", self.time_data["predict"])
         # Predict
         outputs = MODEL(input_ids=INPUT_IDS, attention_mask=ATTENTION_MASKS)
+        self.time_data["predict"] = Time_Record("Model Prediction", self.time_data["predict"])
         PROB_DIST = F.softmax(outputs.logits, dim=-1).cpu().detach().numpy().tolist()
         Ls = PROB_DIST
+        self.time_data["predict"] = Time_Record("", self.time_data["predict"], finish=True)
 
         return Ls
     
