@@ -13,7 +13,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
+from sklearn.metrics import confusion_matrix, classification_report, accuracy_score, f1_score, precision_score, recall_score
 
 import torch
 import torch.nn.functional as F
@@ -146,7 +146,7 @@ class TextProblems_SentimentAnalysis_Base:
                 "name": "Sentiment",
                 "type": {
                     "type": "category",
-                    "categories": ["Negative", "Positive"]
+                    "categories": ["negative", "positive"]
                 }
             }
         }
@@ -243,10 +243,9 @@ class TextProblems_SentimentAnalysis_Base:
             )
             MODEL = TrainData["model"]
             ## Eval
-            ValData = EvalModel_Basic(
-                MODEL,
-                DATASET_LOADERS["val"], 
-                self.device
+            ValData = self.test(
+                DATASETS["Fs"]["val"], DATASETS["Ls"]["val"],
+                record_time=False
             )
             ## Record
             N_CUREPOCH_HISTORY_TRAIN = TrainData["counter"]
@@ -260,8 +259,9 @@ class TextProblems_SentimentAnalysis_Base:
             }
             for k in TrainData["metrics"][0].keys():
                 CUR_HISTORY["train"][k] = np.mean([TrainData["metrics"][i][k] for i in range(N_CUREPOCH_HISTORY_TRAIN)])
-            for k in ValData["metrics"][0].keys():
-                CUR_HISTORY["val"][k] = np.mean([ValData["metrics"][i][k] for i in range(N_CUREPOCH_HISTORY_VAL)])
+            CUR_HISTORY["val"] = ValData["metrics"]
+            # for k in ValData["metrics"][0].keys():
+                # CUR_HISTORY["val"][k] = np.mean([ValData["metrics"][i][k] for i in range(N_CUREPOCH_HISTORY_VAL)])
             HISTORY.append(CUR_HISTORY)
             ## Print
             print("Epoch: ", epoch)
@@ -348,6 +348,7 @@ class TextProblems_SentimentAnalysis_Base:
     def test(self,
         Fs, Ls,
 
+        record_time=True,
         **params
         ):
         '''
@@ -362,54 +363,11 @@ class TextProblems_SentimentAnalysis_Base:
         Outputs:
             - Metrics : Test Metrics
         '''
-        self.time_data["test"] = Time_Record("Model - Test")
-        # Init
-        Fs = np.array(Fs["input"])
-        Ls = np.array(Ls)
-        # Predict
-        MODEL = self.model["model"]
-        DATA_LOADER_TEST = self.base_params["dataset_loader"](
-            Fs, Ls,
-            self.tokenizer, self.dataset_params["max_len"]
-        )
-        self.time_data["test"] = Time_Record("Data Preprocess", self.time_data["test"])
-        TestData = EvalModel_Basic(
-            MODEL,
-            DATA_LOADER_TEST,
-            self.device
-        )
-        self.time_data["test"] = Time_Record("Model Testing", self.time_data["test"])
-        # Record
-        N_CUREPOCH_HISTORY_TEST = TestData["counter"]
-        METRICS = {
-            k: np.mean([TestData["metrics"][i][k] for i in range(N_CUREPOCH_HISTORY_TEST)])
-            for k in TestData["metrics"][0].keys()
-        }
-        self.time_data["test"] = Time_Record("", self.time_data["test"], finish=True)
-
-        return METRICS
-
-    def predict(self,
-        Fs, 
-
-        **params
-        ):
-        '''
-        Predict
-
-        Predict labels from features.
-
-        Inputs:
-            - Fs : Text Input (N_Samples, 1)
-
-        Outputs:
-            - Ls : Label Distributions (N_Samples, Label_Dim)
-        '''
-        self.time_data["predict"] = Time_Record("Model - Predict")
+        if record_time: self.time_data["test"] = Time_Record("Model - Test")
         # Init
         N_CLASSES = self.n_classes
         Fs = np.array(Fs["input"])
-        Ls = np.zeros((Fs.shape[0], N_CLASSES))
+        Ls = np.array(Ls)
         MAX_LEN = self.dataset_params["max_len"]
         MODEL = self.model["model"]
         # Preprocess
@@ -446,13 +404,85 @@ class TextProblems_SentimentAnalysis_Base:
         ATTENTION_MASKS = torch.cat(ATTENTION_MASKS, dim=0)
         INPUT_IDS = INPUT_IDS.reshape(-1, MAX_LEN).to(self.device)
         ATTENTION_MASKS = ATTENTION_MASKS.reshape(-1, MAX_LEN).to(self.device)
-        self.time_data["predict"] = Time_Record("Data Preprocess", self.time_data["predict"])
+        if record_time: self.time_data["test"] = Time_Record("Data Preprocess", self.time_data["test"])
         # Predict
         outputs = MODEL(input_ids=INPUT_IDS, attention_mask=ATTENTION_MASKS)
-        self.time_data["predict"] = Time_Record("Model Prediction", self.time_data["predict"])
-        PROB_DIST = F.softmax(outputs.logits, dim=-1).cpu().detach().numpy().tolist()
+        if record_time: self.time_data["test"] = Time_Record("Model Testing", self.time_data["test"])
+        PROB_DIST = F.softmax(outputs.logits, dim=-1).cpu().detach().numpy()
+        Ls_pred = PROB_DIST
+        # Metrics
+        Ls_indices = np.argmax(Ls, axis=-1)
+        Ls_pred_indices = np.argmax(Ls_pred, axis=-1)
+        METRICS = Eval_Basic(Ls_indices, Ls_pred_indices)# , self.features_info["target"]["type"]["categories"])
+        if record_time: self.time_data["test"] = Time_Record("", self.time_data["test"], finish=True)
+
+        return METRICS
+
+    def predict(self,
+        Fs, 
+
+        record_time=True,
+        **params
+        ):
+        '''
+        Predict
+
+        Predict labels from features.
+
+        Inputs:
+            - Fs : Text Input (N_Samples, 1)
+
+        Outputs:
+            - Ls : Label Distributions (N_Samples, Label_Dim)
+        '''
+        if record_time: self.time_data["predict"] = Time_Record("Model - Predict")
+        # Init
+        N_CLASSES = self.n_classes
+        Fs = np.array(Fs["input"])
+        Ls = None
+        MAX_LEN = self.dataset_params["max_len"]
+        MODEL = self.model["model"]
+        # Preprocess
+        ## Init
+        INPUT_IDS =[]
+        ATTENTION_MASKS = []
+        ## Encode
+        for i in range(Fs.shape[0]):
+            F_encoded = self.tokenizer.encode_plus(
+                Fs[i][0],
+                max_length=MAX_LEN,
+                add_special_tokens=True,
+                return_token_type_ids=False,
+                pad_to_max_length=False,
+                return_attention_mask=True,
+                return_tensors="pt",
+            )
+            ### Input IDs
+            input_ids = pad_sequences(
+                F_encoded["input_ids"], 
+                maxlen=MAX_LEN, dtype=torch.Tensor, truncating="post", padding="post"
+            ).astype(dtype="int64")
+            input_ids = torch.tensor(input_ids)
+            INPUT_IDS.append(input_ids)
+            ### Attention Mask
+            attention_mask = pad_sequences(
+                F_encoded["attention_mask"], 
+                maxlen=MAX_LEN, dtype=torch.Tensor, truncating="post", padding="post"
+            ).astype(dtype="int64")
+            attention_mask = torch.tensor(attention_mask)
+            ATTENTION_MASKS.append(attention_mask)
+        ## Finalize
+        INPUT_IDS = torch.cat(INPUT_IDS, dim=0)
+        ATTENTION_MASKS = torch.cat(ATTENTION_MASKS, dim=0)
+        INPUT_IDS = INPUT_IDS.reshape(-1, MAX_LEN).to(self.device)
+        ATTENTION_MASKS = ATTENTION_MASKS.reshape(-1, MAX_LEN).to(self.device)
+        if record_time: self.time_data["predict"] = Time_Record("Data Preprocess", self.time_data["predict"])
+        # Predict
+        outputs = MODEL(input_ids=INPUT_IDS, attention_mask=ATTENTION_MASKS)
+        if record_time: self.time_data["predict"] = Time_Record("Model Prediction", self.time_data["predict"])
+        PROB_DIST = F.softmax(outputs.logits, dim=-1).cpu().detach().numpy()
         Ls = PROB_DIST
-        self.time_data["predict"] = Time_Record("", self.time_data["predict"], finish=True)
+        if record_time: self.time_data["predict"] = Time_Record("", self.time_data["predict"], finish=True)
 
         return Ls
     
@@ -522,17 +552,23 @@ def Time_Record(name, time_data=None, finish=False):
 
 
 # Evaluation Functions
-# def Eval_Basic(labels_true, labels_pred, unique_labels=None):
-#     '''
-#     Eval - Basic
-#     '''
-#     evals = {
-#         "confusion_matrix": confusion_matrix(labels_true, labels_pred, labels=unique_labels),
-#         "classification_report": classification_report(labels_true, labels_pred, labels=unique_labels),
-#         "accuracy_score": accuracy_score(labels_true, labels_pred)
-#     }
+def Eval_Basic(labels_true, labels_pred, unique_labels=None):
+    '''
+    Eval - Basic
+    '''
+    evals = {
+        "counter": labels_true.shape[0],
+        "metrics": {
+            "confusion_matrix": confusion_matrix(labels_true, labels_pred, labels=unique_labels),
+            "classification_report": classification_report(labels_true, labels_pred, labels=unique_labels),
+            "accuracy_score": accuracy_score(labels_true, labels_pred),
+            "precision_score": precision_score(labels_true, labels_pred, average="weighted"),
+            "recall_score": recall_score(labels_true, labels_pred, average="weighted"),
+            "f1_score": f1_score(labels_true, labels_pred, average="weighted")
+        }
+    }
 
-#     return evals
+    return evals
 
 # Train / Eval Functions
 def TrainModel_Epoch(model, data_loader, optimizer, scheduler, device):
@@ -575,42 +611,4 @@ def TrainModel_Epoch(model, data_loader, optimizer, scheduler, device):
         "counter": COUNTER,
         "metrics": METRICS,
         "model": model
-    }
-
-def EvalModel_Basic(model, data_loader, device):
-    '''
-    Eval Model - Basic
-    '''
-    # Init
-    model = model.eval()
-    METRICS = []
-    COUNTER = 0
-    # Loop
-    with torch.no_grad():
-        for d in data_loader:
-            ## Init
-            input_ids = d["input_ids"].to(device)
-            attention_mask = d["attention_mask"].to(device)
-            targets = d["targets"].to(device)
-            ## Forward
-            outputs = model(
-                input_ids=input_ids, token_type_ids=None, 
-                attention_mask=attention_mask, labels=targets
-            )
-            loss = outputs[0]
-            logits = outputs[1]
-            _, prediction = torch.max(outputs[1], dim=1)
-            targets = targets.cpu().detach().numpy()
-            prediction = prediction.cpu().detach().numpy()
-            ## Metrics
-            METRICS.append({
-                "loss": loss.item(),
-                "accuracy": accuracy_score(targets, prediction)
-            })
-            ## Update
-            COUNTER += 1
-
-    return {
-        "counter": COUNTER,
-        "metrics": METRICS
     }

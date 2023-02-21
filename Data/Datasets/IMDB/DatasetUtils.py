@@ -145,7 +145,7 @@ def DatasetUtils_EncodeDataset(
     if dataset["target"] is not None:
         ## Encode Target
         TargetMask = np.array(dataset["target"].to_numpy() == "positive", dtype=float)
-        Ls = np.stack([1.0 - TargetMask, TargetMask], axis=1)
+        Ls = np.stack([1.0 - TargetMask, TargetMask], axis=1).reshape((-1, Ls.shape[1]))
         ## Finalize
         FEATURES_INFO["target"] = {
             "name": "sentiment",
