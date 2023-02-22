@@ -429,20 +429,21 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
         Ls = np.empty((0, self.n_classes))
         # Batch
         for i in tqdm(range(0, Fs.shape[0], self.predict_params["batch_size"])):
+            batch_i = int(i/self.predict_params["batch_size"])
             # Preprocess
-            if record_time: TIME_DATAS["Data Preprocess"].append(Time_Record(f"Data Preprocess - Batch {i}"))
+            if record_time: TIME_DATAS["Data Preprocess"].append(Time_Record(f"Data Preprocess - Batch {batch_i}"))
             Fs_batch = Fs[i:min(i+self.predict_params["batch_size"], Fs.shape[0])]
             TOKEN_DATA = self.tokenize(Fs_batch)
-            if record_time: TIME_DATAS["Data Preprocess"][-1] = Time_Record(f"Data Preprocess - Batch {i}", TIME_DATAS["Data Preprocess"][-1])
+            if record_time: TIME_DATAS["Data Preprocess"][-1] = Time_Record(f"Data Preprocess - Batch {batch_i}", TIME_DATAS["Data Preprocess"][-1])
             if record_time: TIME_DATAS["Data Preprocess"][-1] = Time_Record("", TIME_DATAS["Data Preprocess"][-1], finish=True)
             # Predict
-            if record_time: TIME_DATAS["Model Prediction"].append(Time_Record(f"Model Prediction - Batch {i}"))
+            if record_time: TIME_DATAS["Model Prediction"].append(Time_Record(f"Model Prediction - Batch {batch_i}"))
             outputs = MODEL(
                 input_ids=TOKEN_DATA["input_ids"], 
                 attention_mask=TOKEN_DATA["attention_mask"]
             )
             PROB_DIST = F.softmax(outputs.logits, dim=-1).cpu().detach().numpy()
-            if record_time: TIME_DATAS["Model Prediction"][-1] = Time_Record(f"Model Prediction - Batch {i}", TIME_DATAS["Model Prediction"][-1])
+            if record_time: TIME_DATAS["Model Prediction"][-1] = Time_Record(f"Model Prediction - Batch {batch_i}", TIME_DATAS["Model Prediction"][-1])
             if record_time: TIME_DATAS["Model Prediction"][-1] = Time_Record("", TIME_DATAS["Model Prediction"][-1], finish=True)
             Ls = np.concatenate((Ls, PROB_DIST), axis=0)
         if record_time: self.time_data["predict"] = Time_Combine("Model - Predict", TIME_DATAS)
