@@ -428,7 +428,7 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
         }
         Ls = np.empty((0, self.n_classes))
         # Batch
-        for i in range(0, Fs.shape[0], self.predict_params["batch_size"]):
+        for i in tqdm(range(0, Fs.shape[0], self.predict_params["batch_size"])):
             # Preprocess
             if record_time: TIME_DATAS["Data Preprocess"].append(Time_Record(f"Data Preprocess - Batch {i}"))
             TOKEN_DATA = self.tokenize(Fs)
