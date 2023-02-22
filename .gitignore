@@ -2,6 +2,7 @@ __pycache__/
 
 # Datasets
 Data/Datasets/IMDB/Data/
+Data/Datasets/SST/Data/
 
 # Models
 _models/

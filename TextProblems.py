@@ -26,7 +26,7 @@ Outputs:
 
 # Imports
 # Segmenter Imports
-from Methods.SentimentAnalysis import TextProblems_SentimentAnalysis_Auto
+from Methods.SentimentAnalysis import TextProblems_SentimentAnalysis_HuggingFace
 # Dataset Imports
 from Data.Datasets.DefaultDataset import DatasetUtils as DatasetUtils_Default
 from Data.Datasets.IMDB import DatasetUtils as DatasetUtils_IMDB
@@ -36,8 +36,8 @@ from Data.Datasets.IMDB import DatasetUtils as DatasetUtils_IMDB
 # Main Vars
 TASK_MODULES = {
     "Sentiment Analysis": {
-        "Auto": {
-            **TextProblems_SentimentAnalysis_Auto.TASK_FUNCS
+        "HuggingFace": {
+            **TextProblems_SentimentAnalysis_HuggingFace.TASK_FUNCS
         }
     }
 }
