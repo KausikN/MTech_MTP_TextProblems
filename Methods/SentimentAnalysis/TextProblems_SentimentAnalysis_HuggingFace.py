@@ -94,8 +94,6 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
         self.model_params = model_params
         self.random_state = random_state
         self.base_params = {
-            "tokenizer": AutoTokenizer.from_pretrained(model_params["model_id"]),
-            "pretrained_model": functools.partial(AutoModelForSequenceClassification.from_pretrained, model_params["model_id"]),
             "dataset_loader": DatasetLoader_SentimentAnalysis_HuggingFace
         }
         self.__dict__.update(params)
@@ -122,12 +120,10 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
                 }
             }
         }
-        # Tokenizer
-        self.tokenizer = self.base_params["tokenizer"]
-        # Model
+        # Model and Tokenizer
+        self.tokenizer = None
         self.model = {"model": None}
-        if self.model_params["load_pretrained"]:
-            self.model["model"] = self.base_params["pretrained_model"](num_labels=self.n_classes)
+        if self.model_params["load_pretrained"]: self.load_pretrained(self.model_params["model_id"])
         # Save/Load Params
         self.save_paths = {
             "class_obj": "class_obj.p",
@@ -188,7 +184,8 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
         ## Init Model
         MODEL = self.model["model"]
         if self.model["model"] is None:
-            self.model["model"] = self.base_params["pretrained_model"](num_labels=self.n_classes)
+            self.load_pretrained(self.model_params["model_id"])
+            MODEL = self.model["model"]
         MODEL = MODEL.to(self.device)
         ## Init Optimizer
         PARAM_OPTIM = list(MODEL.named_parameters())
@@ -486,6 +483,17 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
         dict_data["tokenizer"] = AutoTokenizer.from_pretrained(paths["tokenizer"])
         # Load
         self.__dict__.update(dict_data)
+
+    def load_pretrained(self, model_id):
+        '''
+        Load Pretrained Model
+        '''
+        # Load
+        self.tokenizer = AutoTokenizer.from_pretrained(model_id).to(self.device)
+        self.model["model"] = AutoModelForSequenceClassification.from_pretrained(
+            model_id, 
+            num_labels=self.n_classes
+        ).to(self.device)
 
 # Main Vars
 TASK_FUNCS = {
