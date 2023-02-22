@@ -300,7 +300,10 @@ def Time_Combine(name, time_datas):
     }
     # Combine
     for time_data_k in time_datas.keys():
-        combined_time_data["record"].append(time_datas[time_data_k]["overall"])
+        combined_time_data["record"].append({
+            "name": time_data_k,
+            "time": sum([i["overall"]["time"] for i in time_datas[time_data_k]]),
+        })
     combined_time_data["overall"].update({
         "time": sum([i["time"] for i in combined_time_data["record"]]),
     })
