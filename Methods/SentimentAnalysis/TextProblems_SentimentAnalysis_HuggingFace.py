@@ -353,23 +353,23 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
                 return_attention_mask=True,
                 return_tensors="pt",
             )
-            ## Input IDs
-            input_ids = pad_sequences(
-                F_encoded["input_ids"], 
-                maxlen=MAX_LEN, dtype=torch.Tensor, truncating="post", padding="post"
-            ).astype(dtype="int64")
-            input_ids = torch.tensor(input_ids)
-            TOKEN_DATA["input_ids"].append(input_ids)
-            ## Attention Mask
-            attention_mask = pad_sequences(
-                F_encoded["attention_mask"], 
-                maxlen=MAX_LEN, dtype=torch.Tensor, truncating="post", padding="post"
-            ).astype(dtype="int64")
-            attention_mask = torch.tensor(attention_mask)
-            TOKEN_DATA["attention_mask"].append(attention_mask)
+            TOKEN_DATA["input_ids"].append(F_encoded["input_ids"][0])
+            TOKEN_DATA["attention_mask"].append(F_encoded["attention_mask"][0])
+        ## Input IDs
+        TOKEN_DATA["input_ids"] = pad_sequences(
+            TOKEN_DATA["input_ids"], 
+            maxlen=MAX_LEN, dtype=torch.Tensor, truncating="post", padding="post"
+        ).astype(dtype="int64")
+        TOKEN_DATA["input_ids"] = torch.tensor(TOKEN_DATA["input_ids"])
+        ## Attention Mask
+        TOKEN_DATA["attention_mask"] = pad_sequences(
+            F_encoded["attention_mask"], 
+            maxlen=MAX_LEN, dtype=torch.Tensor, truncating="post", padding="post"
+        ).astype(dtype="int64")
+        TOKEN_DATA["attention_mask"] = torch.tensor(TOKEN_DATA["attention_mask"])
         # Finalize
-        TOKEN_DATA["input_ids"] = torch.cat(TOKEN_DATA["input_ids"], dim=0).reshape(-1, MAX_LEN).to(self.device)
-        TOKEN_DATA["attention_mask"] = torch.cat(TOKEN_DATA["attention_mask"], dim=0).reshape(-1, MAX_LEN).to(self.device)
+        TOKEN_DATA["input_ids"] = TOKEN_DATA["input_ids"].to(self.device)
+        TOKEN_DATA["attention_mask"] = TOKEN_DATA["attention_mask"].to(self.device)
 
         return TOKEN_DATA
 
@@ -489,7 +489,7 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
         Load Pretrained Model
         '''
         # Load
-        self.tokenizer = AutoTokenizer.from_pretrained(model_id).to(self.device)
+        self.tokenizer = AutoTokenizer.from_pretrained(model_id)
         self.model["model"] = AutoModelForSequenceClassification.from_pretrained(
             model_id, 
             num_labels=self.n_classes
