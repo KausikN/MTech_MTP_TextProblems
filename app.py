@@ -322,9 +322,9 @@ def UI_LoadTaskInput(TASK):
     return USERINPUT_Input
 
 # Load / Save Model Functions
-def Model_SaveModelData(USERINPUT_Model, DATA, suffix="1"):
+def Model_SavePath(DATA, suffix="1"):
     '''
-    Model - Save Model and Dataset metadata
+    Model - Save Model Path
     '''
     # Init
     task_name = name_to_path(DATA["task"])
@@ -332,6 +332,15 @@ def Model_SaveModelData(USERINPUT_Model, DATA, suffix="1"):
     module_name = name_to_path(DATA["model_params"]["module_name"])
     method_name = name_to_path(DATA["model_params"]["method_name"])
     dir_path = os.path.join(PATHS["models"], task_name, module_name, method_name, data_name + "_" + suffix)
+
+    return dir_path
+
+def Model_SaveModelData(USERINPUT_Model, DATA, suffix="1"):
+    '''
+    Model - Save Model and Dataset metadata
+    '''
+    # Init
+    dir_path = Model_SavePath(DATA, suffix)
     # Create Dirs
     if not os.path.exists(dir_path): os.makedirs(dir_path)
     # Save Model Data

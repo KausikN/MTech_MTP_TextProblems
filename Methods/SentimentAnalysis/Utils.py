@@ -321,7 +321,7 @@ def Eval_Basic(labels_true, labels_pred, unique_labels=None):
     evals = {
         "counter": labels_true.shape[0],
         "metrics": {
-            "confusion_matrix": confusion_matrix(labels_true, labels_pred, labels=unique_labels),
+            "confusion_matrix": confusion_matrix(labels_true, labels_pred, labels=unique_labels).tolist(),
             "classification_report": classification_report(labels_true, labels_pred, labels=unique_labels),
             "accuracy_score": accuracy_score(labels_true, labels_pred),
             "precision_score": precision_score(labels_true, labels_pred, average="weighted"),
