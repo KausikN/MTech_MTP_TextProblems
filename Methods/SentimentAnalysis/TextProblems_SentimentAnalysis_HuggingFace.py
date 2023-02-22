@@ -431,7 +431,8 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
         for i in tqdm(range(0, Fs.shape[0], self.predict_params["batch_size"])):
             # Preprocess
             if record_time: TIME_DATAS["Data Preprocess"].append(Time_Record(f"Data Preprocess - Batch {i}"))
-            TOKEN_DATA = self.tokenize(Fs)
+            Fs_batch = Fs[i:min(i+self.predict_params["batch_size"], Fs.shape[0])]
+            TOKEN_DATA = self.tokenize(Fs_batch)
             if record_time: TIME_DATAS["Data Preprocess"][-1] = Time_Record(f"Data Preprocess - Batch {i}", TIME_DATAS["Data Preprocess"][-1])
             if record_time: TIME_DATAS["Data Preprocess"][-1] = Time_Record("", TIME_DATAS["Data Preprocess"][-1], finish=True)
             # Predict
