@@ -65,10 +65,12 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
         "batch_size": 4
     },
     train_params={
-        "batch_size": 4,
         "epochs": 3,
         "learning_rate": 3e-5,
         "save_dir": "_models/temp/"
+    },
+    predict_params={
+        "batch_size": 4
     },
     model_params={
         "model_id": "xlnet-base-cased",
@@ -84,6 +86,7 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
          - n_classes : Number of classes
          - dataset_params : Dataset Parameters
          - train_params : Training Parameters
+         - predict_params : Prediction Parameters
          - model_params : Model Parameters
          - random_state : Random State
 
@@ -91,6 +94,7 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
         self.n_classes = n_classes
         self.dataset_params = dataset_params
         self.train_params = train_params
+        self.predict_params = predict_params
         self.model_params = model_params
         self.random_state = random_state
         self.base_params = {
@@ -414,23 +418,33 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
         Outputs:
             - Ls : Label Distributions (N_Samples, Label_Dim)
         '''
-        if record_time: self.time_data["predict"] = Time_Record("Model - Predict")
         # Init
         Fs = np.array(Fs["input"])
         Ls = None
         MODEL = self.model["model"]
-        # Preprocess
-        TOKEN_DATA = self.tokenize(Fs)
-        if record_time: self.time_data["predict"] = Time_Record("Data Preprocess", self.time_data["predict"])
-        # Predict
-        outputs = MODEL(
-            input_ids=TOKEN_DATA["input_ids"], 
-            attention_mask=TOKEN_DATA["attention_mask"]
-        )
-        if record_time: self.time_data["predict"] = Time_Record("Model Prediction", self.time_data["predict"])
-        PROB_DIST = F.softmax(outputs.logits, dim=-1).cpu().detach().numpy()
-        Ls = PROB_DIST
-        if record_time: self.time_data["predict"] = Time_Record("", self.time_data["predict"], finish=True)
+        TIME_DATAS = {
+            "Data Preprocess": [],
+            "Model Prediction": []
+        }
+        Ls = np.empty((0, self.n_classes))
+        # Batch
+        for i in range(0, Fs.shape[0], self.predict_params["batch_size"]):
+            # Preprocess
+            if record_time: TIME_DATAS["Data Preprocess"].append(Time_Record(f"Data Preprocess - Batch {i}"))
+            TOKEN_DATA = self.tokenize(Fs)
+            if record_time: TIME_DATAS["Data Preprocess"][-1] = Time_Record(f"Data Preprocess - Batch {i}", TIME_DATAS["Data Preprocess"][-1])
+            if record_time: TIME_DATAS["Data Preprocess"][-1] = Time_Record("", TIME_DATAS["Data Preprocess"][-1], finish=True)
+            # Predict
+            if record_time: TIME_DATAS["Model Prediction"].append(Time_Record(f"Model Prediction - Batch {i}"))
+            outputs = MODEL(
+                input_ids=TOKEN_DATA["input_ids"], 
+                attention_mask=TOKEN_DATA["attention_mask"]
+            )
+            PROB_DIST = F.softmax(outputs.logits, dim=-1).cpu().detach().numpy()
+            if record_time: TIME_DATAS["Model Prediction"][-1] = Time_Record(f"Model Prediction - Batch {i}", TIME_DATAS["Model Prediction"][-1])
+            if record_time: TIME_DATAS["Model Prediction"][-1] = Time_Record("", TIME_DATAS["Model Prediction"][-1], finish=True)
+            Ls = np.concatenate((Ls, PROB_DIST), axis=0)
+        if record_time: self.time_data["predict"] = Time_Combine("Model - Predict", TIME_DATAS)
 
         return Ls
     
@@ -509,10 +523,12 @@ TASK_FUNCS = {
                 "batch_size": 4
             },
             "train_params": {
-                "batch_size": 4,
                 "epochs": 3,
                 "learning_rate": 3e-5,
                 "save_dir": "_models/temp/"
+            },
+            "predict_params": {
+                "batch_size": 4
             },
             "model_params": {
                 "model_id": "xlnet-base-cased",

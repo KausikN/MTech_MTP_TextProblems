@@ -57,22 +57,10 @@ class DatasetLoader_SentimentAnalysis_Base(Dataset):
 class TextProblems_SentimentAnalysis_Base:
     def __init__(self,
     n_classes=2,
-    dataset_params={
-        "test_size": 0.2,
-        "val_size": 0.05,
-        "random_state": 0,
-        "max_len": 16,
-        "batch_size": 4
-    },
-    train_params={
-        "batch_size": 4,
-        "epochs": 3,
-        "learning_rate": 3e-5,
-        "save_dir": "_models/temp/"
-    },
-    model_params={
-        "load_pretrained": True
-    },
+    dataset_params={},
+    train_params={},
+    predict_params={},
+    model_params={},
     random_state=0,
     **params
     ):
@@ -83,6 +71,7 @@ class TextProblems_SentimentAnalysis_Base:
          - n_classes : Number of classes
          - dataset_params : Dataset Parameters
          - train_params : Training Parameters
+         - predict_params : Prediction Parameters
          - model_params : Model Parameters
          - random_state : Random State
 
@@ -90,6 +79,7 @@ class TextProblems_SentimentAnalysis_Base:
         self.n_classes = n_classes
         self.dataset_params = dataset_params
         self.train_params = train_params
+        self.predict_params = predict_params
         self.model_params = model_params
         self.random_state = random_state
         self.__dict__.update(params)
@@ -296,6 +286,25 @@ def Time_Record(name, time_data=None, finish=False):
     })
     time_data["current"]["prev"] = time_data["current"]["cur"]
     return time_data
+
+def Time_Combine(name, time_datas):
+    '''
+    Time - Combine
+    '''
+    # Init
+    combined_time_data = {
+        "overall": {
+            "title": name
+        },
+        "record": []
+    }
+    # Combine
+    for time_data_i in time_datas: combined_time_data["record"] += time_data_i["record"]
+    combined_time_data["overall"].update({
+        "time": sum([i["time"] for i in combined_time_data["record"]]),
+    })
+
+    return combined_time_data
 
 # Plot Functions
 
