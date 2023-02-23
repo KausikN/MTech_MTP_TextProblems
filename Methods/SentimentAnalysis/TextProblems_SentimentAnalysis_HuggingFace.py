@@ -371,7 +371,7 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
 
         # Encode - NEW
         TOKEN_DATA = TOKENIZER.batch_encode_plus(
-            Fs[:, 0],
+            list(Fs[:, 0]),
             max_length=MAX_LEN,
             pad_to_max_length=True,
             return_tensors="pt"
