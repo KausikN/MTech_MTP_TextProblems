@@ -349,7 +349,11 @@ def TrainModel_Epoch(model, data_loader, optimizer, scheduler, device):
         }
         target_true = d["target"].to(device)
         ## Forward
-        OutData = model(token_type_ids=None, labels=target_true, **input_encoded)
+        OutData = model(
+            # token_type_ids=None, 
+            labels=target_true, 
+            **input_encoded
+        )
         loss = OutData[0]
         target_pred = OutData[1]
         _, target_pred = torch.max(target_pred, dim=1)

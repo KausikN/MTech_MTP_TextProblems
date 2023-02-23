@@ -57,13 +57,12 @@ def DatasetUtils_LoadCSV(path):
 # Dataset Functions
 def DatasetUtils_LoadDataset(
     path=DATASET_PATH, mode="test", 
-    N=-1, 
     DATASET_ITEMPATHS=DATASET_ITEMPATHS, 
-
-    keep_cols=None, 
     task="Sentiment Analysis",
     other_params=DATASET_PARAMS,
+    N=-1, 
 
+    keep_cols=None, 
     **params
     ):
     '''

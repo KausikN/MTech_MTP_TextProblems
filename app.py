@@ -55,7 +55,6 @@ def name_to_path(name):
 # Cache Data Functions
 def CacheData_TrainedModel(
     USERINPUT_Method, dataset,
-    keep_cols,
     **params
     ):
     '''
@@ -64,9 +63,9 @@ def CacheData_TrainedModel(
     # Load Dataset
     DATASET_MODULE = DATASETS[dataset["name"]]
     DATASET = DATASET_MODULE.DATASET_FUNCS["full"](
-        keep_cols=keep_cols,
         task=dataset["task"],
-        other_params=dataset["params"]
+        other_params=dataset["params"],
+        **params
     )
     Fs, Ls, FEATURES_INFO = DATASET_MODULE.DATASET_FUNCS["encode"](
         DATASET
@@ -140,7 +139,7 @@ def UI_DisplayVisData(OutData):
         st.markdown(f"### {k}")
         st.write(OutData["data"][k])
 
-def UI_LoadDataset(TASK, dataset_params=None, keep_cols=None, display=True):
+def UI_LoadDataset(TASK, dataset_params=None, display=True, **params):
     '''
     Load Dataset
     '''
@@ -161,8 +160,8 @@ def UI_LoadDataset(TASK, dataset_params=None, keep_cols=None, display=True):
     # Load Dataset
     DATASET = DATASET_MODULE.DATASET_FUNCS["full"](
         task=TASK,
-        keep_cols=keep_cols,
-        other_params=dataset_params
+        other_params=dataset_params,
+        **params
     )
     N = DATASET["N"]
 
@@ -215,10 +214,7 @@ def UI_TrainModel(DATA):
         "params": USERINPUT_Params
     }
     USERINPUT_Params = json.loads(USERINPUT_Params_str) # Redo to create new object
-    # Other Params
-    DatasetData = DATA["module"].DATASET_DATA[TASK]
-    KeepCols = DatasetData["cols"]["keep"]
-    KeepCols_Default = DatasetData["cols"]["keep_default"]
+    # Dataset Params
     USERINPUT_Dataset = {
         "dataset": {
             "name": DATA["name"],
@@ -226,16 +222,22 @@ def UI_TrainModel(DATA):
             "params": DATA["params"]
         }
     }
-    USERINPUT_OtherParams = {
-        "keep_cols": {
-            k:  st.multiselect(
-                    "Keep Columns: " + str(k), 
-                    list(KeepCols[k]),
-                    default=list(KeepCols_Default[k])
-                )
-            for k in KeepCols.keys()
-        }
-    }
+    # Other Params
+    ## Always keep all columns
+    # DatasetData = DATA["module"].DATASET_DATA[TASK]
+    # KeepCols = DatasetData["cols"]["keep"]
+    # KeepCols_Default = DatasetData["cols"]["keep_default"]
+    # USERINPUT_OtherParams = {
+    #     "keep_cols": {
+    #         k:  st.multiselect(
+    #                 "Keep Columns: " + str(k), 
+    #                 list(KeepCols[k]),
+    #                 default=list(KeepCols_Default[k])
+    #             )
+    #         for k in KeepCols.keys()
+    #     }
+    # }
+    USERINPUT_OtherParams = {}
     # Process Check
     USERINPUT_Process = st.checkbox("Stream Process", value=False)
     if not USERINPUT_Process: USERINPUT_Process = st.button("Process")
@@ -270,7 +272,7 @@ def UI_LoadTaskInput(TASK):
         if TASK == "Sentiment Analysis":
             USERINPUT_Input = st.text_input("Enter Input")
             Input_Fs = {
-                "input": [USERINPUT_Input]
+                "input": [[USERINPUT_Input]] # Outer list is for batch, inner list is for features
             }
             Input_Ls = None
             FEATURES_INFO = {
@@ -290,15 +292,17 @@ def UI_LoadTaskInput(TASK):
     else:
         # Select Dataset
         DATA = UI_LoadDataset(TASK, display=False)
-        KeepCols = DATA["module"].DATASET_DATA[TASK]["cols"]["keep"]
-        KeepCols_Default = DATA["module"].DATASET_DATA[TASK]["cols"]["keep_default"]
-        DATA["other_params"] = {
-            "keep_cols": st.multiselect(
-                "Keep Columns", 
-                list(KeepCols),
-                default=list(KeepCols_Default)
-            )
-        }
+        ## Always keep all columns
+        # KeepCols = DATA["module"].DATASET_DATA[TASK]["cols"]["keep"]
+        # KeepCols_Default = DATA["module"].DATASET_DATA[TASK]["cols"]["keep_default"]
+        # DATA["other_params"] = {
+        #     "keep_cols": st.multiselect(
+        #         "Keep Columns", 
+        #         list(KeepCols),
+        #         default=list(KeepCols_Default)
+        #     )
+        # }
+        DATA["other_params"] = {}
         DATASET, DATASET_MODULE = DATA["dataset"], DATA["module"]
         # Select Input
         N = DATASET["N"]
@@ -307,10 +311,10 @@ def UI_LoadTaskInput(TASK):
         st.table([{k: DisplayData[k][list(DisplayData[k].keys())[0]] for k in DisplayData.keys()}])
         # Encode Input
         InputData = DATASET_MODULE.DATASET_FUNCS["full"](
-            N=[USERINPUT_ViewSampleIndex, USERINPUT_ViewSampleIndex+1],
-            keep_cols=DATA["other_params"]["keep_cols"],
             task=DATA["task"],
-            other_params=DATA["params"]
+            other_params=DATA["params"],
+            N=[USERINPUT_ViewSampleIndex, USERINPUT_ViewSampleIndex+1],
+            **DATA["other_params"]
         )
         Input_Fs, Input_Ls, FEATURES_INFO = DATASET_MODULE.DATASET_FUNCS["encode"](InputData)
 
@@ -431,9 +435,11 @@ def textproblems_pretrained_basic(TASK="Sentiment Analysis"):
         "method_name": USERINPUT_MethodName,
         "method_params": USERINPUT_Params
     }
-    DATA["other_params"] = {
-        "keep_cols": None
-    }
+    ## Always keep all columns
+    # DATA["other_params"] = {
+    #     "keep_cols": None
+    # }
+    DATA["other_params"] = {}
     # Load Pretrained Model
     USERINPUT_Model = USERINPUT_Method["class"](**USERINPUT_Method["params"])
     # Save Model
