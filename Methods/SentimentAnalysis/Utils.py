@@ -46,12 +46,14 @@ class DatasetLoader_SentimentAnalysis_Base(Dataset):
         text = str(self.inputs[item])
         target = self.targets[item]
         ## Encode
-        encoding = self.tokenizer.encode(text)
+        encoded_input = self.tokenizer.encode(text)
 
         return {
             "input": text,
-            "input_ids": np.array(encoding["input_ids"], dtype=np.long),
-            "targets": np.array(target, dtype=np.long)
+            "input_encoded": {
+                k: np.array(encoded_input[k], dtype=np.long) for k in encoded_input.keys()
+            },
+            "target": np.array(target, dtype=np.long)
         }
 
 class TextProblems_SentimentAnalysis_Base:
@@ -170,9 +172,7 @@ class TextProblems_SentimentAnalysis_Base:
             - OtherData : Other Data (Attention Masks, etc)
         '''
         # Init
-        TOKEN_DATA = {
-            "input_ids": []
-        }
+        TOKEN_DATA = {}
 
         return TOKEN_DATA
 
@@ -344,21 +344,21 @@ def TrainModel_Epoch(model, data_loader, optimizer, scheduler, device):
     # Loop
     for d in data_loader:
         ## Init
-        input_ids = d["input_ids"].to(device)
-        attention_mask = d["attention_mask"].to(device)
-        targets = d["targets"].to(device)
+        input_encoded = {
+            k: d["input_encoded"][k].to(device) for k in d["input_encoded"].keys()
+        }
+        target_true = d["target"].to(device)
         ## Forward
-        outputs = model(input_ids=input_ids, token_type_ids=None, attention_mask=attention_mask, labels = targets)
-        loss = outputs[0]
-        logits = outputs[1]
-        # preds = preds.cpu().detach().numpy()
-        _, prediction = torch.max(outputs[1], dim=1)
-        targets = targets.cpu().detach().numpy()
-        prediction = prediction.cpu().detach().numpy()
+        OutData = model(token_type_ids=None, labels=target_true, **input_encoded)
+        loss = OutData[0]
+        target_pred = OutData[1]
+        _, target_pred = torch.max(target_pred, dim=1)
+        target_true = target_true.cpu().detach().numpy()
+        target_pred = target_pred.cpu().detach().numpy()
         ## Metrics
         METRICS.append({
             "loss": loss.item(),
-            "accuracy": accuracy_score(targets, prediction)
+            "accuracy": accuracy_score(target_true, target_pred)
         })
         ## Backward
         loss.backward()

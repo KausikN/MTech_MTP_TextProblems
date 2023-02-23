@@ -24,34 +24,38 @@ class DatasetLoader_SentimentAnalysis_HuggingFace(DatasetLoader_SentimentAnalysi
         ## Init
         text = str(self.inputs[item])
         target = self.targets[item]
-        ## Encode
-        encoding = self.tokenizer.encode_plus(
+        # ## Encode - OLD
+        # encoded_input = self.tokenizer.encode_plus(
+        #     text,
+        #     add_special_tokens=True,
+        #     max_length=self.max_len,
+        #     return_token_type_ids=False,
+        #     pad_to_max_length=False,
+        #     return_attention_mask=True,
+        #     return_tensors="pt",
+        # )
+        # ## Encoded Inputs Processing
+        # for k in encoded_input.keys():
+        #     encoded_input[k] = pad_sequences(
+        #         encoded_input[k], 
+        #         maxlen=self.max_len, dtype=torch.Tensor, truncating="post", padding="post"
+        #     ).astype(dtype="int64")
+        #     encoded_input[k] = torch.tensor(encoded_input[k])
+
+        ## Encode - NEW
+        encoded_input = self.tokenizer(
             text,
-            add_special_tokens=True,
             max_length=self.max_len,
-            return_token_type_ids=False,
-            pad_to_max_length=False,
-            return_attention_mask=True,
-            return_tensors="pt",
+            pad_to_max_length=True,
+            return_tensors="pt"
         )
-        ## Input IDs
-        input_ids = pad_sequences(
-            encoding["input_ids"], 
-            maxlen=self.max_len, dtype=torch.Tensor, truncating="post", padding="post"
-        ).astype(dtype="int64")
-        input_ids = torch.tensor(input_ids) 
-        ## Attention Mask
-        attention_mask = pad_sequences(
-            encoding["attention_mask"], 
-            maxlen=self.max_len, dtype=torch.Tensor, truncating="post", padding="post"
-        ).astype(dtype="int64")
-        attention_mask = torch.tensor(attention_mask)       
 
         return {
             "input": text,
-            "input_ids": input_ids,
-            "attention_mask": attention_mask.flatten(),
-            "targets": torch.tensor(target, dtype=torch.long)
+            "input_encoded": {
+                k: encoded_input[k] for k in encoded_input.keys()
+            },
+            "target": torch.tensor(target, dtype=torch.long)
         }
 # HuggingFace - Model
 class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_Base):
@@ -342,38 +346,38 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
         Fs = np.array(texts)
         MAX_LEN = self.dataset_params["max_len"]
         TOKENIZER = self.tokenizer
-        TOKEN_DATA = {
-            "input_ids": [],
-            "attention_mask": []
-        }
-        # Encode
-        for i in range(Fs.shape[0]):
-            F_encoded = TOKENIZER.encode_plus(
-                Fs[i][0],
-                max_length=MAX_LEN,
-                add_special_tokens=True,
-                return_token_type_ids=False,
-                pad_to_max_length=False,
-                return_attention_mask=True,
-                return_tensors="pt",
-            )
-            TOKEN_DATA["input_ids"].append(F_encoded["input_ids"][0])
-            TOKEN_DATA["attention_mask"].append(F_encoded["attention_mask"][0])
-        ## Input IDs
-        TOKEN_DATA["input_ids"] = pad_sequences(
-            TOKEN_DATA["input_ids"], 
-            maxlen=MAX_LEN, dtype=torch.Tensor, truncating="post", padding="post"
-        ).astype(dtype="int64")
-        TOKEN_DATA["input_ids"] = torch.tensor(TOKEN_DATA["input_ids"])
-        ## Attention Mask
-        TOKEN_DATA["attention_mask"] = pad_sequences(
-            F_encoded["attention_mask"], 
-            maxlen=MAX_LEN, dtype=torch.Tensor, truncating="post", padding="post"
-        ).astype(dtype="int64")
-        TOKEN_DATA["attention_mask"] = torch.tensor(TOKEN_DATA["attention_mask"])
-        # Finalize
-        TOKEN_DATA["input_ids"] = TOKEN_DATA["input_ids"].to(self.device)
-        TOKEN_DATA["attention_mask"] = TOKEN_DATA["attention_mask"].to(self.device)
+        TOKEN_DATA = {}
+        # # Encode - OLD
+        # for i in range(Fs.shape[0]):
+        #     F_encoded = TOKENIZER.encode_plus(
+        #         Fs[i][0],
+        #         max_length=MAX_LEN,
+        #         add_special_tokens=True,
+        #         return_token_type_ids=False,
+        #         pad_to_max_length=False,
+        #         return_attention_mask=True,
+        #         return_tensors="pt",
+        #     )
+        #     if len(TOKEN_DATA.keys()) == 0:
+        #         for k in F_encoded.keys(): TOKEN_DATA[k] = []
+        #     for k in TOKEN_DATA.keys(): TOKEN_DATA[k].append(F_encoded[k][0])
+        # ## Encoded Input Processing
+        # for k in TOKEN_DATA.keys():
+        #     TOKEN_DATA[k] = pad_sequences(
+        #         TOKEN_DATA[k], 
+        #         maxlen=MAX_LEN, dtype=torch.Tensor, truncating="post", padding="post"
+        #     ).astype(dtype="int64")
+        #     TOKEN_DATA[k] = torch.tensor(TOKEN_DATA[k]).to(self.device)
+
+        # Encode - NEW
+        TOKEN_DATA = TOKENIZER.batch_encode_plus(
+            Fs[:, 0],
+            max_length=MAX_LEN,
+            max_length=self.max_len,
+            pad_to_max_length=True,
+            return_tensors="pt"
+        )
+        for k in TOKEN_DATA.keys(): TOKEN_DATA[k] = TOKEN_DATA[k].to(self.device)
 
         return TOKEN_DATA
 
@@ -439,8 +443,7 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
             # Predict
             if record_time: TIME_DATAS["Model Prediction"].append(Time_Record(f"Model Prediction - Batch {batch_i}"))
             outputs = MODEL(
-                input_ids=TOKEN_DATA["input_ids"], 
-                attention_mask=TOKEN_DATA["attention_mask"]
+                **TOKEN_DATA
             )
             PROB_DIST = F.softmax(outputs.logits, dim=-1).cpu().detach().numpy()
             if record_time: TIME_DATAS["Model Prediction"][-1] = Time_Record(f"Model Prediction - Batch {batch_i}", TIME_DATAS["Model Prediction"][-1])
