@@ -46,7 +46,7 @@ class DatasetLoader_SentimentAnalysis_HuggingFace(DatasetLoader_SentimentAnalysi
         encoded_input = self.tokenizer(
             text,
             max_length=self.max_len,
-            pad_to_max_length=True,
+            padding="max_length", truncation=True,
             return_tensors="pt"
         )
 
@@ -373,7 +373,7 @@ class TextProblems_SentimentAnalysis_HuggingFace(TextProblems_SentimentAnalysis_
         TOKEN_DATA = TOKENIZER.batch_encode_plus(
             list(Fs[:, 0]),
             max_length=MAX_LEN,
-            pad_to_max_length=True,
+            padding="max_length", truncation=True,
             return_tensors="pt"
         )
         for k in TOKEN_DATA.keys(): TOKEN_DATA[k] = TOKEN_DATA[k].to(self.device)
