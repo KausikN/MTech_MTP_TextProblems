@@ -4,7 +4,6 @@ requests
 
 # Utils
 tqdm
-kaggle
 
 # Data and Visualisations
 opencv_python_headless
@@ -12,11 +11,16 @@ numpy
 matplotlib
 plotly
 pandas
+networkx
 
-# Algorithms
-keras
-scikit_learn
-scipy
-tensorflow
-transformers
+# HuggingFace
 torch
+transformers
+datasets
+
+# NLP
+nltk
+spacy
+TextBlob
+vaderSentiment
+pattern
