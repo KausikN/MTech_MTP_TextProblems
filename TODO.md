@@ -1,12 +1,15 @@
 # TODO
+ - Other
+   - Notebook for converting dataset to Hugging Face format
+   - Cost analysis of different models (GCP - Per inference cost)
  - Sentiment Analysis
-    - Make notebook for predicting sentiment by selecting model and getting input from user, from text files, etc and saving results in json
  - Named Entity Recognition
-    - Initialise all google drive files (sheet, doc, ppt, folders)
-    - Initialise notebooks
-    - Go through types and basics of NER and update sheet Main page
-    - Go through nlpprogress and update sheet Research Papers page and Datasets page
-    - Go through huggingface and update sheet Models page and Datasets page
-    - Complete notebooks for evaluating and finetuning models
-    - Evaluate models
-    - Multilingual NER
+  - Try more generative model based approaches (give prompt, text and ner tags and ask to extract entities in another text)
+ - Relationship Extraction
+ - Dialogue
+ - Question Answering
+ - Text Summarization
+ - Multimodal tasks
+
+ - Other
+    - Notebook for converting dataset to Hugging Face format, finetune and predict (Barebones)

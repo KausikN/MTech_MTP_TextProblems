@@ -1,8 +1,10 @@
 __pycache__/
 
+# Old Files
+__old_files/
+
 # Datasets
-Data/Datasets/IMDB/Data/
-Data/Datasets/SST/Data/
+_datasets/
 
 # Models
 _models/
