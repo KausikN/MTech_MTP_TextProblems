@@ -5,4 +5,8 @@
  - Dialogue
  - Question Answering
  - Text Summarization
+ - Translation
+ - Transliteration
+ - Text Generation
+ - Fill Mask
  - Multimodal Tasks
