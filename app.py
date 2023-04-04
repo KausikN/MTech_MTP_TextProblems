@@ -101,6 +101,10 @@ def UI_LoadTaskInput(TASK, LibraryName="SpaCy"):
             USERINPUT_Input = {
                 "text": st.text_area("Enter Text", value=EXAMPLE_TEXTS[TASK], height=200)
             }
+        elif TASK == "Translation":
+            USERINPUT_Input = {
+                "text": st.text_area("Enter Text", value=EXAMPLE_TEXTS[TASK], height=200)
+            }
 
     return USERINPUT_Input
 
@@ -157,6 +161,10 @@ def UI_DisplayOutput(OUTPUT, USERINPUT_Input, TASK="Sentiment Analysis", Library
         ## Display
         st.markdown("## Summary")
         st.text_area("Summary", value=OUTPUT["summary"], height=200, disabled=True)
+    elif TASK == "Translation":
+        ## Display
+        st.markdown("## Translated Text")
+        st.text_area("Translated Text", value=OUTPUT["translated_text"], height=200, disabled=True)
 
 # Main Functions
 def textproblems_library_basic(TASK="Sentiment Analysis"):
@@ -256,7 +264,8 @@ APP_MODES = {
         "Named Entity Recognition": functools.partial(textproblems_library_basic, TASK="Named Entity Recognition"),
         "Relationship Extraction": functools.partial(textproblems_library_basic, TASK="Relationship Extraction"),
         "Dialogue": textproblems_library_dialogue,
-        "Summarisation": functools.partial(textproblems_library_basic, TASK="Summarisation")
+        "Summarisation": functools.partial(textproblems_library_basic, TASK="Summarisation"),
+        "Translation": functools.partial(textproblems_library_basic, TASK="Translation")
     }
 }
 
