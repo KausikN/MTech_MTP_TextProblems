@@ -17,7 +17,11 @@ nltk.download("words")
 import spacy
 from spacy import displacy
 from spacy.tokens.span import Span as spacy_span
-NLP = spacy.load("en_core_web_sm")
+try:
+    NLP = spacy.load("en_core_web_sm")
+except:
+    import en_core_web_sm
+    NLP = en_core_web_sm.load()
 # NetworkX
 import networkx as nx
 
