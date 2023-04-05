@@ -17,3 +17,4 @@ _credentials/
 
 # Deployment
 _deploy/
+.vscode/
