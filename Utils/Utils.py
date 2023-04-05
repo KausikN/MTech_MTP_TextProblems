@@ -17,6 +17,8 @@ nltk.download("words")
 import spacy
 from spacy import displacy
 from spacy.tokens.span import Span as spacy_span
+try: os.system("python -m spacy download en_core_web_sm")
+except: pass
 try:
     NLP = spacy.load("en_core_web_sm")
 except:
