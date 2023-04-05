@@ -1,6 +1,7 @@
 # Tasks
  - Sentiment Analysis
  - Named Entity Recognition
+ - POS Tagging
  - Relationship Extraction
  - Dialogue
  - Question Answering

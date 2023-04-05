@@ -20,7 +20,7 @@ from Methods.RelationshipExtraction import TextProblems_RE_SpaCy
 from Methods.Summarisation import TextProblems_Summarisation_Sumy
 # Translation
 # from Methods.Translation import TextProblems_Translation_Goslate
-# from Methods.Translation import TextProblems_Translation_GoogleTranslate
+from Methods.Translation import TextProblems_Translation_GoogleTranslate
 from Methods.Translation import TextProblems_Translation_TextBlob
 
 # Main Functions
@@ -48,7 +48,7 @@ TASK_MODULES = {
     },
     "Translation": {
         # **TextProblems_Translation_Goslate.TASK_FUNCS,
-        # **TextProblems_Translation_GoogleTranslate.TASK_FUNCS,
+        **TextProblems_Translation_GoogleTranslate.TASK_FUNCS,
         **TextProblems_Translation_TextBlob.TASK_FUNCS
     }
 }
