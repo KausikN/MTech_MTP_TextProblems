@@ -87,11 +87,11 @@ def UI_LoadTaskInput(TASK, LibraryName="SpaCy"):
     if USERINPUT_InputMode == "Input":
         if TASK == "Sentiment Analysis":
             USERINPUT_Input = {
-                "text": st.text_input("Enter Text", value=EXAMPLE_TEXTS[TASK])
+                "text": st.text_area("Enter Text", value=EXAMPLE_TEXTS[TASK], height=200)
             }
         elif TASK == "Named Entity Recognition":
             USERINPUT_Input = {
-                "text": st.text_input("Enter Text", value=EXAMPLE_TEXTS[TASK])
+                "text": st.text_area("Enter Text", value=EXAMPLE_TEXTS[TASK], height=200)
             }
         elif TASK == "Relationship Extraction":
             USERINPUT_Input = {
