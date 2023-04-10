@@ -105,6 +105,11 @@ def UI_LoadTaskInput(TASK, LibraryName="SpaCy"):
             USERINPUT_Input = {
                 "text": st.text_area("Enter Text", value=EXAMPLE_TEXTS[TASK], height=200)
             }
+        elif TASK == "Question Answering":
+            USERINPUT_Input = {
+                "context": st.text_area("Enter Context", value=EXAMPLE_TEXTS[TASK]["context"], height=200),
+                "question": st.text_input("Enter Question", value=EXAMPLE_TEXTS[TASK]["question"])
+            }
 
     return USERINPUT_Input
 
@@ -165,6 +170,10 @@ def UI_DisplayOutput(OUTPUT, USERINPUT_Input, TASK="Sentiment Analysis", Library
         ## Display
         st.markdown("## Translated Text")
         st.text_area("Translated Text", value=OUTPUT["translated_text"], height=200, disabled=True)
+    elif TASK == "Question Answering":
+        ## Display
+        st.markdown("## Answer")
+        st.text_area("Answer", value=OUTPUT["answer"], height=200, disabled=True)
 
 # Main Functions
 def textproblems_library_basic(TASK="Sentiment Analysis"):
@@ -257,6 +266,32 @@ def textproblems_library_dialogue():
     ## Show Output
     UI_DisplayOutput(OUTPUT, USERINPUT_Input, TASK=TASK, LibraryName=USERINPUT_Library["name"])
 
+def textproblems_library_qa():
+    # Title
+    TASK = "Question Answering"
+    st.markdown(f"# Library - {TASK}")
+
+    # Load Inputs
+    # Init
+    PROGRESS_BARS = {}
+    # Select Library
+    USERINPUT_Library = UI_SelectLibrary(TASK)
+    # Load Input
+    USERINPUT_Input = UI_LoadTaskInput(TASK, USERINPUT_Library["name"])
+
+    # Process Check
+    USERINPUT_Process = st.checkbox("Stream Process", value=False)
+    if not USERINPUT_Process: USERINPUT_Process = st.button("Process")
+    if not USERINPUT_Process: st.stop()
+    # Process Inputs
+    ## Run Library
+    OUTPUT = USERINPUT_Library["func"](
+        context=USERINPUT_Input["context"], question=USERINPUT_Input["question"],
+        **USERINPUT_Library["params"]
+    )
+    ## Show Output
+    UI_DisplayOutput(OUTPUT, USERINPUT_Input, TASK=TASK, LibraryName=USERINPUT_Library["name"])
+
 # Mode Vars
 APP_MODES = {
     "Library": {
@@ -265,7 +300,8 @@ APP_MODES = {
         "Relationship Extraction": functools.partial(textproblems_library_basic, TASK="Relationship Extraction"),
         "Dialogue": textproblems_library_dialogue,
         "Summarisation": functools.partial(textproblems_library_basic, TASK="Summarisation"),
-        "Translation": functools.partial(textproblems_library_basic, TASK="Translation")
+        "Translation": functools.partial(textproblems_library_basic, TASK="Translation"),
+        "Question Answering": textproblems_library_qa
     }
 }
 
