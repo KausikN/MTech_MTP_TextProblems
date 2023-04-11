@@ -17,6 +17,7 @@ networkx
 torch
 transformers
 datasets
+evaluate
 
 # NLP
 nltk
