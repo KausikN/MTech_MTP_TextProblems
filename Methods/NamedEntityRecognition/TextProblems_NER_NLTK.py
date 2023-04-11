@@ -22,9 +22,9 @@ def Library_NER_NLTK(text, **params):
     for di, d in enumerate(output):
         if hasattr(d, "label"):
             OUT["ner_tags"].append({
-                    "token": " ".join([str(w[0]) for w in d]), 
-                    "ner_tag": str(d.label()),
-                    "span": [curI, curI+len(d)]
+                "token": " ".join([str(w[0]) for w in d]), 
+                "ner_tag": str(d.label()),
+                "span": [curI, curI+len(d)]
             })
             curI += len(d)
         else:

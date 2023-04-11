@@ -93,6 +93,10 @@ def UI_LoadTaskInput(TASK, LibraryName="SpaCy"):
             USERINPUT_Input = {
                 "text": st.text_area("Enter Text", value=EXAMPLE_TEXTS[TASK], height=200)
             }
+        elif TASK == "POS Tagging":
+            USERINPUT_Input = {
+                "text": st.text_area("Enter Text", value=EXAMPLE_TEXTS[TASK], height=200)
+            }
         elif TASK == "Relationship Extraction":
             USERINPUT_Input = {
                 "text": st.text_input("Enter Text", value=EXAMPLE_TEXTS[TASK])
@@ -137,6 +141,17 @@ def UI_DisplayOutput(OUTPUT, USERINPUT_Input, TASK="Sentiment Analysis", Library
         for i in range(len(OUTPUT["ner_tags"])):
             d = OUTPUT["ner_tags"][i]
             Ents.append(spacy_span(CurDoc, d["span"][0], d["span"][1], d["ner_tag"]))
+        CurDoc.set_ents(Ents)
+        ## Display
+        RENDER_HTML = displacy.render(CurDoc, style="ent", minify=True)
+        st.write(RENDER_HTML, unsafe_allow_html=True)
+    elif TASK == "POS Tagging":
+        ## Construct Spacy Doc
+        CurDoc = NLP(USERINPUT_Input["text"])
+        Ents = []
+        for i in range(len(OUTPUT["pos_tags"])):
+            d = OUTPUT["pos_tags"][i]
+            Ents.append(spacy_span(CurDoc, d["span"][0], d["span"][1], d["pos_tag"]))
         CurDoc.set_ents(Ents)
         ## Display
         RENDER_HTML = displacy.render(CurDoc, style="ent", minify=True)
@@ -297,6 +312,7 @@ APP_MODES = {
     "Library": {
         "Sentiment Analysis": functools.partial(textproblems_library_basic, TASK="Sentiment Analysis"),
         "Named Entity Recognition": functools.partial(textproblems_library_basic, TASK="Named Entity Recognition"),
+        "POS Tagging": functools.partial(textproblems_library_basic, TASK="POS Tagging"),
         "Relationship Extraction": functools.partial(textproblems_library_basic, TASK="Relationship Extraction"),
         "Dialogue": textproblems_library_dialogue,
         "Summarisation": functools.partial(textproblems_library_basic, TASK="Summarisation"),

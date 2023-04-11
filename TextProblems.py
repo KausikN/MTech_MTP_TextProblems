@@ -11,6 +11,9 @@ from Methods.SentimentAnalysis import TextProblems_SentimentAnalysis_TextBlob
 ## Named Entity Recognition
 from Methods.NamedEntityRecognition import TextProblems_NER_SpaCy
 from Methods.NamedEntityRecognition import TextProblems_NER_NLTK
+## POS Tagging
+from Methods.POSTagging import TextProblems_POS_NLTK
+from Methods.POSTagging import TextProblems_POS_SpaCy
 # Relationship Extraction
 from Methods.RelationshipExtraction import TextProblems_RE_SpaCy
 # Dialogue
@@ -39,7 +42,8 @@ TASK_MODULES = {
         **TextProblems_NER_NLTK.TASK_FUNCS
     },
     "POS Tagging": {
-    
+        **TextProblems_POS_NLTK.TASK_FUNCS,
+        **TextProblems_POS_SpaCy.TASK_FUNCS
     },
     "Relationship Extraction": {
         **TextProblems_RE_SpaCy.TASK_FUNCS
