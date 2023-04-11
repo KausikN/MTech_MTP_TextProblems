@@ -1,0 +1,30 @@
+{
+    "dataset": "xsum",
+    "model": "sshleifer_distilbart_xsum_1_1",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge"
+        ],
+        "other_params": {
+            "input_column": "document",
+            "label_column": "summary"
+        }
+    },
+    "eval": {
+        "rouge1": 0.24237659929247352,
+        "rouge2": 0.054486850204625195,
+        "rougeL": 0.1921893060632744,
+        "rougeLsum": 0.19291244387813478,
+        "total_time_in_seconds": 104.44984836699996,
+        "samples_per_second": 0.4786986365391132,
+        "latency_in_seconds": 2.088996967339999,
+        "model_parameter_count": 82968576
+    }
+}

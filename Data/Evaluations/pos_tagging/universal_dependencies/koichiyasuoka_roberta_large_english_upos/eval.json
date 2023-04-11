@@ -1,0 +1,246 @@
+{
+    "dataset": "universal_dependencies",
+    "model": "koichiyasuoka_roberta_large_english_upos",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "seqeval"
+        ],
+        "other_params": {
+            "input_column": "tokens",
+            "label_column": "upos"
+        }
+    },
+    "eval": {
+        "ADJ": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "ADP": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "ADV": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "ART": {
+            "precision": 0.8888888888888888,
+            "recall": 0.6887417218543046,
+            "f1": 0.7761194029850746,
+            "number": 151
+        },
+        "AUX": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "AUX+PART": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "CCONJ": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "CONJ": {
+            "precision": 0.9893617021276596,
+            "recall": 0.9789473684210527,
+            "f1": 0.9841269841269842,
+            "number": 285
+        },
+        "DJ": {
+            "precision": 0.8937329700272479,
+            "recall": 0.9035812672176309,
+            "f1": 0.8986301369863013,
+            "number": 363
+        },
+        "DP": {
+            "precision": 0.973741794310722,
+            "recall": 0.978021978021978,
+            "f1": 0.975877192982456,
+            "number": 455
+        },
+        "DV": {
+            "precision": 0.9137254901960784,
+            "recall": 0.879245283018868,
+            "f1": 0.8961538461538463,
+            "number": 265
+        },
+        "ERB": {
+            "precision": 0.9503311258278145,
+            "recall": 0.9273021001615509,
+            "f1": 0.9386753883892069,
+            "number": 619
+        },
+        "ET": {
+            "precision": 0.9845132743362832,
+            "recall": 0.9910913140311804,
+            "f1": 0.9877913429522753,
+            "number": 449
+        },
+        "INTJ": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "NOUN": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "NOUN+PART": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "NTJ": {
+            "precision": 0.8666666666666667,
+            "recall": 0.8387096774193549,
+            "f1": 0.8524590163934426,
+            "number": 31
+        },
+        "NUM": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "OUN": {
+            "precision": 0.9165562913907285,
+            "recall": 0.8480392156862745,
+            "f1": 0.8809675366008911,
+            "number": 816
+        },
+        "PART": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "PRON": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "PRON+AUX": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "PROPN": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "PUNCT": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "RON": {
+            "precision": 0.9130434782608695,
+            "recall": 0.90234375,
+            "f1": 0.9076620825147347,
+            "number": 512
+        },
+        "RON+AUX": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "ROPN": {
+            "precision": 0.6568627450980392,
+            "recall": 0.4148606811145511,
+            "f1": 0.50853889943074,
+            "number": 323
+        },
+        "SYM": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "UM": {
+            "precision": 0.925531914893617,
+            "recall": 0.6641221374045801,
+            "f1": 0.7733333333333333,
+            "number": 131
+        },
+        "UNCT": {
+            "precision": 0.997093023255814,
+            "recall": 0.9716713881019831,
+            "f1": 0.9842180774748924,
+            "number": 706
+        },
+        "UX": {
+            "precision": 0.9444444444444444,
+            "recall": 0.7884057971014493,
+            "f1": 0.8593996840442338,
+            "number": 345
+        },
+        "VERB": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "VERB+PART": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "X": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "YM": {
+            "precision": 0.7894736842105263,
+            "recall": 0.7894736842105263,
+            "f1": 0.7894736842105263,
+            "number": 19
+        },
+        "_": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 106
+        },
+        "overall_precision": 0.8399789214825224,
+        "overall_recall": 0.8576040172166427,
+        "overall_f1": 0.8486999733782944,
+        "overall_accuracy": 0.867065470255899,
+        "total_time_in_seconds": 231.83071761100018,
+        "samples_per_second": 2.1567461169618336,
+        "latency_in_seconds": 0.4636614352220004,
+        "model_parameter_count": 354523344
+    }
+}

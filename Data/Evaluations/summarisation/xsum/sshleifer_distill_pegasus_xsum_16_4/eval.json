@@ -1,0 +1,30 @@
+{
+    "dataset": "xsum",
+    "model": "sshleifer_distill_pegasus_xsum_16_4",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge"
+        ],
+        "other_params": {
+            "input_column": "document",
+            "label_column": "summary"
+        }
+    },
+    "eval": {
+        "rouge1": 0.41321328026382387,
+        "rouge2": 0.19492704573318903,
+        "rougeL": 0.3359067296047561,
+        "rougeLsum": 0.33624686572851126,
+        "total_time_in_seconds": 410.60904455599984,
+        "samples_per_second": 0.12177033278471995,
+        "latency_in_seconds": 8.212180891119996,
+        "model_parameter_count": 369236992
+    }
+}

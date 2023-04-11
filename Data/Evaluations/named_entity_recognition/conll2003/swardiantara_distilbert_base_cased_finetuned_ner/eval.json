@@ -1,0 +1,54 @@
+{
+    "dataset": "conll2003",
+    "model": "swardiantara_distilbert_base_cased_finetuned_ner",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "seqeval"
+        ],
+        "other_params": {
+            "input_column": "tokens",
+            "label_column": "ner_tags"
+        }
+    },
+    "eval": {
+        "LOC": {
+            "precision": 0.9098712446351931,
+            "recall": 0.9177489177489178,
+            "f1": 0.9137931034482759,
+            "number": 231
+        },
+        "MISC": {
+            "precision": 0.6814159292035398,
+            "recall": 0.7857142857142857,
+            "f1": 0.7298578199052133,
+            "number": 98
+        },
+        "ORG": {
+            "precision": 0.8527131782945736,
+            "recall": 0.873015873015873,
+            "f1": 0.8627450980392157,
+            "number": 252
+        },
+        "PER": {
+            "precision": 0.9494163424124513,
+            "recall": 0.9494163424124513,
+            "f1": 0.9494163424124513,
+            "number": 257
+        },
+        "overall_precision": 0.8745644599303136,
+        "overall_recall": 0.8985680190930787,
+        "overall_f1": 0.8864037669217186,
+        "overall_accuracy": 0.9763278591507619,
+        "total_time_in_seconds": 37.62917624399961,
+        "samples_per_second": 13.28756167176874,
+        "latency_in_seconds": 0.07525835248799921,
+        "model_parameter_count": 65197833
+    }
+}

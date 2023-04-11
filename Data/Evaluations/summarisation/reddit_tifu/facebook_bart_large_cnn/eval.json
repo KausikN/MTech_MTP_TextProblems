@@ -1,0 +1,30 @@
+{
+    "dataset": "reddit_tifu",
+    "model": "facebook_bart_large_cnn",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50,
+        "split": "train"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge"
+        ],
+        "other_params": {
+            "input_column": "documents",
+            "label_column": "tldr"
+        }
+    },
+    "eval": {
+        "rouge1": 0.15110855712439136,
+        "rouge2": 0.02627354221802802,
+        "rougeL": 0.10417506176816964,
+        "rougeLsum": 0.10499668998026014,
+        "total_time_in_seconds": 1287.476242023,
+        "samples_per_second": 0.03883566808303619,
+        "latency_in_seconds": 25.749524840459998,
+        "model_parameter_count": 406290432
+    }
+}

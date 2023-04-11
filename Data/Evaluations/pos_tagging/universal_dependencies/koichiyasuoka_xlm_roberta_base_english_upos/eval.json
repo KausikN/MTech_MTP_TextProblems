@@ -1,0 +1,234 @@
+{
+    "dataset": "universal_dependencies",
+    "model": "koichiyasuoka_xlm_roberta_base_english_upos",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "seqeval"
+        ],
+        "other_params": {
+            "input_column": "tokens",
+            "label_column": "upos"
+        }
+    },
+    "eval": {
+        "ADJ": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "ADP": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "ADV": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "ART": {
+            "precision": 0.9813084112149533,
+            "recall": 0.695364238410596,
+            "f1": 0.813953488372093,
+            "number": 151
+        },
+        "AUX": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "AUX+PART": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "CCONJ": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "CONJ": {
+            "precision": 0.9859154929577465,
+            "recall": 0.9824561403508771,
+            "f1": 0.984182776801406,
+            "number": 285
+        },
+        "DJ": {
+            "precision": 0.8885350318471338,
+            "recall": 0.768595041322314,
+            "f1": 0.8242245199409157,
+            "number": 363
+        },
+        "DP": {
+            "precision": 0.9692982456140351,
+            "recall": 0.9714285714285714,
+            "f1": 0.9703622392974752,
+            "number": 455
+        },
+        "DV": {
+            "precision": 0.9055793991416309,
+            "recall": 0.7962264150943397,
+            "f1": 0.8473895582329318,
+            "number": 265
+        },
+        "ERB": {
+            "precision": 0.9799196787148594,
+            "recall": 0.7883683360258481,
+            "f1": 0.8737690241718891,
+            "number": 619
+        },
+        "ET": {
+            "precision": 0.9823399558498896,
+            "recall": 0.9910913140311804,
+            "f1": 0.9866962305986697,
+            "number": 449
+        },
+        "INTJ": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "NOUN": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "NTJ": {
+            "precision": 0.9629629629629629,
+            "recall": 0.8387096774193549,
+            "f1": 0.896551724137931,
+            "number": 31
+        },
+        "NUM": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "OUN": {
+            "precision": 0.875,
+            "recall": 0.6519607843137255,
+            "f1": 0.7471910112359551,
+            "number": 816
+        },
+        "PART": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "PRON": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "PROPN": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "PUNCT": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "RON": {
+            "precision": 0.9128712871287129,
+            "recall": 0.900390625,
+            "f1": 0.9065880039331367,
+            "number": 512
+        },
+        "ROPN": {
+            "precision": 0.6174863387978142,
+            "recall": 0.3498452012383901,
+            "f1": 0.44664031620553357,
+            "number": 323
+        },
+        "SCONJ": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "SYM": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "UM": {
+            "precision": 0.9381443298969072,
+            "recall": 0.6946564885496184,
+            "f1": 0.7982456140350876,
+            "number": 131
+        },
+        "UNCT": {
+            "precision": 0.9317269076305221,
+            "recall": 0.3286118980169972,
+            "f1": 0.4858638743455498,
+            "number": 706
+        },
+        "UX": {
+            "precision": 0.9738562091503268,
+            "recall": 0.863768115942029,
+            "f1": 0.9155145929339479,
+            "number": 345
+        },
+        "UX+PART": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "VERB": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "X": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "YM": {
+            "precision": 0.8421052631578947,
+            "recall": 0.8421052631578947,
+            "f1": 0.8421052631578947,
+            "number": 19
+        },
+        "_": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 106
+        },
+        "overall_precision": 0.6993213850704716,
+        "overall_recall": 0.7207675753228121,
+        "overall_f1": 0.7098825399629074,
+        "overall_accuracy": 0.7364572947823197,
+        "total_time_in_seconds": 69.01069605299972,
+        "samples_per_second": 7.245253686703922,
+        "latency_in_seconds": 0.13802139210599942,
+        "model_parameter_count": 277512269
+    }
+}

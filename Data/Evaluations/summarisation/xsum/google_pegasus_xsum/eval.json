@@ -1,0 +1,30 @@
+{
+    "dataset": "xsum",
+    "model": "google_pegasus_xsum",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge"
+        ],
+        "other_params": {
+            "input_column": "document",
+            "label_column": "summary"
+        }
+    },
+    "eval": {
+        "rouge1": 0.4179698154401317,
+        "rouge2": 0.19568250156145173,
+        "rougeL": 0.34518214247367607,
+        "rougeLsum": 0.34472872464798043,
+        "total_time_in_seconds": 893.7719076510002,
+        "samples_per_second": 0.05594268467377695,
+        "latency_in_seconds": 17.875438153020006,
+        "model_parameter_count": 569748480
+    }
+}

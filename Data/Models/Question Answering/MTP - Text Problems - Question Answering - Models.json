@@ -1,0 +1,1363 @@
+{
+    "Reading Comprehension QA": {
+        "SOTA": {
+            "English": {
+                "CliCR": [
+                    {
+                        "Dataset": "CliCR",
+                        "Model": "Gated-Attention Reader",
+                        "Code": "https://github.com/clips/clicr",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CliCR": {
+                                "F1": 33.9
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CliCR",
+                        "Model": "Stanford Attentive Reader",
+                        "Code": "https://github.com/clips/clicr",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CliCR": {
+                                "F1": 27.2
+                            }
+                        }
+                    }
+                ],
+                "CNN/DailyMail": [
+                    {
+                        "Dataset": "CNN/DailyMail",
+                        "Model": "GA Reader",
+                        "Code": "https://github.com/bdhingra/ga-reader",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail": {
+                                "Accuracy (CNN)": 77.9,
+                                "Accuracy (DailyMail)": 80.9
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CNN/DailyMail",
+                        "Model": "Attentive + Relabeling Ensemble",
+                        "Code": "https://github.com/danqi/rc-cnn-dailymail",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail": {
+                                "Accuracy (CNN)": 77.6,
+                                "Accuracy (DailyMail)": 79.2
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CNN/DailyMail",
+                        "Model": "BiDAF",
+                        "Code": "https://github.com/allenai/bi-att-flow",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail": {
+                                "Accuracy (CNN)": 76.9,
+                                "Accuracy (DailyMail)": 79.6
+                            }
+                        }
+                    }
+                ],
+                "CODAH": [
+                    {
+                        "Dataset": "CODAH",
+                        "Model": "G-DAUG + RoBertA-large",
+                        "Code": "https://github.com/yangyiben/G-DAUG-c-Generative-Data-Augmentation-for-Commonsense-Reasoning",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CODAH": {
+                                "Accuracy": 84.0
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CODAH",
+                        "Model": "Bert-large",
+                        "Code": "https://github.com/Websail-NU/AQuA",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CODAH": {
+                                "Accuracy": 69.6
+                            }
+                        }
+                    }
+                ],
+                "CoQA": [
+                    {
+                        "Dataset": "CoQA",
+                        "Model": "Bert-large Augmented",
+                        "Code": "https://github.com/google-research/bert",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoQA": {
+                                "F1 (In-Domain)": 82.5,
+                                "F1 (Out-Domain)": 77.6,
+                                "F1 (Overall)": 81.1
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CoQA",
+                        "Model": "BiDAF++",
+                        "Code": "https://github.com/my89/co-squac",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoQA": {
+                                "F1 (In-Domain)": 69.4,
+                                "F1 (Out-Domain)": 63.8,
+                                "F1 (Overall)": 67.8
+                            }
+                        }
+                    }
+                ],
+                "HotpotQA": [
+                    {
+                        "Dataset": "HotpotQA",
+                        "Model": "BigBird",
+                        "Code": "https://github.com/google-research/bigbird",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "HotpotQA": {
+                                "F1 (Joint)": 0.736,
+                                "F1 (Ans)": 0.812,
+                                "F1 (Sup)": 0.891
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "HotpotQA",
+                        "Model": "AISO",
+                        "Code": "https://github.com/zycdev/aiso",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "HotpotQA": {
+                                "F1 (Joint)": 0.72,
+                                "F1 (Ans)": 0.805,
+                                "F1 (Sup)": 0.86
+                            }
+                        }
+                    }
+                ],
+                "MSMARCO": [
+                    {
+                        "Dataset": "MSMARCO",
+                        "Model": "BiDAF-baseline",
+                        "Code": "https://github.com/allenai/bi-att-flow",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MSMARCO": {
+                                "ROUGE-L": 23.96,
+                                "BLEU-1": 10.64
+                            }
+                        }
+                    }
+                ],
+                "MultiRC": [
+                    {
+                        "Dataset": "MultiRC",
+                        "Model": "PaLM 540B",
+                        "Code": "https://github.com/lucidrains/CoCa-pytorch",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MultiRC": {
+                                "F1": 90.1,
+                                "Exact Match": 69.2
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "MultiRC",
+                        "Model": "DeBertA 1.5B",
+                        "Code": "https://github.com/microsoft/DeBERTa",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MultiRC": {
+                                "F1": 88.2,
+                                "Exact Match": 63.7
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "MultiRC",
+                        "Model": "T5 11B",
+                        "Code": "https://github.com/google-research/text-to-text-transfer-transformer",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MultiRC": {
+                                "F1": 88.1,
+                                "Exact Match": 63.3
+                            }
+                        }
+                    }
+                ],
+                "Natural Questions": [
+                    {
+                        "Dataset": "Natural Questions",
+                        "Model": "Atlas",
+                        "Code": "https://github.com/facebookresearch/atlas",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Natural Questions": {
+                                "Exact Match": 64.0
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "Natural Questions",
+                        "Model": "R2D2",
+                        "Code": "https://github.com/KNOT-FIT-BUT/R2-D2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Natural Questions": {
+                                "Exact Match": 55.9
+                            }
+                        }
+                    }
+                ],
+                "NewsQA": [
+                    {
+                        "Dataset": "NewsQA",
+                        "Model": "DecaProp",
+                        "Code": "https://github.com/vanzytay/NIPS2018_DECAPROP",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "NewsQA": {
+                                "F1": 66.3,
+                                "Exact Match": 53.1
+                            }
+                        }
+                    }
+                ],
+                "QuAC": [
+                    {
+                        "Dataset": "QuAC",
+                        "Model": "FlowQA",
+                        "Code": "https://github.com/momohuang/FlowQA",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "QuAC": {
+                                "F1": 64.1
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "QuAC",
+                        "Model": "GPT-3",
+                        "Code": "https://github.com/openai/gpt-3",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "QuAC": {
+                                "F1": 44.3
+                            }
+                        }
+                    }
+                ],
+                "RACE": [
+                    {
+                        "Dataset": "RACE",
+                        "Model": "XLNet",
+                        "Code": "https://github.com/zihangdai/xlnet",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "RACE": {
+                                "RACE Score": 81.75
+                            }
+                        }
+                    }
+                ],
+                "SQuAD1.1": [
+                    {
+                        "Dataset": "SQuAD1.1",
+                        "Model": "LUKE",
+                        "Code": "https://github.com/studio-ousia/luke",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD1.1": {
+                                "F1": 95.379,
+                                "Exact Match": 90.202
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "SQuAD1.1",
+                        "Model": "XLNet",
+                        "Code": "https://github.com/zihangdai/xlnet",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD1.1": {
+                                "F1": 95.08,
+                                "Exact Match": 89.898
+                            }
+                        }
+                    }
+                ],
+                "SQuAD2.0": [
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "Retro-Reader",
+                        "Code": "https://github.com/cooelf/AwesomeMRC",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "F1": 92.978,
+                                "Exact Match": 90.578
+                            }
+                        }
+                    }
+                ],
+                "Story Cloze": [
+                    {
+                        "Dataset": "Story Cloze",
+                        "Model": "Reading Strategies Model",
+                        "Code": "https://github.com/nlpdata/strategy",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Story Cloze": {
+                                "Accuracy": 88.3
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "Story Cloze",
+                        "Model": "Neo 6B",
+                        "Code": "https://github.com/hazyresearch/ama_prompting",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Story Cloze": {
+                                "Accuracy": 87.8
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "Story Cloze",
+                        "Model": "GPT-3",
+                        "Code": "https://github.com/openai/gpt-3",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Story Cloze": {
+                                "Accuracy": 87.7
+                            }
+                        }
+                    }
+                ],
+                "SWAG": [
+                    {
+                        "Dataset": "SWAG",
+                        "Model": "DeBertAV3-large",
+                        "Code": "https://github.com/microsoft/DeBERTa",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SWAG": {
+                                "Accuracy": 93.4
+                            }
+                        }
+                    }
+                ],
+                "RecipeQA": [
+                    {
+                        "Dataset": "RecipeQA",
+                        "Model": "LXMERT",
+                        "Code": "https://github.com/HLR/LatentAlignmentProcedural",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "RecipeQA": {
+                                "Accuracy": 0.475
+                            }
+                        }
+                    }
+                ],
+                "NarrativeQA": [
+                    {
+                        "Dataset": "NarrativeQA",
+                        "Model": "DecaProp",
+                        "Code": "https://github.com/vanzytay/NIPS2018_DECAPROP",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "NarrativeQA": {
+                                "ROUGE-L": 44.69,
+                                "BLEU-1": 44.35,
+                                "BLEU-4": 27.61,
+                                "METEOR": 21.8
+                            }
+                        }
+                    }
+                ],
+                "DROP": [
+                    {
+                        "Dataset": "DROP",
+                        "Model": "POET",
+                        "Code": "https://github.com/microsoft/ContextualSP",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "DROP": {
+                                "F1": 87.6
+                            }
+                        }
+                    }
+                ],
+                "ReClor": [
+                    {
+                        "Dataset": "ReClor",
+                        "Model": "XLNet-large",
+                        "Code": "https://github.com/yuweihao/reclor",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "ReClor": {
+                                "Accuracy": 56.0
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "ReClor",
+                        "Model": "RoBertA-large",
+                        "Code": "https://github.com/yuweihao/reclor",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "ReClor": {
+                                "Accuracy": 55.6
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "ReClor",
+                        "Model": "Bert-large",
+                        "Code": "https://github.com/yuweihao/reclor",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "ReClor": {
+                                "Accuracy": 49.8
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "Hugging Face": {
+            "English": {
+                "SQuAD2.0": [
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "Bert-tiny-squadv2",
+                        "Code": "https://huggingface.co/mrm8488/bert-tiny-finetuned-squadv2",
+                        "Hugging Face ID": "mrm8488/bert-tiny-finetuned-squadv2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 48.6,
+                                "F1": 49.73,
+                                "Model Size": "16.74MB"
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 49.6,
+                                "F1": 50.2196,
+                                "Latency": 0.007
+                            }
+                        },
+                        "Eval": "mrm8488_bert_tiny_finetuned_squadv2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "Bert-mini-squadv2",
+                        "Code": "https://huggingface.co/mrm8488/bert-mini-finetuned-squadv2",
+                        "Hugging Face ID": "mrm8488/bert-mini-finetuned-squadv2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 56.31,
+                                "F1": 59.65,
+                                "Model Size": "42.63MB"
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 51.6,
+                                "F1": 55.0909,
+                                "Latency": 0.027
+                            }
+                        },
+                        "Eval": "mrm8488_bert_mini_finetuned_squadv2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "Bert-small-squadv2",
+                        "Code": "https://huggingface.co/mrm8488/bert-small-finetuned-squadv2",
+                        "Hugging Face ID": "mrm8488/bert-small-finetuned-squadv2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 60.49,
+                                "F1": 64.21,
+                                "Model Size": "109.74MB"
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 60.0,
+                                "F1": 62.0636,
+                                "Latency": 0.0906
+                            }
+                        },
+                        "Eval": "mrm8488_bert_small_finetuned_squadv2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "Bert-small-squadv2",
+                        "Code": "https://huggingface.co/NeuML/bert-small-cord19-squad2",
+                        "Hugging Face ID": "NeuML/bert-small-cord19-squad2",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 68.0,
+                                "F1": 69.8248,
+                                "Latency": 0.1184
+                            }
+                        },
+                        "Eval": "neuml_bert_small_cord19_squad2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "Bert-medium-squadv2-distilled",
+                        "Code": "https://huggingface.co/deepset/bert-medium-squad2-distilled",
+                        "Hugging Face ID": "deepset/bert-medium-squad2-distilled",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 69.823,
+                                "F1": 72.923
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 72.8,
+                                "F1": 74.6313,
+                                "Latency": 0.151
+                            }
+                        },
+                        "Eval": "deepset_bert_medium_squad2_distilled"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "Bert-medium-squadv2",
+                        "Code": "https://huggingface.co/mrm8488/bert-medium-finetuned-squadv2",
+                        "Hugging Face ID": "mrm8488/bert-medium-finetuned-squadv2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 65.95,
+                                "F1": 70.11,
+                                "Model Size": "157.46MB"
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 70.0,
+                                "F1": 73.3997,
+                                "Latency": 0.1522
+                            }
+                        },
+                        "Eval": "mrm8488_bert_medium_finetuned_squadv2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "Bert-base-multilingual-squadv2",
+                        "Code": "https://huggingface.co/salti/bert-base-multilingual-cased-finetuned-squad",
+                        "Hugging Face ID": "salti/bert-base-multilingual-cased-finetuned-squad",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 81.731,
+                                "F1": 89.009
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 42.8,
+                                "F1": 45.657,
+                                "Latency": 0.4964
+                            }
+                        },
+                        "Eval": "salti_bert_base_multilingual_cased_finetuned_squad"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "Bert-base-cased-squadv2",
+                        "Code": "https://huggingface.co/deepset/bert-base-cased-squad2",
+                        "Hugging Face ID": "deepset/bert-base-cased-squad2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 71.152,
+                                "F1": 74.671
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 70.4,
+                                "F1": 72.8669,
+                                "Latency": 0.4819
+                            }
+                        },
+                        "Eval": "deepset_bert_base_cased_squad2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "Bert-base-uncased-squad2",
+                        "Code": "https://huggingface.co/phiyodr/bert-base-finetuned-squad2",
+                        "Hugging Face ID": "phiyodr/bert-base-finetuned-squad2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 70.395,
+                                "F1": 73.9053
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 74.0,
+                                "F1": 77.2715,
+                                "Latency": 0.4717
+                            }
+                        },
+                        "Eval": "phiyodr_bert_base_finetuned_squad2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "Bert-base-uncased-squad2",
+                        "Code": "https://huggingface.co/deepset/bert-base-uncased-squad2",
+                        "Hugging Face ID": "deepset/bert-base-uncased-squad2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 75.653,
+                                "F1": 78.619
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 73.2,
+                                "F1": 76.8625,
+                                "Latency": 0.4665
+                            }
+                        },
+                        "Eval": "deepset_bert_base_uncased_squad2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "Bert-large-uncased-squadv2",
+                        "Code": "https://huggingface.co/deepset/bert-large-uncased-whole-word-masking-squad2",
+                        "Hugging Face ID": "deepset/bert-large-uncased-whole-word-masking-squad2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 80.885,
+                                "F1": 83.876
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 82.4,
+                                "F1": 85.5308,
+                                "Latency": 1.6396
+                            }
+                        },
+                        "Eval": "deepset_bert_large_uncased_whole_word_masking_squad2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "XLNet-base-squadv2",
+                        "Code": "https://huggingface.co/jkgrad/xlnet-base-squadv2",
+                        "Hugging Face ID": "jkgrad/xlnet-base-squadv2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 74.0504,
+                                "F1": 77.7483
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 44.8,
+                                "F1": 60.8249,
+                                "Latency": 0.6594
+                            }
+                        },
+                        "Eval": "jkgrad_xlnet_base_squadv2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "Electra-large-squadv2",
+                        "Code": "https://huggingface.co/sultan/BioM-ELECTRA-Large-SQuAD2",
+                        "Hugging Face ID": "sultan/BioM-ELECTRA-Large-SQuAD2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 84.3342,
+                                "F1": 87.4935
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 86.8,
+                                "F1": 89.5649,
+                                "Latency": 1.8088
+                            }
+                        },
+                        "Eval": "sultan_biom_electra_large_squad2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "Electra-base-squadv2",
+                        "Code": "https://huggingface.co/deepset/electra-base-squad2",
+                        "Hugging Face ID": "deepset/electra-base-squad2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 77.607,
+                                "F1": 81.718
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 79.2,
+                                "F1": 82.395,
+                                "Latency": 0.4636
+                            }
+                        },
+                        "Eval": "deepset_electra_base_squad2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "AlBert-base-v2-squadv2",
+                        "Code": "https://huggingface.co/twmkn9/albert-base-v2-squad2",
+                        "Hugging Face ID": "twmkn9/albert-base-v2-squad2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 78.7101,
+                                "F1": 81.8923
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 78.8,
+                                "F1": 80.8464,
+                                "Latency": 0.5038
+                            }
+                        },
+                        "Eval": "twmkn9_albert_base_v2_squad2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "AlBert-xxlarge-squadv2",
+                        "Code": "https://huggingface.co/sultan/BioM-ALBERT-xxlarge-SQuAD2",
+                        "Hugging Face ID": "sultan/BioM-ALBERT-xxlarge-SQuAD2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 82.1191,
+                                "F1": 85.7964
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 83.2,
+                                "F1": 86.3276,
+                                "Latency": 15.9543
+                            }
+                        },
+                        "Eval": "sultan_biom_albert_xxlarge_squad2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "RoBertA-base-squadv2",
+                        "Code": "https://huggingface.co/deepset/roberta-base-squad2",
+                        "Hugging Face ID": "deepset/roberta-base-squad2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 79.931,
+                                "F1": 82.95
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 80.4,
+                                "F1": 83.3644,
+                                "Latency": 0.467
+                            }
+                        },
+                        "Eval": "deepset_roberta_base_squad2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "RoBertA-large-squadv2",
+                        "Code": "https://huggingface.co/deepset/roberta-large-squad2",
+                        "Hugging Face ID": "deepset/roberta-large-squad2",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 86.8,
+                                "F1": 89.6954,
+                                "Latency": 1.6461
+                            }
+                        },
+                        "Eval": "deepset_roberta_large_squad2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "RoBertA-base-distilled-squadv2",
+                        "Code": "https://huggingface.co/deepset/roberta-base-squad2-distilled",
+                        "Hugging Face ID": "deepset/roberta-base-squad2-distilled",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 80.859,
+                                "F1": 84.01
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 82.4,
+                                "F1": 86.1467,
+                                "Latency": 0.468
+                            }
+                        },
+                        "Eval": "deepset_roberta_base_squad2_distilled"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "XLMRoBertA-base-squadv2",
+                        "Code": "https://huggingface.co/deepset/xlm-roberta-base-squad2",
+                        "Hugging Face ID": "deepset/xlm-roberta-base-squad2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 74.035,
+                                "F1": 77.183
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 76.4,
+                                "F1": 79.0565,
+                                "Latency": 0.547
+                            }
+                        },
+                        "Eval": "deepset_xlm_roberta_base_squad2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "XLMRoBertA-large-squadv2",
+                        "Code": "https://huggingface.co/deepset/xlm-roberta-large-squad2",
+                        "Hugging Face ID": "deepset/xlm-roberta-large-squad2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 81.828,
+                                "F1": 84.889
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 82.4,
+                                "F1": 85.3106,
+                                "Latency": 1.9154
+                            }
+                        },
+                        "Eval": "deepset_xlm_roberta_large_squad2"
+                    },
+                    {
+                        "Dataset": "SQuAD2.0",
+                        "Model": "XLMRoBertA-base-distilled-squadv2",
+                        "Code": "https://huggingface.co/deepset/xlm-roberta-base-squad2-distilled",
+                        "Hugging Face ID": "deepset/xlm-roberta-base-squad2-distilled",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 74.0672,
+                                "F1": 76.3992
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD2.0": {
+                                "Exact Match": 81.2,
+                                "F1": 83.1824,
+                                "Latency": 0.5376
+                            }
+                        },
+                        "Eval": "deepset_xlm_roberta_base_squad2_distilled"
+                    }
+                ],
+                "CORD-19": [
+                    {
+                        "Dataset": "CORD-19",
+                        "Model": "Bert-small-cord19",
+                        "Code": "https://huggingface.co/NeuML/bert-small-cord19qa",
+                        "Hugging Face ID": "NeuML/bert-small-cord19qa",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "CORD-19": {
+                                "Exact Match": 49.2,
+                                "F1": 54.3158,
+                                "Latency": 0.1158
+                            }
+                        },
+                        "Eval": "neuml_bert_small_cord19qa"
+                    }
+                ],
+                "SQuAD1.0": [
+                    {
+                        "Dataset": "SQuAD1.0",
+                        "Model": "Bert-base-uncased-squad",
+                        "Code": "https://huggingface.co/csarron/bert-base-uncased-squad-v1",
+                        "Hugging Face ID": "csarron/bert-base-uncased-squad-v1",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD1.0": {
+                                "Exact Match": 80.91,
+                                "F1": 88.23
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD1.0": {
+                                "Exact Match": 42.0,
+                                "F1": 45.2021,
+                                "Latency": 0.4695
+                            }
+                        },
+                        "Eval": "csarron_bert_base_uncased_squad_v1"
+                    },
+                    {
+                        "Dataset": "SQuAD1.0",
+                        "Model": "Bert-base-uncased-squad",
+                        "Code": "https://huggingface.co/jimypbr/bert-base-uncased-squad",
+                        "Hugging Face ID": "jimypbr/bert-base-uncased-squad",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD1.0": {
+                                "Exact Match": 80.6906,
+                                "F1": 88.1129
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD1.0": {
+                                "Exact Match": 39.6,
+                                "F1": 42.3795,
+                                "Latency": 0.4681
+                            }
+                        },
+                        "Eval": "jimypbr_bert_base_uncased_squad"
+                    },
+                    {
+                        "Dataset": "SQuAD1.0",
+                        "Model": "Bert-large-uncased-squad",
+                        "Code": "https://huggingface.co/bert-large-uncased-whole-word-masking-finetuned-squad",
+                        "Hugging Face ID": "bert-large-uncased-whole-word-masking-finetuned-squad",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD1.0": {
+                                "Exact Match": 86.91,
+                                "F1": 93.15
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD1.0": {
+                                "Exact Match": 44.0,
+                                "F1": 46.9334,
+                                "Latency": 1.6496
+                            }
+                        },
+                        "Eval": "bert_large_uncased_whole_word_masking_finetuned_squad"
+                    },
+                    {
+                        "Dataset": "SQuAD1.0",
+                        "Model": "Bert-large-cased-squad",
+                        "Code": "https://huggingface.co/bert-large-cased-whole-word-masking-finetuned-squad",
+                        "Hugging Face ID": "bert-large-cased-whole-word-masking-finetuned-squad",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "SQuAD1.0": {
+                                "Exact Match": 46.4,
+                                "F1": 48.485,
+                                "Latency": 1.6939
+                            }
+                        },
+                        "Eval": "bert_large_cased_whole_word_masking_finetuned_squad"
+                    },
+                    {
+                        "Dataset": "SQuAD1.0",
+                        "Model": "DistilBert-base-cased-squad",
+                        "Code": "https://huggingface.co/distilbert-base-cased-distilled-squad",
+                        "Hugging Face ID": "distilbert-base-cased-distilled-squad",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD1.0": {
+                                "Exact Match": 79.6,
+                                "F1": 86.996
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD1.0": {
+                                "Exact Match": 39.6,
+                                "F1": 41.8375,
+                                "Latency": 0.2424
+                            }
+                        },
+                        "Eval": "distilbert_base_cased_distilled_squad"
+                    },
+                    {
+                        "Dataset": "SQuAD1.0",
+                        "Model": "DistilBert-base-uncased-squad",
+                        "Code": "https://huggingface.co/distilbert-base-uncased-distilled-squad",
+                        "Hugging Face ID": "distilbert-base-uncased-distilled-squad",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD1.0": {
+                                "F1": 86.9
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD1.0": {
+                                "Exact Match": 37.2,
+                                "F1": 41.4475,
+                                "Latency": 0.2347
+                            }
+                        },
+                        "Eval": "distilbert_base_uncased_distilled_squad"
+                    },
+                    {
+                        "Dataset": "SQuAD1.0",
+                        "Model": "XLNet-base-cased-squad",
+                        "Code": "https://huggingface.co/srikanthkb/xlnet-base-cased-finetuned-squad",
+                        "Hugging Face ID": "srikanthkb/xlnet-base-cased-finetuned-squad",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SQuAD1.0": {
+                                "Loss": 0.2533
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SQuAD1.0": {
+                                "Exact Match": 48.0,
+                                "F1": 48.6489,
+                                "Latency": 0.6452
+                            }
+                        },
+                        "Eval": "srikanthkb_xlnet_base_cased_finetuned_squad"
+                    }
+                ]
+            }
+        },
+        "Multilingual / Other Languages": {
+            "": {
+                "SQuAD2.0 Spanish": [
+                    {
+                        "Dataset": "SQuAD2.0 Spanish",
+                        "Model": "DistilBert-base-spanish",
+                        "Code": "https://huggingface.co/mrm8488/distill-bert-base-spanish-wwm-cased-finetuned-spa-squad2-es/tree/main",
+                        "Hugging Face ID": "mrm8488/distill-bert-base-spanish-wwm-cased-finetuned-spa-squad2-es",
+                        "Language": "Spanish",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "SQuAD2.0 Spanish",
+                        "Model": "Bert-base-spanish",
+                        "Code": "https://huggingface.co/mrm8488/bert-base-spanish-wwm-cased-finetuned-spa-squad2-es",
+                        "Hugging Face ID": "mrm8488/bert-base-spanish-wwm-cased-finetuned-spa-squad2-es",
+                        "Language": "Spanish",
+                        "Reported Metrics": {
+                            "SQuAD2.0 Spanish": {
+                                "Exact Match": 76.505,
+                                "F1": 86.0781
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "SQuAD1.1 Portuguese": [
+                    {
+                        "Dataset": "SQuAD1.1 Portuguese",
+                        "Model": "Bert-base-portuguese",
+                        "Code": "https://huggingface.co/pierreguillou/bert-base-cased-squad-v1.1-portuguese",
+                        "Hugging Face ID": "pierreguillou/bert-base-cased-squad-v1.1-portuguese",
+                        "Language": "Portuguese",
+                        "Reported Metrics": {
+                            "SQuAD1.1 Portuguese": {
+                                "Exact Match": 70.49,
+                                "F1": 82.5
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "SQuAD1.0 Turkish": [
+                    {
+                        "Dataset": "SQuAD1.0 Turkish",
+                        "Model": "Bert-base-turkish-uncased",
+                        "Code": "https://huggingface.co/savasy/bert-base-turkish-squad",
+                        "Hugging Face ID": "savasy/bert-base-turkish-squad",
+                        "Language": "Turkish",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "SQuAD2.0 Dutch": [
+                    {
+                        "Dataset": "SQuAD2.0 Dutch",
+                        "Model": "Bert-base-multilingual-cased-finetuned-dutch",
+                        "Code": "https://huggingface.co/henryk/bert-base-multilingual-cased-finetuned-dutch-squad2",
+                        "Hugging Face ID": "henryk/bert-base-multilingual-cased-finetuned-dutch-squad2",
+                        "Language": "Dutch",
+                        "Reported Metrics": {
+                            "SQuAD2.0 Dutch": {
+                                "Exact Match": 67.38,
+                                "F1": 71.36
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "SQuAD1.0 Italian": [
+                    {
+                        "Dataset": "SQuAD1.0 Italian",
+                        "Model": "Bert-base-italian-uncased",
+                        "Code": "https://huggingface.co/antoniocappiello/bert-base-italian-uncased-squad-it",
+                        "Hugging Face ID": "antoniocappiello/bert-base-italian-uncased-squad-it",
+                        "Language": "Italian",
+                        "Reported Metrics": {
+                            "SQuAD1.0 Italian": {
+                                "Exact Match": 63.8,
+                                "F1": 75.3
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Unknown": [
+                    {
+                        "Dataset": "Unknown",
+                        "Model": "Bert-base-chinese",
+                        "Code": "https://huggingface.co/ckiplab/bert-base-chinese-qa",
+                        "Hugging Face ID": "ckiplab/bert-base-chinese-qa",
+                        "Language": "Chinese",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "SQuAD2.0 Polish": [
+                    {
+                        "Dataset": "SQuAD2.0 Polish",
+                        "Model": "Bert-base-multilingual-cased-finetuned-polish",
+                        "Code": "https://huggingface.co/henryk/bert-base-multilingual-cased-finetuned-polish-squad2",
+                        "Hugging Face ID": "henryk/bert-base-multilingual-cased-finetuned-polish-squad2",
+                        "Language": "Polish",
+                        "Reported Metrics": {
+                            "SQuAD2.0 Polish": {
+                                "Exact Match": 70.76,
+                                "F1": 72.92
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            }
+        }
+    },
+    "Answer Selection": {
+        "SOTA": {
+            "English": {
+                "UDC": [
+                    {
+                        "Dataset": "UDC",
+                        "Model": "HRDE + LTC",
+                        "Code": "https://github.com/david-yoon/QA_HRDE_LTC",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "UDC": {
+                                "R@1": 0.652,
+                                "R@2": 0.815,
+                                "R@5": 0.966
+                            }
+                        }
+                    }
+                ],
+                "ASNQ": [
+                    {
+                        "Dataset": "ASNQ",
+                        "Model": "RoBertA-base + MSPP",
+                        "Code": "https://github.com/amazon-research/wqa-multi-sentence-inference",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "ASNQ": {
+                                "MAP": 0.673,
+                                "MRR": 0.737
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Open Domain QA": {
+        "SOTA": {
+            "English": {
+                "DuReader": [
+                    {
+                        "Dataset": "DuReader",
+                        "Model": "ERNIE2.0-large",
+                        "Code": "https://github.com/PaddlePaddle/ERNIE",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "DuReader": {
+                                "Exact Match": 64.2
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "DuReader",
+                        "Model": "ERNIE2.0-base",
+                        "Code": "https://github.com/PaddlePaddle/ERNIE",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "DuReader": {
+                                "Exact Match": 61.3
+                            }
+                        }
+                    }
+                ],
+                "Quasar": [
+                    {
+                        "Dataset": "Quasar",
+                        "Model": "Evidence Aggregation",
+                        "Code": "https://github.com/shuohangwang/mprc",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Quasar": {
+                                "F1": 49.6,
+                                "Exact Match": 42.3
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "Quasar",
+                        "Model": "Denoising QA",
+                        "Code": "https://github.com/thunlp/OpenQA",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Quasar": {
+                                "F1": 49.3,
+                                "Exact Match": 42.2
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "Quasar",
+                        "Model": "DecaProp",
+                        "Code": "https://github.com/vanzytay/NIPS2018_DECAPROP",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Quasar": {
+                                "F1": 46.9,
+                                "Exact Match": 38.6
+                            }
+                        }
+                    }
+                ],
+                "SearchQA": [
+                    {
+                        "Dataset": "SearchQA",
+                        "Model": "LSH",
+                        "Code": "https://github.com/google/trax/tree/master/trax/models/reformer",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SearchQA": {
+                                "Exact Match": 66.0
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Knowledge Base QA": {
+        "SOTA": {
+            "English": {
+                "QALD-9": [
+                    {
+                        "Dataset": "QALD-9",
+                        "Model": "QAnswer-Wikidata",
+                        "Code": "https://github.com/perevalov/qald_9_plus",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "QALD-9": {
+                                "F1 (Macro) (English)": 0.4459,
+                                "F1 (Macro) (German)": 0.3171,
+                                "F1 (Macro) (French)": 0.23,
+                                "F1 (Macro) (Russian)": 0.2143
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "QALD-9",
+                        "Model": "QAnswer-DBPedia",
+                        "Code": "https://github.com/perevalov/qald_9_plus",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "QALD-9": {
+                                "F1 (Macro) (English)": 0.3039,
+                                "F1 (Macro) (German)": 0.1998,
+                                "F1 (Macro) (French)": 0.1506,
+                                "F1 (Macro) (Russian)": 0.0957
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "QALD-9",
+                        "Model": "Platypus-Wikidata",
+                        "Code": "https://github.com/perevalov/qald_9_plus",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "QALD-9": {
+                                "F1 (Macro) (English)": 0.1503,
+                                "F1 (Macro) (French)": 0.0417
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "QALD-9",
+                        "Model": "DeepPavlov-Wikidata",
+                        "Code": "https://github.com/perevalov/qald_9_plus",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "QALD-9": {
+                                "F1 (Macro) (English)": 0.124,
+                                "F1 (Macro) (Russian)": 0.087
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

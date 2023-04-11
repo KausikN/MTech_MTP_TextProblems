@@ -1,0 +1,37 @@
+{
+    "dataset": "rotten_tomatoes",
+    "model": "pig4431_rtm_roberta_5e",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "accuracy",
+            "recall",
+            "precision",
+            "f1"
+        ],
+        "other_params": {
+            "input_column": "text",
+            "label_column": "label",
+            "label_mapping": {
+                "LABEL_0": 0,
+                "LABEL_1": 1
+            }
+        }
+    },
+    "eval": {
+        "accuracy": 0.874,
+        "recall": 0.869198312236287,
+        "precision": 0.865546218487395,
+        "f1": 0.8673684210526317,
+        "total_time_in_seconds": 69.83561203699992,
+        "samples_per_second": 7.159670910238358,
+        "latency_in_seconds": 0.13967122407399984,
+        "model_parameter_count": 124647170
+    }
+}

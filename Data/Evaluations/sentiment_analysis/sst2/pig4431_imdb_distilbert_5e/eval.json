@@ -1,0 +1,37 @@
+{
+    "dataset": "sst2",
+    "model": "pig4431_imdb_distilbert_5e",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "validation"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "accuracy",
+            "recall",
+            "precision",
+            "f1"
+        ],
+        "other_params": {
+            "input_column": "sentence",
+            "label_column": "label",
+            "label_mapping": {
+                "LABEL_0": 0,
+                "LABEL_1": 1
+            }
+        }
+    },
+    "eval": {
+        "accuracy": 0.842,
+        "recall": 0.9003831417624522,
+        "precision": 0.8159722222222222,
+        "f1": 0.8561020036429873,
+        "total_time_in_seconds": 43.71123245900162,
+        "samples_per_second": 11.438707441364608,
+        "latency_in_seconds": 0.08742246491800323,
+        "model_parameter_count": 66955010
+    }
+}

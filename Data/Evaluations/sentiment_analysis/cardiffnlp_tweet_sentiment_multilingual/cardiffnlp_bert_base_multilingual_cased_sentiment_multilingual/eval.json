@@ -1,0 +1,32 @@
+{
+    "dataset": "cardiffnlp_tweet_sentiment_multilingual",
+    "model": "cardiffnlp_bert_base_multilingual_cased_sentiment_multilingual",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "accuracy"
+        ],
+        "other_params": {
+            "input_column": "text",
+            "label_column": "label",
+            "label_mapping": {
+                "negative": 0,
+                "neutral": 1,
+                "positive": 2
+            }
+        }
+    },
+    "eval": {
+        "accuracy": 0.6,
+        "total_time_in_seconds": 90.19431701699978,
+        "samples_per_second": 5.543586520043832,
+        "latency_in_seconds": 0.18038863403399955,
+        "model_parameter_count": 177855747
+    }
+}

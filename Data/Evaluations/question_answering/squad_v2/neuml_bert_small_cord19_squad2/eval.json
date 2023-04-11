@@ -1,0 +1,41 @@
+{
+    "dataset": "squad_v2",
+    "model": "neuml_bert_small_cord19_squad2",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 250
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "squad_v2"
+        ],
+        "other_params": {
+            "question_column": "question",
+            "context_column": "context",
+            "id_column": "id",
+            "label_column": "answers",
+            "squad_v2_format": true
+        }
+    },
+    "eval": {
+        "exact": 68.0,
+        "f1": 69.82476190476191,
+        "total": 250,
+        "HasAns_exact": 65.85365853658537,
+        "HasAns_f1": 69.56252419667054,
+        "HasAns_total": 123,
+        "NoAns_exact": 70.07874015748031,
+        "NoAns_f1": 70.07874015748031,
+        "NoAns_total": 127,
+        "best_exact": 68.0,
+        "best_exact_thresh": 0.9939908385276794,
+        "best_f1": 69.8247619047619,
+        "best_f1_thresh": 0.9939908385276794,
+        "total_time_in_seconds": 29.59996987700015,
+        "samples_per_second": 8.44595454113133,
+        "latency_in_seconds": 0.1183998795080006,
+        "model_parameter_count": 34806786
+    }
+}

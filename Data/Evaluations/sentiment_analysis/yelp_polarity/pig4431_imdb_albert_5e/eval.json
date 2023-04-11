@@ -1,0 +1,37 @@
+{
+    "dataset": "yelp_polarity",
+    "model": "pig4431_imdb_albert_5e",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "accuracy",
+            "recall",
+            "precision",
+            "f1"
+        ],
+        "other_params": {
+            "input_column": "text",
+            "label_column": "label",
+            "label_mapping": {
+                "LABEL_0": 0,
+                "LABEL_1": 1
+            }
+        }
+    },
+    "eval": {
+        "accuracy": 0.922,
+        "recall": 0.9552845528455285,
+        "precision": 0.8935361216730038,
+        "f1": 0.9233791748526522,
+        "total_time_in_seconds": 390.9434086789988,
+        "samples_per_second": 1.278957488219342,
+        "latency_in_seconds": 0.7818868173579976,
+        "model_parameter_count": 11685122
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "dataset": "xsum",
+    "model": "facebook_bart_large_xsum",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge"
+        ],
+        "other_params": {
+            "input_column": "document",
+            "label_column": "summary"
+        }
+    },
+    "eval": {
+        "rouge1": 0.4181206558800008,
+        "rouge2": 0.17353264873956634,
+        "rougeL": 0.34106729219319476,
+        "rougeLsum": 0.3415139678812865,
+        "total_time_in_seconds": 571.626461285,
+        "samples_per_second": 0.08746970860586374,
+        "latency_in_seconds": 11.4325292257,
+        "model_parameter_count": 406290432
+    }
+}

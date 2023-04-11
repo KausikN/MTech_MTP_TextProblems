@@ -1,0 +1,37 @@
+{
+    "dataset": "yelp_polarity",
+    "model": "pig4431_rtm_albert_5e",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "accuracy",
+            "recall",
+            "precision",
+            "f1"
+        ],
+        "other_params": {
+            "input_column": "text",
+            "label_column": "label",
+            "label_mapping": {
+                "LABEL_0": 0,
+                "LABEL_1": 1
+            }
+        }
+    },
+    "eval": {
+        "accuracy": 0.908,
+        "recall": 0.8861788617886179,
+        "precision": 0.923728813559322,
+        "f1": 0.9045643153526971,
+        "total_time_in_seconds": 388.3318876190024,
+        "samples_per_second": 1.2875584414807488,
+        "latency_in_seconds": 0.7766637752380048,
+        "model_parameter_count": 11685122
+    }
+}

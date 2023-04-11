@@ -1,0 +1,54 @@
+{
+    "dataset": "conll2003",
+    "model": "dslim_bert_base_ner",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "seqeval"
+        ],
+        "other_params": {
+            "input_column": "tokens",
+            "label_column": "ner_tags"
+        }
+    },
+    "eval": {
+        "LOC": {
+            "precision": 0.919831223628692,
+            "recall": 0.9437229437229437,
+            "f1": 0.9316239316239316,
+            "number": 231
+        },
+        "MISC": {
+            "precision": 0.7105263157894737,
+            "recall": 0.826530612244898,
+            "f1": 0.7641509433962264,
+            "number": 98
+        },
+        "ORG": {
+            "precision": 0.8735632183908046,
+            "recall": 0.9047619047619048,
+            "f1": 0.8888888888888888,
+            "number": 252
+        },
+        "PER": {
+            "precision": 0.96484375,
+            "recall": 0.9610894941634242,
+            "f1": 0.9629629629629629,
+            "number": 257
+        },
+        "overall_precision": 0.8917050691244239,
+        "overall_recall": 0.9236276849642004,
+        "overall_f1": 0.9073856975381008,
+        "overall_accuracy": 0.979138925876609,
+        "total_time_in_seconds": 76.00970619199961,
+        "samples_per_second": 6.5781072582625955,
+        "latency_in_seconds": 0.15201941238399921,
+        "model_parameter_count": 107726601
+    }
+}

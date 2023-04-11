@@ -1,0 +1,30 @@
+{
+    "dataset": "samsum",
+    "model": "philschmid_flan_t5_base_samsum",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge"
+        ],
+        "other_params": {
+            "input_column": "dialogue",
+            "label_column": "summary"
+        }
+    },
+    "eval": {
+        "rouge1": 0.5108141850164085,
+        "rouge2": 0.2669193436816173,
+        "rougeL": 0.3989761106732957,
+        "rougeLsum": 0.3991088761203382,
+        "total_time_in_seconds": 328.52204126700053,
+        "samples_per_second": 0.15219678961924926,
+        "latency_in_seconds": 6.57044082534001,
+        "model_parameter_count": 247577856
+    }
+}

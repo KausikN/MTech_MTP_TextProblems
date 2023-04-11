@@ -1,0 +1,41 @@
+{
+    "dataset": "squad_v2",
+    "model": "salti_bert_base_multilingual_cased_finetuned_squad",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 250
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "squad_v2"
+        ],
+        "other_params": {
+            "question_column": "question",
+            "context_column": "context",
+            "id_column": "id",
+            "label_column": "answers",
+            "squad_v2_format": true
+        }
+    },
+    "eval": {
+        "exact": 42.8,
+        "f1": 45.65701587301587,
+        "total": 250,
+        "HasAns_exact": 86.99186991869918,
+        "HasAns_f1": 92.79881275003225,
+        "HasAns_total": 123,
+        "NoAns_exact": 0.0,
+        "NoAns_f1": 0.0,
+        "NoAns_total": 127,
+        "best_exact": 50.8,
+        "best_exact_thresh": 0.0,
+        "best_f1": 50.8,
+        "best_f1_thresh": 0.0,
+        "total_time_in_seconds": 124.10022768199997,
+        "samples_per_second": 2.014500735974565,
+        "latency_in_seconds": 0.49640091072799986,
+        "model_parameter_count": 177264386
+    }
+}

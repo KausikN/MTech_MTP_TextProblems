@@ -1,0 +1,30 @@
+{
+    "dataset": "cnn_dailymail",
+    "model": "sshleifer_distilbart_cnn_12_3",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge"
+        ],
+        "other_params": {
+            "input_column": "article",
+            "label_column": "highlights"
+        }
+    },
+    "eval": {
+        "rouge1": 0.42037149300794807,
+        "rouge2": 0.18807422868053536,
+        "rougeL": 0.2872818543155857,
+        "rougeLsum": 0.35922950539787246,
+        "total_time_in_seconds": 630.6678687220001,
+        "samples_per_second": 0.0792810328221115,
+        "latency_in_seconds": 12.613357374440001,
+        "model_parameter_count": 255120384
+    }
+}

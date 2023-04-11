@@ -1,0 +1,37 @@
+{
+    "dataset": "yelp_polarity",
+    "model": "pig4431_sst2_electra_5e",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "accuracy",
+            "recall",
+            "precision",
+            "f1"
+        ],
+        "other_params": {
+            "input_column": "text",
+            "label_column": "label",
+            "label_mapping": {
+                "LABEL_0": 0,
+                "LABEL_1": 1
+            }
+        }
+    },
+    "eval": {
+        "accuracy": 0.962,
+        "recall": 0.975609756097561,
+        "precision": 0.9486166007905138,
+        "f1": 0.9619238476953909,
+        "total_time_in_seconds": 358.090530761001,
+        "samples_per_second": 1.396294950713771,
+        "latency_in_seconds": 0.716181061522002,
+        "model_parameter_count": 109483778
+    }
+}

@@ -1,0 +1,1084 @@
+{
+    "Dialogue Generation Chatbot": {
+        "SOTA": {
+            "English": {
+                "PersonaChat": [
+                    {
+                        "Dataset": "PersonaChat",
+                        "Model": "LMEDR",
+                        "Code": "https://github.com/chenrj233/lmedr",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "PersonaChat": {
+                                "F1": 0.2199
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "PersonaChat",
+                        "Model": "P2 Bot",
+                        "Code": "https://github.com/SivilTaram/Persona-Dialogue-Generation",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "PersonaChat": {
+                                "F1": 0.1977,
+                                "Hits@1": 81.9,
+                                "PPL": 15.12
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "PersonaChat",
+                        "Model": "TransferTransfo",
+                        "Code": "https://github.com/huggingface/transfer-learning-conv-ai",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "PersonaChat": {
+                                "F1": 0.1909,
+                                "Hits@1": 82.1,
+                                "PPL": 17.51
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "PersonaChat",
+                        "Model": "Lost in Conversation",
+                        "Code": "https://github.com/atselousov/transformer_chatbot",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "PersonaChat": {
+                                "F1": 0.1779,
+                                "PPL": 17.3
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "PersonaChat",
+                        "Model": "Seq2Seq + Attention",
+                        "Code": "https://github.com/graykode/nlp-tutorial",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "PersonaChat": {
+                                "F1": 0.1618,
+                                "Hits@1": 12.6,
+                                "PPL": 29.8
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "PersonaChat",
+                        "Model": "KV Profile Memory",
+                        "Code": "https://github.com/facebookresearch/ParlAI",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "PersonaChat": {
+                                "F1": 0.119,
+                                "Hits@1": 55.2
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "Hugging Face": {
+            "English - Open-Domain Chatbot": {
+                "MultiWOZ 2.2": [
+                    {
+                        "Dataset": "MultiWOZ 2.2",
+                        "Model": "GodelV1.1-base-seq2seq",
+                        "Code": "https://huggingface.co/gonced8/godel-multiwoz",
+                        "Hugging Face ID": "gonced8/godel-multiwoz",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "MultiWOZ 2.2",
+                        "Model": "DialoGPT-medium-MultiWOZ",
+                        "Code": "https://huggingface.co/tosin/dialogpt_mwoz",
+                        "Hugging Face ID": "tosin/dialogpt_mwoz",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MultiWOZ 2.2": {
+                                "Perplexity(Test)": 10.25,
+                                "Perplexity(Val)": 10.71
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Multiple Sources": [
+                    {
+                        "Dataset": "Multiple Sources",
+                        "Model": "Pygmalion-6B",
+                        "Code": "https://huggingface.co/PygmalionAI/pygmalion-6b",
+                        "Hugging Face ID": "PygmalionAI/pygmalion-6b",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "Multiple Sources",
+                        "Model": "Pygmalion-2.7B",
+                        "Code": "https://huggingface.co/PygmalionAI/pygmalion-2.7b",
+                        "Hugging Face ID": "PygmalionAI/pygmalion-2.7b",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "Multiple Sources",
+                        "Model": "Pygmalion-1.3B",
+                        "Code": "https://huggingface.co/PygmalionAI/pygmalion-1.3b",
+                        "Hugging Face ID": "PygmalionAI/pygmalion-1.3b",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "Multiple Sources",
+                        "Model": "Pygmalion-350M",
+                        "Code": "https://huggingface.co/PygmalionAI/pygmalion-350m",
+                        "Hugging Face ID": "PygmalionAI/pygmalion-350m",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Blended Skill Talk": [
+                    {
+                        "Dataset": "Blended Skill Talk",
+                        "Model": "BlenderBot-400M-distill",
+                        "Code": "https://huggingface.co/facebook/blenderbot-400M-distill",
+                        "Hugging Face ID": "facebook/blenderbot-400M-distill",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "Blended Skill Talk",
+                        "Model": "BlenderBot-3B",
+                        "Code": "https://huggingface.co/facebook/blenderbot-3B",
+                        "Hugging Face ID": "facebook/blenderbot-3B",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "Blended Skill Talk",
+                        "Model": "BlenderBot-90M-small",
+                        "Code": "https://huggingface.co/facebook/blenderbot_small-90M",
+                        "Hugging Face ID": "facebook/blenderbot_small-90M",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "Blended Skill Talk",
+                        "Model": "BlenderBot-1B-distill",
+                        "Code": "https://huggingface.co/facebook/blenderbot-1B-distill",
+                        "Hugging Face ID": "facebook/blenderbot-1B-distill",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Reddit Discussions": [
+                    {
+                        "Dataset": "Reddit Discussions",
+                        "Model": "DialoGPT-medium",
+                        "Code": "https://huggingface.co/microsoft/DialoGPT-medium",
+                        "Hugging Face ID": "microsoft/DialoGPT-medium",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Reddit Discussions": {
+                                "NIST2": 3.0,
+                                "NIST4": 3.06,
+                                "BLEU2": 0.1696,
+                                "BLEU4": 0.456
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "Reddit Discussions",
+                        "Model": "DialoGPT-small",
+                        "Code": "https://huggingface.co/microsoft/DialoGPT-small",
+                        "Hugging Face ID": "microsoft/DialoGPT-small",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Reddit Discussions": {
+                                "NIST2": 2.39,
+                                "NIST4": 2.41,
+                                "BLEU2": 0.1054,
+                                "BLEU4": 0.155
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "Reddit Discussions",
+                        "Model": "DialoGPT-large",
+                        "Code": "https://huggingface.co/microsoft/DialoGPT-large",
+                        "Hugging Face ID": "microsoft/DialoGPT-large",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Reddit Discussions": {
+                                "NIST2": 2.84,
+                                "NIST4": 2.9,
+                                "BLEU2": 0.1866,
+                                "BLEU4": 0.525
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "Reddit Discussions",
+                        "Model": "GODELV1.1-base-seq2seq",
+                        "Code": "https://huggingface.co/microsoft/GODEL-v1_1-base-seq2seq",
+                        "Hugging Face ID": "microsoft/GODEL-v1_1-base-seq2seq",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Reddit Discussions": {
+                                "MultiWOZ BLEU": 12.81
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "Reddit Discussions",
+                        "Model": "GODELV1.1-large-seq2seq",
+                        "Code": "https://huggingface.co/microsoft/GODEL-v1_1-large-seq2seq",
+                        "Hugging Face ID": "microsoft/GODEL-v1_1-large-seq2seq",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Reddit Discussions": {
+                                "MultiWOZ BLEU": 14.07
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            },
+            "English - Persona-based Chatbot": {
+                "PersonaChat": [
+                    {
+                        "Dataset": "PersonaChat",
+                        "Model": "DialoGPT-medium-PersonaGPT",
+                        "Code": "https://huggingface.co/af1tang/personaGPT",
+                        "Hugging Face ID": "af1tang/personaGPT",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "PersonaChat": {
+                                "Perplexity": 10.2,
+                                "F1": 0.434
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "ElonMusk Tweets": [
+                    {
+                        "Dataset": "ElonMusk Tweets",
+                        "Model": "DialoGPT-medium-ElonMusk",
+                        "Code": "https://huggingface.co/Pi3141/DialoGPT-medium-elon-3",
+                        "Hugging Face ID": "Pi3141/DialoGPT-medium-elon-3",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "SODA, Prosocial Dialog": [
+                    {
+                        "Dataset": "SODA, Prosocial Dialog",
+                        "Model": "T5-xl-lm-adapt-COSMO",
+                        "Code": "https://huggingface.co/allenai/cosmo-xl",
+                        "Hugging Face ID": "allenai/cosmo-xl",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Palpatine": [
+                    {
+                        "Dataset": "Palpatine",
+                        "Model": "DialoGPT-medium-Palpatine",
+                        "Code": "https://huggingface.co/Filosofas/DialoGPT-medium-PALPATINE2",
+                        "Hugging Face ID": "Filosofas/DialoGPT-medium-PALPATINE2",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "TWEWY Game": [
+                    {
+                        "Dataset": "TWEWY Game",
+                        "Model": "DialoGPT-medium-TWEWY",
+                        "Code": "https://huggingface.co/satvikag/chatbot",
+                        "Hugging Face ID": "satvikag/chatbot",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Movielines, Discord Messages": [
+                    {
+                        "Dataset": "Movielines, Discord Messages",
+                        "Model": "DialoGPT-small-DiscordBot",
+                        "Code": "https://huggingface.co/deepparag/Aeona",
+                        "Hugging Face ID": "deepparag/Aeona",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Movielines, Discord Messages": {
+                                "Perplexity": 7.9
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Reddit Sarcastic": [
+                    {
+                        "Dataset": "Reddit Sarcastic",
+                        "Model": "DialoGPT-medium-Sarcastic",
+                        "Code": "https://huggingface.co/abhiramtirumala/DialoGPT-sarcastic",
+                        "Hugging Face ID": "abhiramtirumala/DialoGPT-sarcastic",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Scifi Movies": [
+                    {
+                        "Dataset": "Scifi Movies",
+                        "Model": "GPT2-small-PersonaMovieCharecters",
+                        "Code": "https://huggingface.co/gorkemgoknar/gpt2chatbotenglish",
+                        "Hugging Face ID": "gorkemgoknar/gpt2chatbotenglish",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Rick&Morty": [
+                    {
+                        "Dataset": "Rick&Morty",
+                        "Model": "DialoGPT-small-Morty",
+                        "Code": "https://huggingface.co/s3nh/DialoGPT-small-morty",
+                        "Hugging Face ID": "s3nh/DialoGPT-small-morty",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            },
+            "Multilingual / Other Languages": {
+                "KD-Conv, LCCC": [
+                    {
+                        "Dataset": "KD-Conv, LCCC",
+                        "Model": "Bart-large-chinese",
+                        "Code": "https://huggingface.co/HIT-TMG/dialogue-bart-large-chinese",
+                        "Hugging Face ID": "HIT-TMG/dialogue-bart-large-chinese",
+                        "Language": "Chinese",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Chinese Gossip": [
+                    {
+                        "Dataset": "Chinese Gossip",
+                        "Model": "GPT2-DialogBot-base-chinese",
+                        "Code": "https://huggingface.co/shibing624/gpt2-dialogbot-base-chinese",
+                        "Hugging Face ID": "shibing624/gpt2-dialogbot-base-chinese",
+                        "Language": "Chinese",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "2CHB Dialogues Russian": [
+                    {
+                        "Dataset": "2CHB Dialogues Russian",
+                        "Model": "DialoGPT3-medium-russian",
+                        "Code": "https://huggingface.co/BlackSamorez/rudialogpt3_medium_based_on_gpt2_2ch",
+                        "Hugging Face ID": "BlackSamorez/rudialogpt3_medium_based_on_gpt2_2ch",
+                        "Language": "Russian",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Unknown Dialogues Russian": [
+                    {
+                        "Dataset": "Unknown Dialogues Russian",
+                        "Model": "DialoGPT-medium-russian",
+                        "Code": "https://huggingface.co/tinkoff-ai/ruDialoGPT-medium",
+                        "Hugging Face ID": "tinkoff-ai/ruDialoGPT-medium",
+                        "Language": "Russian",
+                        "Reported Metrics": {
+                            "Unknown Dialogues Russian": {
+                                "Sensibleness": 0.78,
+                                "Specificity": 0.69
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "Unknown Dialogues Russian",
+                        "Model": "DialoGPT-medium-russian",
+                        "Code": "https://huggingface.co/tinkoff-ai/ruDialoGPT-small",
+                        "Hugging Face ID": "tinkoff-ai/ruDialoGPT-small",
+                        "Language": "Russian",
+                        "Reported Metrics": {
+                            "Unknown Dialogues Russian": {
+                                "Sensibleness": 0.64,
+                                "Specificity": 0.5
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "LCCC-large": [
+                    {
+                        "Dataset": "LCCC-large",
+                        "Model": "GPT-chinese",
+                        "Code": "https://huggingface.co/thu-coai/CDial-GPT_LCCC-large",
+                        "Hugging Face ID": "thu-coai/CDial-GPT_LCCC-large",
+                        "Language": "Chinese",
+                        "Reported Metrics": {
+                            "LCCC-large": {
+                                "Model Size": "95.5M",
+                                "Perplexity": 18.23,
+                                "BLEU2": 6.63,
+                                "BLEU4": 3.2
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "LCCC-base": [
+                    {
+                        "Dataset": "LCCC-base",
+                        "Model": "GPT2-chinese",
+                        "Code": "https://huggingface.co/thu-coai/CDial-GPT2_LCCC-base",
+                        "Hugging Face ID": "thu-coai/CDial-GPT2_LCCC-base",
+                        "Language": "Chinese",
+                        "Reported Metrics": {
+                            "LCCC-base": {
+                                "Model Size": "95.5M",
+                                "Perplexity": 22.76,
+                                "BLEU2": 5.69,
+                                "BLEU4": 2.5
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            }
+        }
+    },
+    "Dialogue Retrieval Chatbot": {
+        "SOTA": {
+            "English": {
+                "UDCV2": [
+                    {
+                        "Dataset": "UDCV2",
+                        "Model": "Bert-FP",
+                        "Code": "https://github.com/hanjanghoon/BERT_FP",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "UDCV2": {
+                                "R10@1": 0.911,
+                                "R10@2": 0.962,
+                                "R10@5": 0.994
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "UDCV2",
+                        "Model": "Poly-encoder",
+                        "Code": "https://github.com/sfzhou5678/PolyEncoder",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "UDCV2": {
+                                "R10@1": 0.882,
+                                "R10@2": 0.949,
+                                "R10@5": 0.99
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "UDCV2",
+                        "Model": "Bert-VFT",
+                        "Code": "https://github.com/taesunwhang/BERT-ResSel",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "UDCV2": {
+                                "R10@1": 0.855,
+                                "R10@2": 0.928,
+                                "R10@5": 0.985
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "UDCV2",
+                        "Model": "SA-Bert",
+                        "Code": "https://github.com/JasonForJoy/SA-BERT",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "UDCV2": {
+                                "R10@1": 0.855,
+                                "R10@2": 0.928,
+                                "R10@5": 0.983
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "UDCV2",
+                        "Model": "WMDN",
+                        "Code": "https://github.com/RayXu14/WDMN",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "UDCV2": {
+                                "R10@1": 0.821,
+                                "R10@2": 0.911,
+                                "R10@5": 0.981
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "UDCV2",
+                        "Model": "MSN",
+                        "Code": "https://github.com/chunyuanY/Dialogue",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "UDCV2": {
+                                "R10@1": 0.8,
+                                "R10@2": 0.899,
+                                "R10@5": 0.978
+                            }
+                        }
+                    }
+                ],
+                "Reddit": [
+                    {
+                        "Dataset": "Reddit",
+                        "Model": "Multi-Context ConveRT",
+                        "Code": "https://github.com/davidalami/convert",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Reddit": {
+                                "Acc (1 of 100)": 0.718
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "Reddit",
+                        "Model": "PolyAI Encoder",
+                        "Code": "https://github.com/PolyAI-LDN/conversational-datasets",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Reddit": {
+                                "Acc (1 of 100)": 0.613
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "Reddit",
+                        "Model": "USE",
+                        "Code": "https://github.com/facebookresearch/InferSent",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Reddit": {
+                                "Acc (1 of 100)": 0.477
+                            }
+                        }
+                    }
+                ],
+                "Advising": [
+                    {
+                        "Dataset": "Advising",
+                        "Model": "Seq-Attention Network",
+                        "Code": "https://github.com/alibaba/esim-response-selection",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Advising": {
+                                "R@1": 31.0,
+                                "R@10": 78.8,
+                                "R@50": 97.8
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Dialogue Act Classification": {
+        "SOTA": {
+            "English": {
+                "SwDA": [
+                    {
+                        "Dataset": "SwDA",
+                        "Model": "Speaker",
+                        "Code": "https://github.com/zihaohe123/speak-turn-emb-dialog-act-clf",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SwDA": {
+                                "Acc": 0.832
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "SwDA",
+                        "Model": "SGNN",
+                        "Code": "https://github.com/glicerico/SGNN",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SwDA": {
+                                "Acc": 0.831
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "SwDA",
+                        "Model": "CASA",
+                        "Code": "https://github.com/macabdul9/CASA-Dialogue-Act-Classifier",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SwDA": {
+                                "Acc": 0.829
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "SwDA",
+                        "Model": "BiLSTM-CRF",
+                        "Code": "https://github.com/ilimugur/short-text-classification",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SwDA": {
+                                "Acc": 0.792
+                            }
+                        }
+                    }
+                ],
+                "MRDA": [
+                    {
+                        "Dataset": "MRDA",
+                        "Model": "Speaker",
+                        "Code": "https://github.com/zihaohe123/speak-turn-emb-dialog-act-clf",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MRDA": {
+                                "Acc": 0.914
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "MRDA",
+                        "Model": "BiLSTM-CRF",
+                        "Code": "https://github.com/ilimugur/short-text-classification",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MRDA": {
+                                "Acc": 0.909
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Dialogue State Tracking": {
+        "SOTA": {
+            "English": {
+                "DSTC2": [
+                    {
+                        "Dataset": "DSTC2",
+                        "Model": "Seq2Seq-DU Without Schema",
+                        "Code": "https://github.com/sweetalyssum/Seq2Seq-DU",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "DSTC2": {
+                                "Joint Acc": 0.85
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "DSTC2",
+                        "Model": "StateNet",
+                        "Code": "https://github.com/renll/StateNet",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "DSTC2": {
+                                "Joint Acc": 0.755
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "DSTC2",
+                        "Model": "Global-Local Self Attention",
+                        "Code": "https://github.com/salesforce/glad",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "DSTC2": {
+                                "Joint Acc": 0.745
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "DSTC2",
+                        "Model": "T5",
+                        "Code": "https://github.com/smartyfh/MultiWOZ2.4",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "DSTC2": {
+                                "Joint Acc": 0.736
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "DSTC2",
+                        "Model": "Dialogue Learning with Human Teaching",
+                        "Code": "https://github.com/google-research-datasets/simulated-dialogue",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "DSTC2": {
+                                "Joint Acc": 0.72
+                            }
+                        }
+                    }
+                ],
+                "WOZ": [
+                    {
+                        "Dataset": "WOZ",
+                        "Model": "AG-DST",
+                        "Code": "https://github.com/PaddlePaddle/Knover/tree/develop/projects/AG-DST",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WOZ": {
+                                "Joint Acc": 0.9137
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "WOZ",
+                        "Model": "Seq2Seq-DU Without Schema",
+                        "Code": "https://github.com/sweetalyssum/Seq2Seq-DU",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WOZ": {
+                                "Joint Acc": 0.912
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "WOZ",
+                        "Model": "T5",
+                        "Code": "https://github.com/smartyfh/MultiWOZ2.4",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WOZ": {
+                                "Joint Acc": 0.91
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "WOZ",
+                        "Model": "StateNet",
+                        "Code": "https://github.com/renll/StateNet",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WOZ": {
+                                "Joint Acc": 0.889
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "WOZ",
+                        "Model": "G-SAT",
+                        "Code": "https://github.com/vevake/GSAT",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WOZ": {
+                                "Joint Acc": 0.887
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "WOZ",
+                        "Model": "GCE",
+                        "Code": "https://github.com/elnaaz/GCE-Model",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WOZ": {
+                                "Joint Acc": 0.885
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "WOZ",
+                        "Model": "Global-Local Self Attention",
+                        "Code": "https://github.com/salesforce/glad",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WOZ": {
+                                "Joint Acc": 0.881
+                            }
+                        }
+                    }
+                ],
+                "MultiWOZ - ST": [
+                    {
+                        "Dataset": "MultiWOZ - ST",
+                        "Model": "BART-DST + DAIR",
+                        "Code": "https://github.com/optimization-for-data-driven-science/dair",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MultiWOZ - ST": {
+                                "Joint Acc": 0.5998
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "MultiWOZ - ST",
+                        "Model": "T5",
+                        "Code": "https://github.com/smartyfh/MultiWOZ2.4",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MultiWOZ - ST": {
+                                "Joint Acc": 0.576
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "MultiWOZ - ST",
+                        "Model": "SGP-DST",
+                        "Code": "https://github.com/chiahsuan156/dst-as-prompting",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MultiWOZ - ST": {
+                                "Joint Acc": 0.576
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "MultiWOZ - ST",
+                        "Model": "AG-DST",
+                        "Code": "https://github.com/PaddlePaddle/Knover/tree/develop/projects/AG-DST",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MultiWOZ - ST": {
+                                "Joint Acc": 0.5726
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "MultiWOZ - ST",
+                        "Model": "Seq2Seq-DU",
+                        "Code": "https://github.com/sweetalyssum/Seq2Seq-DU",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MultiWOZ - ST": {
+                                "Joint Acc": 0.544
+                            }
+                        }
+                    }
+                ],
+                "MultiWOZ - E2E DM": [
+                    {
+                        "Dataset": "MultiWOZ - E2E DM",
+                        "Model": "GALAXY",
+                        "Code": "https://github.com/siat-nlp/galaxy",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MultiWOZ - E2E DM": {
+                                "Success": 85.3,
+                                "Inform": 94.4,
+                                "BLEU": 20.5
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "MultiWOZ - E2E DM",
+                        "Model": "DAMD",
+                        "Code": "https://gitlab.com/ucdavisnlp/damd-multiwoz",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MultiWOZ - E2E DM": {
+                                "Success": 60.4,
+                                "Inform": 76.3,
+                                "BLEU": 18.6
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "MultiWOZ - E2E DM",
+                        "Model": "AuGPT",
+                        "Code": "https://github.com/ufal/augpt",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MultiWOZ - E2E DM": {
+                                "Success": 75.5,
+                                "Inform": 90.2,
+                                "BLEU": 17.2
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "MultiWOZ - E2E DM",
+                        "Model": "SimpleTOD",
+                        "Code": "https://github.com/salesforce/simpletod",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MultiWOZ - E2E DM": {
+                                "Success": 70.1,
+                                "Inform": 84.4,
+                                "BLEU": 15.0
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Disentanglement": {
+        "SOTA": {
+            "English": {
+                "IRCDisentanglement-Ubuntu": [
+                    {
+                        "Dataset": "IRCDisentanglement-Ubuntu",
+                        "Model": "Bert + BiLSTM",
+                        "Code": "https://github.com/TeddLi/Disentangle",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IRCDisentanglement-Ubuntu": {
+                                "VI": 93.3,
+                                "Precision": 0.443,
+                                "Recall": 0.496,
+                                "F1": 0.468
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "IRCDisentanglement-Ubuntu",
+                        "Model": "FFEnsemble-Vote",
+                        "Code": "https://jkk.name/irc-disentanglement",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IRCDisentanglement-Ubuntu": {
+                                "VI": 91.5,
+                                "1-1": 76.0,
+                                "Precision": 0.363,
+                                "Recall": 0.397,
+                                "F1": 0.38
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "IRCDisentanglement-Ubuntu",
+                        "Model": "Feedforward",
+                        "Code": "https://jkk.name/irc-disentanglement",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IRCDisentanglement-Ubuntu": {
+                                "VI": 91.3,
+                                "1-1": 75.6,
+                                "Precision": 0.346,
+                                "Recall": 0.38,
+                                "F1": 0.362
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "IRCDisentanglement-Ubuntu",
+                        "Model": "Linear",
+                        "Code": "https://www.asc.ohio-state.edu/elsner.14/resources/chat-distr.tgz",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IRCDisentanglement-Ubuntu": {
+                                "VI": 82.1,
+                                "1-1": 51.4,
+                                "Precision": 0.121,
+                                "Recall": 0.215,
+                                "F1": 0.155
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "IRCDisentanglement-Ubuntu",
+                        "Model": "FFEnsemble-Intersect",
+                        "Code": "https://jkk.name/irc-disentanglement",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IRCDisentanglement-Ubuntu": {
+                                "VI": 69.3,
+                                "1-1": 26.6,
+                                "Precision": 0.67,
+                                "Recall": 0.211,
+                                "F1": 0.321
+                            }
+                        }
+                    }
+                ],
+                "IRCDisentanglement-Linux-Kummerfeld": [
+                    {
+                        "Dataset": "IRCDisentanglement-Linux-Kummerfeld",
+                        "Model": "Linear",
+                        "Code": "https://www.asc.ohio-state.edu/elsner.14/resources/chat-distr.tgz",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IRCDisentanglement-Linux-Kummerfeld": {
+                                "1-1": 59.7,
+                                "Local": 80.8,
+                                "Shen-F1": 0.63
+                            }
+                        }
+                    }
+                ],
+                "IRCDisentanglement-Linux-Elsner": [
+                    {
+                        "Dataset": "IRCDisentanglement-Linux-Elsner",
+                        "Model": "Linear",
+                        "Code": "https://www.asc.ohio-state.edu/elsner.14/resources/chat-distr.tgz",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IRCDisentanglement-Linux-Elsner": {
+                                "1-1": 53.1,
+                                "Local": 81.9,
+                                "Shen-F1": 0.551
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

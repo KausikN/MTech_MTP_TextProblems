@@ -1,0 +1,37 @@
+{
+    "dataset": "sst2",
+    "model": "yoshitomo_matsubara_bert_base_uncased_sst2",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "validation"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "accuracy",
+            "recall",
+            "precision",
+            "f1"
+        ],
+        "other_params": {
+            "input_column": "sentence",
+            "label_column": "label",
+            "label_mapping": {
+                "LABEL_0": 0,
+                "LABEL_1": 1
+            }
+        }
+    },
+    "eval": {
+        "accuracy": 0.916,
+        "recall": 0.9080459770114943,
+        "precision": 0.9294117647058824,
+        "f1": 0.9186046511627908,
+        "total_time_in_seconds": 87.84642937199897,
+        "samples_per_second": 5.6917509746773485,
+        "latency_in_seconds": 0.17569285874399795,
+        "model_parameter_count": 109483778
+    }
+}

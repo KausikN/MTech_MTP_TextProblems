@@ -1,0 +1,37 @@
+{
+    "dataset": "rotten_tomatoes",
+    "model": "pig4431_imdb_bert_5e",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "accuracy",
+            "recall",
+            "precision",
+            "f1"
+        ],
+        "other_params": {
+            "input_column": "text",
+            "label_column": "label",
+            "label_mapping": {
+                "LABEL_0": 0,
+                "LABEL_1": 1
+            }
+        }
+    },
+    "eval": {
+        "accuracy": 0.818,
+        "recall": 0.810126582278481,
+        "precision": 0.8067226890756303,
+        "f1": 0.8084210526315788,
+        "total_time_in_seconds": 77.15378194899858,
+        "samples_per_second": 6.480563717933075,
+        "latency_in_seconds": 0.15430756389799716,
+        "model_parameter_count": 108311810
+    }
+}

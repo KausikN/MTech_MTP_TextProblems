@@ -1,0 +1,64 @@
+{
+    "dataset": "wmt14_de_en",
+    "model": "google_bert2bert_l_24_wmt_de_en",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge",
+            "bleu",
+            "sacrebleu"
+        ],
+        "other_params": {
+            "input_column": "text_source",
+            "label_column": "text_target"
+        }
+    },
+    "eval": {
+        "rouge1": 0.554052335330885,
+        "rouge2": 0.2994202473528116,
+        "rougeL": 0.5014619138718707,
+        "rougeLsum": 0.5025962102554278,
+        "bleu": 0.14387507963055363,
+        "bleu_precisions": [
+            0.3899637243047158,
+            0.1882793017456359,
+            0.09974259974259975,
+            0.05851063829787234
+        ],
+        "brevity_penalty": 1.0,
+        "length_ratio": 1.3371059013742927,
+        "translation_length": 1654,
+        "reference_length": 1237,
+        "score": 14.387507963055358,
+        "counts": [
+            645,
+            302,
+            155,
+            88
+        ],
+        "totals": [
+            1654,
+            1604,
+            1554,
+            1504
+        ],
+        "sacrebleu_precisions": [
+            38.99637243047158,
+            18.82793017456359,
+            9.974259974259974,
+            5.851063829787234
+        ],
+        "bp": 1.0,
+        "sys_len": 1654,
+        "ref_len": 1237,
+        "total_time_in_seconds": 681.3599087480002,
+        "samples_per_second": 0.07338265629962742,
+        "latency_in_seconds": 13.627198174960004,
+        "model_parameter_count": 771947726
+    }
+}

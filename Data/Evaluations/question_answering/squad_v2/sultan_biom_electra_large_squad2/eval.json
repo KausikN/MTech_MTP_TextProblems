@@ -1,0 +1,41 @@
+{
+    "dataset": "squad_v2",
+    "model": "sultan_biom_electra_large_squad2",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 250
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "squad_v2"
+        ],
+        "other_params": {
+            "question_column": "question",
+            "context_column": "context",
+            "id_column": "id",
+            "label_column": "answers",
+            "squad_v2_format": true
+        }
+    },
+    "eval": {
+        "exact": 86.8,
+        "f1": 89.56489262371616,
+        "total": 250,
+        "HasAns_exact": 82.11382113821138,
+        "HasAns_f1": 87.733521592919,
+        "HasAns_total": 123,
+        "NoAns_exact": 91.33858267716535,
+        "NoAns_f1": 91.33858267716535,
+        "NoAns_total": 127,
+        "best_exact": 86.8,
+        "best_exact_thresh": 0.9927129149436951,
+        "best_f1": 89.56489262371616,
+        "best_f1_thresh": 0.9927129149436951,
+        "total_time_in_seconds": 452.1933446870007,
+        "samples_per_second": 0.5528608568377871,
+        "latency_in_seconds": 1.808773378748003,
+        "model_parameter_count": 332428290
+    }
+}

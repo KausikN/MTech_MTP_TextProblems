@@ -1,0 +1,798 @@
+{
+    "Fine-grained Polarity / Multi-class Classification": {
+        "SOTA": {
+            "English": {
+                "IMDB": [
+                    {
+                        "Dataset": "IMDB",
+                        "Model": "Bert-ITPT",
+                        "Code": "https://github.com/xuyige/BERT4doc-Classification",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IMDB": {
+                                "Acc": 0.9579
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "IMDB",
+                        "Model": "ULMFiT",
+                        "Code": "https://github.com/Sylar257/ULMFiT-Sentiment-Analysis",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IMDB": {
+                                "Acc": 0.954
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "Hugging Face": {
+            "English": {
+                "IMDB": [
+                    {
+                        "Dataset": "IMDB",
+                        "Model": "XLNet - IMDB - 2",
+                        "Code": "https://huggingface.co/pig4431/IMDB_XLNET_5E",
+                        "Hugging Face ID": "pig4431/IMDB_XLNET_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IMDB": {
+                                "Loss": 0.3195,
+                                "Acc": 0.94
+                            }
+                        },
+                        "Computed Metrics": {
+                            "IMDB": {
+                                "Acc": 0.904,
+                                "Latency": 1.9435
+                            }
+                        },
+                        "Eval": "pig4431_imdb_xlnet_5e"
+                    },
+                    {
+                        "Dataset": "IMDB",
+                        "Model": "Bert-base - IMDB - 2",
+                        "Code": "https://huggingface.co/pig4431/IMDB_BERT_5E",
+                        "Hugging Face ID": "pig4431/IMDB_BERT_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IMDB": {
+                                "Loss": 0.2316,
+                                "Acc": 0.9533
+                            }
+                        },
+                        "Computed Metrics": {
+                            "IMDB": {
+                                "Acc": 0.934,
+                                "Latency": 1.0103
+                            }
+                        },
+                        "Eval": "pig4431_imdb_bert_5e"
+                    },
+                    {
+                        "Dataset": "IMDB",
+                        "Model": "DistilBert-base - IMDB - 2",
+                        "Code": "https://huggingface.co/pig4431/IMDB_DistilBERT_5E",
+                        "Hugging Face ID": "pig4431/IMDB_DistilBERT_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IMDB": {
+                                "Loss": 0.2023,
+                                "Acc": 0.94
+                            }
+                        },
+                        "Computed Metrics": {
+                            "IMDB": {
+                                "Acc": 0.922,
+                                "Latency": 0.4379
+                            }
+                        },
+                        "Eval": "pig4431_imdb_distilbert_5e"
+                    },
+                    {
+                        "Dataset": "IMDB",
+                        "Model": "AlBert-base - IMDB - 2",
+                        "Code": "https://huggingface.co/pig4431/IMDB_ALBERT_5E",
+                        "Hugging Face ID": "pig4431/IMDB_ALBERT_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IMDB": {
+                                "Loss": 0.222,
+                                "Acc": 0.9467
+                            }
+                        },
+                        "Computed Metrics": {
+                            "IMDB": {
+                                "Acc": 0.948,
+                                "Latency": 0.9257
+                            }
+                        },
+                        "Eval": "pig4431_imdb_albert_5e"
+                    },
+                    {
+                        "Dataset": "IMDB",
+                        "Model": "Electra-base - IMDB - 2",
+                        "Code": "https://huggingface.co/pig4431/IMDB_ELECTRA_5E",
+                        "Hugging Face ID": "pig4431/IMDB_ELECTRA_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IMDB": {
+                                "Loss": 0.2158,
+                                "Acc": 0.9533
+                            }
+                        },
+                        "Computed Metrics": {
+                            "IMDB": {
+                                "Acc": 0.946,
+                                "Latency": 0.9196
+                            }
+                        },
+                        "Eval": "pig4431_imdb_electra_5e"
+                    },
+                    {
+                        "Dataset": "IMDB",
+                        "Model": "RoBertA-base - IMDB - 2",
+                        "Code": "https://huggingface.co/pig4431/IMDB_roBERTa_5E",
+                        "Hugging Face ID": "pig4431/IMDB_roBERTa_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IMDB": {
+                                "Loss": 0.2383,
+                                "Acc": 0.9467
+                            }
+                        },
+                        "Computed Metrics": {
+                            "IMDB": {
+                                "Acc": 0.946,
+                                "Latency": 1.0282
+                            }
+                        },
+                        "Eval": "pig4431_imdb_roberta_5e"
+                    }
+                ],
+                "SST-2": [
+                    {
+                        "Dataset": "SST-2",
+                        "Model": "XLNet-base - SST-2 - 2",
+                        "Code": "https://huggingface.co/pig4431/SST2_XLNET_5E",
+                        "Hugging Face ID": "pig4431/SST2_XLNET_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SST-2": {
+                                "Loss": 0.5502,
+                                "Acc": 0.9133
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SST-2": {
+                                "Acc": 0.932,
+                                "Latency": 0.2811
+                            }
+                        },
+                        "Eval": "pig4431_sst2_xlnet_5e"
+                    },
+                    {
+                        "Dataset": "SST-2",
+                        "Model": "Bert-base - SST-2 - 2",
+                        "Code": "https://huggingface.co/pig4431/SST2_BERT_5E",
+                        "Hugging Face ID": "pig4431/SST2_BERT_5E",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "SST-2": {
+                                "Acc": 0.906,
+                                "Latency": 0.134
+                            }
+                        },
+                        "Eval": "pig4431_sst2_bert_5e"
+                    },
+                    {
+                        "Dataset": "SST-2",
+                        "Model": "DistilBert-base - SST-2 - 2",
+                        "Code": "https://huggingface.co/pig4431/SST2_DistilBERT_5E",
+                        "Hugging Face ID": "pig4431/SST2_DistilBERT_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SST-2": {
+                                "Loss": 0.4125,
+                                "Acc": 0.8933
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SST-2": {
+                                "Acc": 0.892,
+                                "Latency": 0.0699
+                            }
+                        },
+                        "Eval": "pig4431_sst2_distilbert_5e"
+                    },
+                    {
+                        "Dataset": "SST-2",
+                        "Model": "AlBert-base - SST-2 - 2",
+                        "Code": "https://huggingface.co/pig4431/SST2_ALBERT_5E",
+                        "Hugging Face ID": "pig4431/SST2_ALBERT_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SST-2": {
+                                "Loss": 0.5698,
+                                "Acc": 0.8933
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SST-2": {
+                                "Acc": 0.93,
+                                "Latency": 0.137
+                            }
+                        },
+                        "Eval": "pig4431_sst2_albert_5e"
+                    },
+                    {
+                        "Dataset": "SST-2",
+                        "Model": "Electra-base - SST-2 - 2",
+                        "Code": "https://huggingface.co/pig4431/SST2_ELECTRA_5E",
+                        "Hugging Face ID": "pig4431/SST2_ELECTRA_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SST-2": {
+                                "Loss": 0.3431,
+                                "Acc": 0.9267
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SST-2": {
+                                "Acc": 0.936,
+                                "Latency": 0.1369
+                            }
+                        },
+                        "Eval": "pig4431_sst2_electra_5e"
+                    },
+                    {
+                        "Dataset": "SST-2",
+                        "Model": "RoBertA-base - SST-2 - 2",
+                        "Code": "https://huggingface.co/pig4431/SST2_roBERTa_5E",
+                        "Hugging Face ID": "pig4431/SST2_roBERTa_5E",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "SST-2": {
+                                "Acc": 0.932,
+                                "Latency": 0.1337
+                            }
+                        },
+                        "Eval": "pig4431_sst2_roberta_5e"
+                    },
+                    {
+                        "Dataset": "SST-2",
+                        "Model": "Bert-base - SST-2 - 2",
+                        "Code": "https://huggingface.co/yoshitomo-matsubara/bert-base-uncased-sst2",
+                        "Hugging Face ID": "yoshitomo-matsubara/bert-base-uncased-sst2",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SST-2": {
+                                "Acc": 0.9116,
+                                "GLUE Score": 77.9
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SST-2": {
+                                "Acc": 0.916,
+                                "Latency": 0.1757
+                            }
+                        },
+                        "Eval": "yoshitomo_matsubara_bert_base_uncased_sst2"
+                    }
+                ],
+                "Yelp-2": [
+                    {
+                        "Dataset": "Yelp-2",
+                        "Model": "Bert-base - Yelp-2 - 2",
+                        "Code": "https://huggingface.co/pig4431/YELP_BERT_5E",
+                        "Hugging Face ID": "pig4431/YELP_BERT_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Yelp-2": {
+                                "Loss": 0.1867,
+                                "Acc": 0.9733
+                            }
+                        },
+                        "Computed Metrics": {
+                            "Yelp-2": {
+                                "Acc": 0.96,
+                                "Latency": 0.6289
+                            }
+                        },
+                        "Eval": "pig4431_yelp_bert_5e"
+                    },
+                    {
+                        "Dataset": "Yelp-2",
+                        "Model": "DistilBert-base - Yelp-2 - 2",
+                        "Code": "https://huggingface.co/pig4431/YELP_DistilBERT_5E",
+                        "Hugging Face ID": "pig4431/YELP_DistilBERT_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Yelp-2": {
+                                "Loss": 0.1557,
+                                "Acc": 0.9667
+                            }
+                        },
+                        "Computed Metrics": {
+                            "Yelp-2": {
+                                "Acc": 0.958,
+                                "Latency": 0.3203
+                            }
+                        },
+                        "Eval": "pig4431_yelp_distilbert_5e"
+                    },
+                    {
+                        "Dataset": "Yelp-2",
+                        "Model": "AlBert-base - Yelp-2 - 2",
+                        "Code": "https://huggingface.co/pig4431/YELP_ALBERT_5E",
+                        "Hugging Face ID": "pig4431/YELP_ALBERT_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Yelp-2": {
+                                "Loss": 0.1394,
+                                "Acc": 0.9733
+                            }
+                        },
+                        "Computed Metrics": {
+                            "Yelp-2": {
+                                "Acc": 0.966,
+                                "Latency": 0.6146
+                            }
+                        },
+                        "Eval": "pig4431_yelp_albert_5e"
+                    },
+                    {
+                        "Dataset": "Yelp-2",
+                        "Model": "Electra-base - Yelp-2 - 2",
+                        "Code": "https://huggingface.co/pig4431/YELP_ELECTRA_5E",
+                        "Hugging Face ID": "pig4431/YELP_ELECTRA_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Yelp-2": {
+                                "Loss": 0.1658,
+                                "Acc": 0.96
+                            }
+                        },
+                        "Computed Metrics": {
+                            "Yelp-2": {
+                                "Acc": 0.958,
+                                "Latency": 0.0899
+                            }
+                        },
+                        "Eval": "pig4431_yelp_electra_5e"
+                    },
+                    {
+                        "Dataset": "Yelp-2",
+                        "Model": "RoBertA-base - Yelp-2 - 2",
+                        "Code": "https://huggingface.co/pig4431/YELP_roBERTa_5E",
+                        "Hugging Face ID": "pig4431/YELP_roBERTa_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Yelp-2": {
+                                "Loss": 0.0995,
+                                "Acc": 0.9867
+                            }
+                        },
+                        "Computed Metrics": {
+                            "Yelp-2": {
+                                "Acc": 0.98,
+                                "Latency": 0.5683
+                            }
+                        },
+                        "Eval": "pig4431_yelp_roberta_5e"
+                    }
+                ],
+                "RT-2": [
+                    {
+                        "Dataset": "RT-2",
+                        "Model": "XLNet-base - RT - 2",
+                        "Code": "https://huggingface.co/pig4431/rtm_XLNET_5E",
+                        "Hugging Face ID": "pig4431/rtm_XLNET_5E",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "RT-2": {
+                                "Acc": 0.886,
+                                "Latency": 0.2032
+                            }
+                        },
+                        "Eval": "pig4431_rtm_xlnet_5e"
+                    },
+                    {
+                        "Dataset": "RT-2",
+                        "Model": "Bert-base - RT - 2",
+                        "Code": "https://huggingface.co/pig4431/rtm_BERT_5E",
+                        "Hugging Face ID": "pig4431/rtm_BERT_5E",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "RT-2": {
+                                "Acc": 0.86,
+                                "Latency": 0.1478
+                            }
+                        },
+                        "Eval": "pig4431_rtm_bert_5e"
+                    },
+                    {
+                        "Dataset": "RT-2",
+                        "Model": "DistilBert-base - RT - 2",
+                        "Code": "https://huggingface.co/pig4431/rtm_DistilBERT_5E",
+                        "Hugging Face ID": "pig4431/rtm_DistilBERT_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "RT-2": {
+                                "Loss": 0.6835,
+                                "Acc": 0.82
+                            }
+                        },
+                        "Computed Metrics": {
+                            "RT-2": {
+                                "Acc": 0.834,
+                                "Latency": 0.0729
+                            }
+                        },
+                        "Eval": "pig4431_rtm_distilbert_5e"
+                    },
+                    {
+                        "Dataset": "RT-2",
+                        "Model": "AlBert-base - RT - 2",
+                        "Code": "https://huggingface.co/pig4431/rtm_ALBERT_5E",
+                        "Hugging Face ID": "pig4431/rtm_ALBERT_5E",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "RT-2": {
+                                "Acc": 0.832,
+                                "Latency": 0.1487
+                            }
+                        },
+                        "Eval": "pig4431_rtm_albert_5e"
+                    },
+                    {
+                        "Dataset": "RT-2",
+                        "Model": "Electra-base - RT - 2",
+                        "Code": "https://huggingface.co/pig4431/rtm_ELECTRA_5E",
+                        "Hugging Face ID": "pig4431/rtm_ELECTRA_5E",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "RT-2": {
+                                "Acc": 0.904,
+                                "Latency": 0.145
+                            }
+                        },
+                        "Eval": "pig4431_rtm_electra_5e"
+                    },
+                    {
+                        "Dataset": "RT-2",
+                        "Model": "RoBertA-base - RT - 2",
+                        "Code": "https://huggingface.co/pig4431/rtm_roBERTa_5E",
+                        "Hugging Face ID": "pig4431/rtm_roBERTa_5E",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "RT-2": {
+                                "Loss": 0.6545,
+                                "Acc": 0.8667
+                            }
+                        },
+                        "Computed Metrics": {
+                            "RT-2": {
+                                "Acc": 0.874,
+                                "Latency": 0.1397
+                            }
+                        },
+                        "Eval": "pig4431_rtm_roberta_5e"
+                    }
+                ],
+                "SE2017-1": [
+                    {
+                        "Dataset": "SE2017-1",
+                        "Model": "XLNet-large - SemEval2017-1 - 3",
+                        "Code": "https://huggingface.co/EstrixDS/XLNet_SemEval_Task1",
+                        "Hugging Face ID": "EstrixDS/XLNet_SemEval_Task1",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "SST-5": [
+                    {
+                        "Dataset": "SST-5",
+                        "Model": "DistelBert-base - SST-5 - 5",
+                        "Code": "https://huggingface.co/SetFit/distilbert-base-uncased__sst5__all-train",
+                        "Hugging Face ID": "SetFit/distilbert-base-uncased__sst5__all-train",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SST-5": {
+                                "Loss": 1.3757,
+                                "Acc": 0.5045
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "SST-5",
+                        "Model": "RoBertA-base - SST-5 - 5",
+                        "Code": "https://huggingface.co/lucianpopa/autonlp-SST1-529214890",
+                        "Hugging Face ID": "lucianpopa/autonlp-SST1-529214890",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SST-5": {
+                                "Loss": 0.7135,
+                                "Acc": 0.7042
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "SST-5",
+                        "Model": "RoBertA-large - SST-5 - 5",
+                        "Code": "https://huggingface.co/Unso/roberta-large-finetuned-sst5",
+                        "Hugging Face ID": "Unso/roberta-large-finetuned-sst5",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            },
+            "Multilingual / Other Languages": {
+                "TweetMultilingual": [
+                    {
+                        "Dataset": "TweetMultilingual",
+                        "Model": "Bert-base-multilingual - TweetMultilingual - 3",
+                        "Code": "https://huggingface.co/cardiffnlp/bert-base-multilingual-cased-sentiment-multilingual",
+                        "Hugging Face ID": "cardiffnlp/bert-base-multilingual-cased-sentiment-multilingual",
+                        "Language": "Multilingual",
+                        "Reported Metrics": {
+                            "TweetMultilingual": {
+                                "F1 (micro)": 0.6169,
+                                "F1 (macro)": 0.6168,
+                                "Acc": 0.6169
+                            }
+                        },
+                        "Computed Metrics": {
+                            "TweetMultilingual": {
+                                "Acc": 0.6,
+                                "Latency": 0.1804
+                            }
+                        },
+                        "Eval": "cardiffnlp_bert_base_multilingual_cased_sentiment_multilingual"
+                    },
+                    {
+                        "Dataset": "TweetMultilingual",
+                        "Model": "TweetXLMRoBertA-base - TweetMultilingual - 3",
+                        "Code": "https://huggingface.co/cardiffnlp/twitter-xlm-roberta-base-sentiment-multilingual",
+                        "Hugging Face ID": "cardiffnlp/twitter-xlm-roberta-base-sentiment-multilingual",
+                        "Language": "Multilingual",
+                        "Reported Metrics": {
+                            "TweetMultilingual": {
+                                "F1 (micro)": 0.6931,
+                                "F1 (macro)": 0.6926,
+                                "Acc": 0.6931
+                            }
+                        },
+                        "Computed Metrics": {
+                            "TweetMultilingual": {
+                                "Acc": 0.702,
+                                "Latency": 0.1889
+                            }
+                        },
+                        "Eval": "cardiffnlp_twitter_xlm_roberta_base_sentiment_multilingual"
+                    }
+                ]
+            }
+        }
+    },
+    "Aspect Based Sentiment": {
+        "SOTA": {
+            "English": {
+                "Sentihood": [
+                    {
+                        "Dataset": "Sentihood",
+                        "Model": "QACG-Bert - Sentihood",
+                        "Code": "https://github.com/frankaging/Quasi-Attention-ABSA",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Sentihood": {
+                                "Aspect F1": 0.897,
+                                "Sentiment Acc": 0.938
+                            }
+                        }
+                    }
+                ],
+                "SE2014-1": [
+                    {
+                        "Dataset": "SE2014-1",
+                        "Model": "ACE+Finetune - SemEval2014 - Subtask1",
+                        "Code": "https://github.com/Alibaba-NLP/ACE",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SE2014-1": {
+                                "Laptop F1": 0.874,
+                                "Restaurant F1": 0.813
+                            }
+                        }
+                    }
+                ],
+                "SE2014-1,2": [
+                    {
+                        "Dataset": "SE2014-1,2",
+                        "Model": "Bert-PT - SemEval2014 - Subtask1,2",
+                        "Code": "https://github.com/howardhsu/BERT-for-RRC-ABSA",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SE2014-1,2": {
+                                "Laptop F1": 0.8426,
+                                "Restaurant F1": 0.7797
+                            }
+                        }
+                    }
+                ],
+                "SE2014-2": [
+                    {
+                        "Dataset": "SE2014-2",
+                        "Model": "Bert-ADA - SemEval2014 - Subtask2",
+                        "Code": "https://github.com/deepopinion/domain-adapted-atsc",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SE2014-2": {
+                                "Laptop Acc": 0.8023,
+                                "Restaurant Acc": 0.8789
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "SE2014-2",
+                        "Model": "LCF-Bert - SemEval2014 - Subtask2",
+                        "Code": "https://github.com/yangheng95/LCF-ABSA",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SE2014-2": {
+                                "Laptop Acc": 0.8245,
+                                "Restaurant Acc": 0.8714
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "Hugging Face": {
+            "English": {
+                "ABSADatasets": [
+                    {
+                        "Dataset": "ABSADatasets",
+                        "Model": "DeBertA-large - ABSA - 3",
+                        "Code": "https://huggingface.co/yangheng/deberta-v3-large-absa-v1.1",
+                        "Hugging Face ID": "yangheng/deberta-v3-large-absa-v1.1",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            }
+        }
+    },
+    "User-Product Sentiment": {
+        "SOTA": {
+            "English": {
+                "IMDB, Yelp2013,2014": [
+                    {
+                        "Dataset": "IMDB, Yelp2013,2014",
+                        "Model": "MA-Bert - IMDB,Yelp2013,2014",
+                        "Code": "https://github.com/yoyo-yun/MA-Bert",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IMDB, Yelp2013,2014": {
+                                "IMDB Acc": 0.573,
+                                "Yelp2013 Acc": 0.703,
+                                "Yelp2014 Acc": 0.714
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "IMDB, Yelp2013,2014",
+                        "Model": "IUPC - IMDB,Yelp2013,2014",
+                        "Code": "https://paperswithcode.com/paper/improving-document-level-sentiment-analysis",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "IMDB, Yelp2013,2014": {
+                                "IMDB Acc": 0.538,
+                                "Yelp2013 Acc": 0.705,
+                                "Yelp2014 Acc": 0.712
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Subjectivity-Emotion / Multi-class Classification": {
+        "SOTA": {
+            "English": {
+                "SUBJ": [
+                    {
+                        "Dataset": "SUBJ",
+                        "Model": "AdaSent - SUBJ - 2",
+                        "Code": "https://arxiv.org/pdf/1504.05070.pdf",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SUBJ": {
+                                "Acc": 0.955
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "SUBJ",
+                        "Model": "CNN+MCFA - SUBJ - 2",
+                        "Code": "https://github.com/deansong/contextLSTMCNN",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SUBJ": {
+                                "Acc": 0.948
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "Hugging Face": {
+            "English": {
+                "SUBJ": [
+                    {
+                        "Dataset": "SUBJ",
+                        "Model": "DistilBert-base - SUBJ - 2",
+                        "Code": "https://huggingface.co/SetFit/distilbert-base-uncased__subj__train-8-8",
+                        "Hugging Face ID": "SetFit/distilbert-base-uncased__subj__train-8-8",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SUBJ": {
+                                "Loss": 0.316,
+                                "Acc": 0.8735
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "SUBJ",
+                        "Model": "Bert-large - SUBJ - 2",
+                        "Code": "https://huggingface.co/ghatgetanuj/bert-large-uncased_cls_subj",
+                        "Hugging Face ID": "ghatgetanuj/bert-large-uncased_cls_subj",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SUBJ": {
+                                "Loss": 0.186,
+                                "Acc": 0.9675
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            },
+            "Multilingual / Other Languages": {
+                "Europarl": [
+                    {
+                        "Dataset": "Europarl",
+                        "Model": "Bert-base - Twitter,Europarl - 2",
+                        "Code": "https://huggingface.co/alexandrainst/da-subjectivivity-classification-base",
+                        "Hugging Face ID": "alexandrainst/da-subjectivivity-classification-base",
+                        "Language": "Danish",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            }
+        }
+    }
+}

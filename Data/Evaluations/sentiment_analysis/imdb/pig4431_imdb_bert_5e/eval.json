@@ -1,0 +1,37 @@
+{
+    "dataset": "imdb",
+    "model": "pig4431_imdb_bert_5e",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "accuracy",
+            "recall",
+            "precision",
+            "f1"
+        ],
+        "other_params": {
+            "input_column": "text",
+            "label_column": "label",
+            "label_mapping": {
+                "LABEL_0": 0,
+                "LABEL_1": 1
+            }
+        }
+    },
+    "eval": {
+        "accuracy": 0.934,
+        "recall": 0.9146341463414634,
+        "precision": 0.9493670886075949,
+        "f1": 0.9316770186335404,
+        "total_time_in_seconds": 505.1324821570015,
+        "samples_per_second": 0.9898393345542046,
+        "latency_in_seconds": 1.010264964314003,
+        "model_parameter_count": 108311810
+    }
+}

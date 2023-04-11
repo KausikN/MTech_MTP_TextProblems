@@ -1,0 +1,30 @@
+{
+    "dataset": "cnn_dailymail",
+    "model": "google_pegasus_cnn_dailymail",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge"
+        ],
+        "other_params": {
+            "input_column": "article",
+            "label_column": "highlights"
+        }
+    },
+    "eval": {
+        "rouge1": 0.42130633775300513,
+        "rouge2": 0.1927872585271606,
+        "rougeL": 0.2938820020459981,
+        "rougeLsum": 0.35837097997838663,
+        "total_time_in_seconds": 2594.293326371,
+        "samples_per_second": 0.019273071202762556,
+        "latency_in_seconds": 51.88586652742,
+        "model_parameter_count": 570797056
+    }
+}

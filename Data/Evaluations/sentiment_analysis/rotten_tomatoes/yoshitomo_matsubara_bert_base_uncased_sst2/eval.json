@@ -1,0 +1,37 @@
+{
+    "dataset": "rotten_tomatoes",
+    "model": "yoshitomo_matsubara_bert_base_uncased_sst2",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "accuracy",
+            "recall",
+            "precision",
+            "f1"
+        ],
+        "other_params": {
+            "input_column": "text",
+            "label_column": "label",
+            "label_mapping": {
+                "LABEL_0": 0,
+                "LABEL_1": 1
+            }
+        }
+    },
+    "eval": {
+        "accuracy": 0.896,
+        "recall": 0.8818565400843882,
+        "precision": 0.8969957081545065,
+        "f1": 0.8893617021276596,
+        "total_time_in_seconds": 87.92414128099995,
+        "samples_per_second": 5.686720310432511,
+        "latency_in_seconds": 0.1758482825619999,
+        "model_parameter_count": 109483778
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "dataset": "squad_v2",
+    "model": "jkgrad_xlnet_base_squadv2",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 250
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "squad_v2"
+        ],
+        "other_params": {
+            "question_column": "question",
+            "context_column": "context",
+            "id_column": "id",
+            "label_column": "answers",
+            "squad_v2_format": true
+        }
+    },
+    "eval": {
+        "exact": 44.8,
+        "f1": 60.824915084915084,
+        "total": 250,
+        "HasAns_exact": 21.951219512195124,
+        "HasAns_f1": 54.52218513194122,
+        "HasAns_total": 123,
+        "NoAns_exact": 66.92913385826772,
+        "NoAns_f1": 66.92913385826772,
+        "NoAns_total": 127,
+        "best_exact": 50.8,
+        "best_exact_thresh": 0.0,
+        "best_f1": 60.0249150849151,
+        "best_f1_thresh": 0.009758318774402142,
+        "total_time_in_seconds": 164.86238533899996,
+        "samples_per_second": 1.5164162491397595,
+        "latency_in_seconds": 0.6594495413559999,
+        "model_parameter_count": 116719874
+    }
+}

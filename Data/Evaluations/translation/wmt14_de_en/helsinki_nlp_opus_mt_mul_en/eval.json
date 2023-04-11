@@ -1,0 +1,64 @@
+{
+    "dataset": "wmt14_de_en",
+    "model": "helsinki_nlp_opus_mt_mul_en",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge",
+            "bleu",
+            "sacrebleu"
+        ],
+        "other_params": {
+            "input_column": "text_source",
+            "label_column": "text_target"
+        }
+    },
+    "eval": {
+        "rouge1": 0.5722404094373261,
+        "rouge2": 0.29853319323544036,
+        "rougeL": 0.5172279086799887,
+        "rougeLsum": 0.5199665492041736,
+        "bleu": 0.2189854213788787,
+        "bleu_precisions": [
+            0.5835432409739715,
+            0.3006134969325153,
+            0.16590284142988085,
+            0.09221902017291066
+        ],
+        "brevity_penalty": 0.9621133518638993,
+        "length_ratio": 0.9628132578819725,
+        "translation_length": 1191,
+        "reference_length": 1237,
+        "score": 21.89854213788787,
+        "counts": [
+            695,
+            343,
+            181,
+            96
+        ],
+        "totals": [
+            1191,
+            1141,
+            1091,
+            1041
+        ],
+        "sacrebleu_precisions": [
+            58.354324097397146,
+            30.061349693251532,
+            16.590284142988086,
+            9.221902017291066
+        ],
+        "bp": 0.9621133518638993,
+        "sys_len": 1191,
+        "ref_len": 1237,
+        "total_time_in_seconds": 103.79788897900016,
+        "samples_per_second": 0.4817053650302631,
+        "latency_in_seconds": 2.0759577795800035,
+        "model_parameter_count": 77518848
+    }
+}

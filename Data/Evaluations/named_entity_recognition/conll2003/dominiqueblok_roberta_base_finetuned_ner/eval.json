@@ -1,0 +1,108 @@
+{
+    "dataset": "conll2003",
+    "model": "dominiqueblok_roberta_base_finetuned_ner",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "seqeval"
+        ],
+        "other_params": {
+            "input_column": "tokens",
+            "label_column": "ner_tags"
+        }
+    },
+    "eval": {
+        "ABEL_0": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "ABEL_1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "ABEL_2": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "ABEL_3": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "ABEL_4": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "ABEL_5": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "ABEL_6": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "ABEL_7": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "ABEL_8": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 0
+        },
+        "LOC": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 231
+        },
+        "MISC": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 98
+        },
+        "ORG": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 252
+        },
+        "PER": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "number": 257
+        },
+        "overall_precision": 0.0,
+        "overall_recall": 0.0,
+        "overall_f1": 0.0,
+        "overall_accuracy": 0.0,
+        "total_time_in_seconds": 72.5465799120002,
+        "samples_per_second": 6.892123661880484,
+        "latency_in_seconds": 0.1450931598240004,
+        "model_parameter_count": 124061961
+    }
+}

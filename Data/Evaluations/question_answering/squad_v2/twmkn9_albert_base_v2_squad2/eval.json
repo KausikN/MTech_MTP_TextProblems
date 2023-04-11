@@ -1,0 +1,41 @@
+{
+    "dataset": "squad_v2",
+    "model": "twmkn9_albert_base_v2_squad2",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 250
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "squad_v2"
+        ],
+        "other_params": {
+            "question_column": "question",
+            "context_column": "context",
+            "id_column": "id",
+            "label_column": "answers",
+            "squad_v2_format": true
+        }
+    },
+    "eval": {
+        "exact": 78.8,
+        "f1": 80.84635294117649,
+        "total": 250,
+        "HasAns_exact": 78.86178861788618,
+        "HasAns_f1": 83.0210425633668,
+        "HasAns_total": 123,
+        "NoAns_exact": 78.74015748031496,
+        "NoAns_f1": 78.74015748031496,
+        "NoAns_total": 127,
+        "best_exact": 78.8,
+        "best_exact_thresh": 0.9961114525794983,
+        "best_f1": 80.84635294117648,
+        "best_f1_thresh": 0.9961114525794983,
+        "total_time_in_seconds": 125.94617676499911,
+        "samples_per_second": 1.9849749029418406,
+        "latency_in_seconds": 0.5037847070599965,
+        "model_parameter_count": 11094530
+    }
+}

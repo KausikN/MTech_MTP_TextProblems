@@ -1,0 +1,30 @@
+{
+    "dataset": "samsum",
+    "model": "philschmid_bart_large_cnn_samsum",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge"
+        ],
+        "other_params": {
+            "input_column": "dialogue",
+            "label_column": "summary"
+        }
+    },
+    "eval": {
+        "rouge1": 0.4327654121458556,
+        "rouge2": 0.21945532005343193,
+        "rougeL": 0.313719454557823,
+        "rougeLsum": 0.3141514128024636,
+        "total_time_in_seconds": 687.492839657999,
+        "samples_per_second": 0.07272803019282799,
+        "latency_in_seconds": 13.74985679315998,
+        "model_parameter_count": 406290432
+    }
+}

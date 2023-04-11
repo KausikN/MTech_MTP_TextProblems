@@ -1,0 +1,37 @@
+{
+    "dataset": "sst2",
+    "model": "pig4431_sst2_bert_5e",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "validation"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "accuracy",
+            "recall",
+            "precision",
+            "f1"
+        ],
+        "other_params": {
+            "input_column": "sentence",
+            "label_column": "label",
+            "label_mapping": {
+                "LABEL_0": 0,
+                "LABEL_1": 1
+            }
+        }
+    },
+    "eval": {
+        "accuracy": 0.906,
+        "recall": 0.8888888888888888,
+        "precision": 0.928,
+        "f1": 0.9080234833659492,
+        "total_time_in_seconds": 66.98308740099947,
+        "samples_per_second": 7.464570825269834,
+        "latency_in_seconds": 0.13396617480199893,
+        "model_parameter_count": 108311810
+    }
+}

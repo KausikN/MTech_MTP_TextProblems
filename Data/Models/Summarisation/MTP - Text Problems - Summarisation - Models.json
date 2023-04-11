@@ -1,0 +1,1145 @@
+{
+    "Abstractive Text Summarisation": {
+        "SOTA": {
+            "English": {
+                "CNN/DailyMail(Anonymized)": [
+                    {
+                        "Dataset": "CNN/DailyMail(Anonymized)",
+                        "Model": "GAN",
+                        "Code": "https://github.com/iwangjian/textsum-gan",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail(Anonymized)": {
+                                "ROUGE-1": 39.92,
+                                "ROUGE-2": 17.65,
+                                "ROUGE-L": 36.71
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CNN/DailyMail(Anonymized)",
+                        "Model": "ML+RL Intra-Attention",
+                        "Code": "https://github.com/theamrzaki/text_summurization_abstractive_methods",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail(Anonymized)": {
+                                "ROUGE-1": 39.87,
+                                "ROUGE-2": 15.82,
+                                "ROUGE-L": 36.9
+                            }
+                        }
+                    }
+                ],
+                "CNN/DailyMail(Non-Anonymized)": [
+                    {
+                        "Dataset": "CNN/DailyMail(Non-Anonymized)",
+                        "Model": "BRIO",
+                        "Code": "https://github.com/yixinl7/brio",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail(Non-Anonymized)": {
+                                "ROUGE-1": 47.78,
+                                "ROUGE-2": 23.55,
+                                "ROUGE-L": 44.57
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CNN/DailyMail(Non-Anonymized)",
+                        "Model": "Pegasus + SummaReranker",
+                        "Code": "https://github.com/ntunlp/summareranker",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail(Non-Anonymized)": {
+                                "ROUGE-1": 47.16,
+                                "ROUGE-2": 22.61,
+                                "ROUGE-L": 43.87
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CNN/DailyMail(Non-Anonymized)",
+                        "Model": "BART + SimCLS",
+                        "Code": "https://github.com/yixinL7/SimCLS",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail(Non-Anonymized)": {
+                                "ROUGE-1": 46.67,
+                                "ROUGE-2": 22.15,
+                                "ROUGE-L": 43.54
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CNN/DailyMail(Non-Anonymized)",
+                        "Model": "SEASON",
+                        "Code": "https://github.com/tencent-ailab/season",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail(Non-Anonymized)": {
+                                "ROUGE-1": 46.27,
+                                "ROUGE-2": 22.64,
+                                "ROUGE-L": 43.08
+                            }
+                        }
+                    }
+                ],
+                "Gigaword": [
+                    {
+                        "Dataset": "Gigaword",
+                        "Model": "BART-RXF",
+                        "Code": "https://github.com/pytorch/fairseq/tree/master/examples/rxf",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Gigaword": {
+                                "ROUGE-1": 40.45,
+                                "ROUGE-2": 20.69,
+                                "ROUGE-L": 36.56
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "Gigaword",
+                        "Model": "MUPPET BART Large",
+                        "Code": "https://huggingface.co/facebook/muppet-roberta-large",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Gigaword": {
+                                "ROUGE-1": 40.4,
+                                "ROUGE-2": 20.54,
+                                "ROUGE-L": 36.21
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "Gigaword",
+                        "Model": "OFA",
+                        "Code": "https://github.com/ofa-sys/ofa",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Gigaword": {
+                                "ROUGE-1": 39.81,
+                                "ROUGE-2": 20.66,
+                                "ROUGE-L": 37.11
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "Gigaword",
+                        "Model": "Transformer + Ref",
+                        "Code": "https://github.com/takase/rethink_perturbations",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Gigaword": {
+                                "ROUGE-1": 39.81,
+                                "ROUGE-2": 20.4,
+                                "ROUGE-L": 36.93
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "Gigaword",
+                        "Model": "ProphetNet",
+                        "Code": "https://github.com/microsoft/ProphetNet",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Gigaword": {
+                                "ROUGE-1": 39.51,
+                                "ROUGE-2": 20.42,
+                                "ROUGE-L": 36.69
+                            }
+                        }
+                    }
+                ],
+                "X-Sum": [
+                    {
+                        "Dataset": "X-Sum",
+                        "Model": "BRIO",
+                        "Code": "https://github.com/yixinl7/brio",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "X-Sum": {
+                                "ROUGE-1": 49.07,
+                                "ROUGE-2": 25.59,
+                                "ROUGE-3": 40.4
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "X-Sum",
+                        "Model": "Pegasus + SummaReranker",
+                        "Code": "https://github.com/ntunlp/summareranker",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "X-Sum": {
+                                "ROUGE-1": 48.12,
+                                "ROUGE-2": 24.95,
+                                "ROUGE-L": 40.0
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "X-Sum",
+                        "Model": "Pegasus + SimCLS",
+                        "Code": "https://github.com/yixinL7/SimCLS",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "X-Sum": {
+                                "ROUGE-1": 47.61,
+                                "ROUGE-2": 24.57,
+                                "ROUGE-L": 39.44
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "X-Sum",
+                        "Model": "BART",
+                        "Code": "https://github.com/huggingface/transformers",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "X-Sum": {
+                                "ROUGE-1": 45.14,
+                                "ROUGE-2": 22.27,
+                                "ROUGE-3": 37.25
+                            }
+                        }
+                    }
+                ],
+                "DUC2004 Task 1": [
+                    {
+                        "Dataset": "DUC2004 Task 1",
+                        "Model": "Transformer + Wdrop",
+                        "Code": "https://github.com/takase/rethink_perturbations",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "DUC2004 Task 1": {
+                                "ROUGE-1": 33.06,
+                                "ROUGE-2": 11.45,
+                                "ROUGE-L": 28.51
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "DUC2004 Task 1",
+                        "Model": "Transformer + LRPE + PE + Reranking + Ensemble",
+                        "Code": "https://github.com/takase/control-length",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "DUC2004 Task 1": {
+                                "ROUGE-1": 32.85,
+                                "ROUGE-2": 11.78,
+                                "ROUGE-L": 28.52
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "DUC2004 Task 1",
+                        "Model": "DRGD",
+                        "Code": "https://github.com/toru34/li_emnlp_2017",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "DUC2004 Task 1": {
+                                "ROUGE-1": 31.79,
+                                "ROUGE-2": 10.75,
+                                "ROUGE-L": 27.48
+                            }
+                        }
+                    }
+                ],
+                "SamSum": [
+                    {
+                        "Dataset": "SamSum",
+                        "Model": "ConDigSum",
+                        "Code": "https://github.com/junpliu/condigsum",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SamSum": {
+                                "ROUGE-1": 54.3,
+                                "ROUGE-2": 29.3,
+                                "ROUGE-L": 45.2,
+                                "BertScore-F1": 54.0
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "SamSum",
+                        "Model": "SICK",
+                        "Code": "https://github.com/SeungoneKim/SICK_Summarization",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SamSum": {
+                                "ROUGE-1": 53.73,
+                                "ROUGE-2": 28.81,
+                                "ROUGE-L": 49.5,
+                                "BertScore-F1": 71.92
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "Hugging Face": {
+            "English": {
+                "CNN/DailyMail": [
+                    {
+                        "Dataset": "CNN/DailyMail",
+                        "Model": "RoBertA-large-2-RoBertA-large-cnn",
+                        "Code": "https://huggingface.co/google/roberta2roberta_L-24_cnn_daily_mail",
+                        "Hugging Face ID": "google/roberta2roberta_L-24_cnn_daily_mail",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail": {
+                                "ROUGE-1": 40.31,
+                                "ROUGE-2": 18.91,
+                                "ROUGE-L": 37.62
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "CNN/DailyMail",
+                        "Model": "Bart-large-cnn",
+                        "Code": "https://huggingface.co/facebook/bart-large-cnn",
+                        "Hugging Face ID": "facebook/bart-large-cnn",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail": {
+                                "ROUGE-1": 42.949,
+                                "ROUGE-2": 20.815,
+                                "ROUGE-L": 30.619
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CNN/DailyMail": {
+                                "ROUGE-1": 0.4022,
+                                "ROUGE-2": 0.1727,
+                                "ROUGE-L": 0.2698,
+                                "Latency": 25.2068
+                            }
+                        },
+                        "Eval": "facebook_bart_large_cnn"
+                    },
+                    {
+                        "Dataset": "CNN/DailyMail",
+                        "Model": "DistilBart-cnn-6-6-cnn",
+                        "Code": "https://huggingface.co/sshleifer/distilbart-cnn-6-6",
+                        "Hugging Face ID": "sshleifer/distilbart-cnn-6-6",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail": {
+                                "Model Size": "230M",
+                                "ROUGE-2": 20.17,
+                                "ROUGE-L": 29.7
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CNN/DailyMail": {
+                                "ROUGE-1": 0.4191,
+                                "ROUGE-2": 0.1855,
+                                "ROUGE-L": 0.2836,
+                                "Latency": 12.442
+                            }
+                        },
+                        "Eval": "sshleifer_distilbart_cnn_6_6"
+                    },
+                    {
+                        "Dataset": "CNN/DailyMail",
+                        "Model": "DistilBart-cnn-12-3-cnn",
+                        "Code": "https://huggingface.co/sshleifer/distilbart-cnn-12-3",
+                        "Hugging Face ID": "sshleifer/distilbart-cnn-12-3",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail": {
+                                "Model Size": "255M",
+                                "ROUGE-2": 20.57,
+                                "ROUGE-L": 30.0
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CNN/DailyMail": {
+                                "ROUGE-1": 0.4204,
+                                "ROUGE-2": 0.1881,
+                                "ROUGE-L": 0.2873,
+                                "Latency": 12.6134
+                            }
+                        },
+                        "Eval": "sshleifer_distilbart_cnn_12_3"
+                    },
+                    {
+                        "Dataset": "CNN/DailyMail",
+                        "Model": "DistilBart-cnn-12-6-cnn",
+                        "Code": "https://huggingface.co/sshleifer/distilbart-cnn-12-6",
+                        "Hugging Face ID": "sshleifer/distilbart-cnn-12-6",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail": {
+                                "Model Size": "306M",
+                                "ROUGE-2": 21.26,
+                                "ROUGE-L": 30.59
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CNN/DailyMail": {
+                                "ROUGE-1": 0.4201,
+                                "ROUGE-2": 0.1858,
+                                "ROUGE-L": 0.2801,
+                                "Latency": 17.1362
+                            }
+                        },
+                        "Eval": "sshleifer_distilbart_cnn_12_6"
+                    },
+                    {
+                        "Dataset": "CNN/DailyMail",
+                        "Model": "DistilPegasus-16-4-cnn",
+                        "Code": "https://huggingface.co/sshleifer/distill-pegasus-cnn-16-4",
+                        "Hugging Face ID": "sshleifer/distill-pegasus-cnn-16-4",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "CNN/DailyMail": {
+                                "ROUGE-1": 0.3928,
+                                "ROUGE-2": 0.1581,
+                                "ROUGE-L": 0.2639,
+                                "Latency": 23.081
+                            }
+                        },
+                        "Eval": "sshleifer_distill_pegasus_cnn_16_4"
+                    },
+                    {
+                        "Dataset": "CNN/DailyMail",
+                        "Model": "Pegasus-cnn",
+                        "Code": "https://huggingface.co/google/pegasus-cnn_dailymail",
+                        "Hugging Face ID": "google/pegasus-cnn_dailymail",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail": {
+                                "ROUGE-1": 44.16,
+                                "ROUGE-2": 21.56,
+                                "ROUGE-L": 41.3
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CNN/DailyMail": {
+                                "ROUGE-1": 0.4213,
+                                "ROUGE-2": 0.1928,
+                                "ROUGE-L": 0.2939,
+                                "Latency": 51.8859
+                            }
+                        },
+                        "Eval": "google_pegasus_cnn_dailymail"
+                    }
+                ],
+                "X-Sum": [
+                    {
+                        "Dataset": "X-Sum",
+                        "Model": "RoBertA-large-2-RoBertA-large-bbc_xsum",
+                        "Code": "https://huggingface.co/google/roberta2roberta_L-24_bbc",
+                        "Hugging Face ID": "google/roberta2roberta_L-24_bbc",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "X-Sum": {
+                                "ROUGE-1": 41.45,
+                                "ROUGE-2": 18.79,
+                                "ROUGE-L": 33.9
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "X-Sum",
+                        "Model": "DistilBart-1-1-xsum",
+                        "Code": "https://huggingface.co/sshleifer/distilbart-xsum-1-1",
+                        "Hugging Face ID": "sshleifer/distilbart-xsum-1-1",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "X-Sum": {
+                                "ROUGE-1": 0.2424,
+                                "ROUGE-2": 0.0545,
+                                "ROUGE-L": 0.1922,
+                                "Latency": 2.089
+                            }
+                        },
+                        "Eval": "sshleifer_distilbart_xsum_1_1"
+                    },
+                    {
+                        "Dataset": "X-Sum",
+                        "Model": "DistilBart-6-6-xsum",
+                        "Code": "https://huggingface.co/sshleifer/distilbart-xsum-6-6",
+                        "Hugging Face ID": "sshleifer/distilbart-xsum-6-6",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "X-Sum": {
+                                "Model Size": "230M",
+                                "ROUGE-2": 20.92,
+                                "ROUGE-L": 35.73
+                            }
+                        },
+                        "Computed Metrics": {
+                            "X-Sum": {
+                                "ROUGE-1": 0.4071,
+                                "ROUGE-2": 0.1812,
+                                "ROUGE-L": 0.3367,
+                                "Latency": 6.2402
+                            }
+                        },
+                        "Eval": "sshleifer_distilbart_xsum_6_6"
+                    },
+                    {
+                        "Dataset": "X-Sum",
+                        "Model": "DistilBart-9-6-xsum",
+                        "Code": "https://huggingface.co/sshleifer/distilbart-xsum-9-6",
+                        "Hugging Face ID": "sshleifer/distilbart-xsum-9-6",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "X-Sum": {
+                                "Model Size": "268M",
+                                "ROUGE-2": 21.72,
+                                "ROUGE-L": 36.61
+                            }
+                        },
+                        "Computed Metrics": {
+                            "X-Sum": {
+                                "ROUGE-1": 0.4057,
+                                "ROUGE-2": 0.1889,
+                                "ROUGE-L": 0.335,
+                                "Latency": 6.9531
+                            }
+                        },
+                        "Eval": "sshleifer_distilbart_xsum_9_6"
+                    },
+                    {
+                        "Dataset": "X-Sum",
+                        "Model": "DistilBart-12-1-xsum",
+                        "Code": "https://huggingface.co/sshleifer/distilbart-xsum-12-1",
+                        "Hugging Face ID": "sshleifer/distilbart-xsum-12-1",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "X-Sum": {
+                                "Model Size": "222M",
+                                "ROUGE-2": 18.31,
+                                "ROUGE-L": 33.37
+                            }
+                        },
+                        "Computed Metrics": {
+                            "X-Sum": {
+                                "ROUGE-1": 0.38,
+                                "ROUGE-2": 0.1593,
+                                "ROUGE-L": 0.32,
+                                "Latency": 4.5752
+                            }
+                        },
+                        "Eval": "sshleifer_distilbart_xsum_12_1"
+                    },
+                    {
+                        "Dataset": "X-Sum",
+                        "Model": "DistilBart-12-3-xsum",
+                        "Code": "https://huggingface.co/sshleifer/distilbart-xsum-12-3",
+                        "Hugging Face ID": "sshleifer/distilbart-xsum-12-3",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "X-Sum": {
+                                "Model Size": "255M",
+                                "ROUGE-2": 21.37,
+                                "ROUGE-L": 36.39
+                            }
+                        },
+                        "Computed Metrics": {
+                            "X-Sum": {
+                                "ROUGE-1": 0.3968,
+                                "ROUGE-2": 0.1839,
+                                "ROUGE-L": 0.3231,
+                                "Latency": 5.8832
+                            }
+                        },
+                        "Eval": "sshleifer_distilbart_xsum_12_3"
+                    },
+                    {
+                        "Dataset": "X-Sum",
+                        "Model": "DistilBart-12-6-xsum",
+                        "Code": "https://huggingface.co/sshleifer/distilbart-xsum-12-6",
+                        "Hugging Face ID": "sshleifer/distilbart-xsum-12-6",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "X-Sum": {
+                                "Model Size": "306M",
+                                "ROUGE-2": 22.12,
+                                "ROUGE-L": 36.99
+                            }
+                        },
+                        "Computed Metrics": {
+                            "X-Sum": {
+                                "ROUGE-1": 0.4217,
+                                "ROUGE-2": 0.1823,
+                                "ROUGE-L": 0.3457,
+                                "Latency": 7.6153
+                            }
+                        },
+                        "Eval": "sshleifer_distilbart_xsum_12_6"
+                    },
+                    {
+                        "Dataset": "X-Sum",
+                        "Model": "DistilPegasus-16-4-xsum",
+                        "Code": "https://huggingface.co/sshleifer/distill-pegasus-xsum-16-4",
+                        "Hugging Face ID": "sshleifer/distill-pegasus-xsum-16-4",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "X-Sum": {
+                                "ROUGE-1": 0.4132,
+                                "ROUGE-2": 0.1949,
+                                "ROUGE-L": 0.3359,
+                                "Latency": 8.2122
+                            }
+                        },
+                        "Eval": "sshleifer_distill_pegasus_xsum_16_4"
+                    },
+                    {
+                        "Dataset": "X-Sum",
+                        "Model": "DistilPegasus-16-8-xsum",
+                        "Code": "https://huggingface.co/sshleifer/distill-pegasus-xsum-16-8",
+                        "Hugging Face ID": "sshleifer/distill-pegasus-xsum-16-8",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "X-Sum": {
+                                "ROUGE-1": 0.409,
+                                "ROUGE-2": 0.1757,
+                                "ROUGE-L": 0.3333,
+                                "Latency": 10.821
+                            }
+                        },
+                        "Eval": "sshleifer_distill_pegasus_xsum_16_8"
+                    },
+                    {
+                        "Dataset": "X-Sum",
+                        "Model": "Pegasus-xsum",
+                        "Code": "https://huggingface.co/google/pegasus-xsum",
+                        "Hugging Face ID": "google/pegasus-xsum",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "X-Sum": {
+                                "ROUGE-1": 47.6,
+                                "ROUGE-2": 24.83,
+                                "ROUGE-L": 39.64
+                            }
+                        },
+                        "Computed Metrics": {
+                            "X-Sum": {
+                                "ROUGE-1": 0.418,
+                                "ROUGE-2": 0.1957,
+                                "ROUGE-L": 0.3452,
+                                "Latency": 17.8754
+                            }
+                        },
+                        "Eval": "google_pegasus_xsum"
+                    }
+                ],
+                "Gigaword": [
+                    {
+                        "Dataset": "Gigaword",
+                        "Model": "RoBertA-large-2-RoBertA-large-gigaword",
+                        "Code": "https://huggingface.co/google/roberta2roberta_L-24_gigaword",
+                        "Hugging Face ID": "google/roberta2roberta_L-24_gigaword",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Gigaword": {
+                                "ROUGE-1": 38.62,
+                                "ROUGE-2": 19.78,
+                                "ROUGE-L": 35.94
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "Gigaword",
+                        "Model": "Pegasus-gigaword",
+                        "Code": "https://huggingface.co/google/pegasus-gigaword",
+                        "Hugging Face ID": "google/pegasus-gigaword",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Gigaword": {
+                                "ROUGE-1": 39.65,
+                                "ROUGE-2": 20.47,
+                                "ROUGE-L": 36.76
+                            }
+                        },
+                        "Computed Metrics": {
+                            "Gigaword": {
+                                "ROUGE-1": 0.2637,
+                                "ROUGE-2": 0.1289,
+                                "ROUGE-L": 0.2381,
+                                "Latency": 11.565
+                            }
+                        },
+                        "Eval": "google_pegasus_gigaword"
+                    }
+                ],
+                "SamSum": [
+                    {
+                        "Dataset": "SamSum",
+                        "Model": "Bart-base-samsum",
+                        "Code": "https://huggingface.co/philschmid/bart-base-samsum",
+                        "Hugging Face ID": "philschmid/bart-base-samsum",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SamSum": {
+                                "ROUGE-1": 45.344,
+                                "ROUGE-2": 21.695,
+                                "ROUGE-L": 38.136
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SamSum": {
+                                "ROUGE-1": 0.453,
+                                "ROUGE-2": 0.2283,
+                                "ROUGE-L": 0.366,
+                                "Latency": 3.0157
+                            }
+                        },
+                        "Eval": "philschmid_bart_base_samsum"
+                    },
+                    {
+                        "Dataset": "SamSum",
+                        "Model": "Bart-large-cnn-samsum",
+                        "Code": "https://huggingface.co/philschmid/bart-large-cnn-samsum",
+                        "Hugging Face ID": "philschmid/bart-large-cnn-samsum",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SamSum": {
+                                "ROUGE-1": 41.328,
+                                "ROUGE-2": 20.875,
+                                "ROUGE-L": 32.135
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SamSum": {
+                                "ROUGE-1": 0.4328,
+                                "ROUGE-2": 0.2195,
+                                "ROUGE-L": 0.3137,
+                                "Latency": 13.7499
+                            }
+                        },
+                        "Eval": "philschmid_bart_large_cnn_samsum"
+                    },
+                    {
+                        "Dataset": "SamSum",
+                        "Model": "Flan-T5-base-samsum",
+                        "Code": "https://huggingface.co/philschmid/flan-t5-base-samsum",
+                        "Hugging Face ID": "philschmid/flan-t5-base-samsum",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SamSum": {
+                                "ROUGE-1": 47.2358,
+                                "ROUGE-2": 23.5135,
+                                "ROUGE-L": 39.6266
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SamSum": {
+                                "ROUGE-1": 0.5108,
+                                "ROUGE-2": 0.2669,
+                                "ROUGE-L": 0.399,
+                                "Latency": 6.5704
+                            }
+                        },
+                        "Eval": "philschmid_flan_t5_base_samsum"
+                    }
+                ],
+                "SamSum, CNN/DailyMail, X-Sum": [
+                    {
+                        "Dataset": "SamSum, CNN/DailyMail, X-Sum",
+                        "Model": "DistilBart-cnn-12-6-samsum",
+                        "Code": "https://huggingface.co/philschmid/distilbart-cnn-12-6-samsum",
+                        "Hugging Face ID": "philschmid/distilbart-cnn-12-6-samsum",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SamSum": {
+                                "ROUGE-1": 41.09,
+                                "ROUGE-2": 20.746,
+                                "ROUGE-L": 31.595
+                            },
+                            "CNN/DailyMail": {
+                                "ROUGE-1": 42.976,
+                                "ROUGE-2": 19.871,
+                                "ROUGE-L": 29.52
+                            },
+                            "X-Sum": {
+                                "ROUGE-1": 21.164,
+                                "ROUGE-2": 4.066,
+                                "ROUGE-L": 13.941
+                            }
+                        },
+                        "Computed Metrics": {
+                            "SamSum, CNN/DailyMail, X-Sum": {
+                                "ROUGE-1": 0.4323,
+                                "ROUGE-2": 0.2275,
+                                "ROUGE-L": 0.318,
+                                "Latency": 8.732
+                            }
+                        },
+                        "Eval": "philschmid_distilbart_cnn_12_6_samsum"
+                    }
+                ],
+                "CNN/DailyMail, X-Sum, SamSum": [
+                    {
+                        "Dataset": "CNN/DailyMail, X-Sum, SamSum",
+                        "Model": "Bart-large-xsum",
+                        "Code": "https://huggingface.co/facebook/bart-large-xsum",
+                        "Hugging Face ID": "facebook/bart-large-xsum",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SamSum": {
+                                "ROUGE-1": 24.916,
+                                "ROUGE-2": 5.584,
+                                "ROUGE-L": 18.893
+                            },
+                            "CNN/DailyMail": {
+                                "ROUGE-1": 25.27,
+                                "ROUGE-2": 7.664,
+                                "ROUGE-L": 17.181
+                            },
+                            "X-Sum": {
+                                "ROUGE-1": 45.453,
+                                "ROUGE-2": 22.346,
+                                "ROUGE-L": 37.23
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CNN/DailyMail, X-Sum, SamSum": {
+                                "ROUGE-1": 0.4181,
+                                "ROUGE-2": 0.1735,
+                                "ROUGE-L": 0.3411,
+                                "Latency": 11.4325
+                            }
+                        },
+                        "Eval": "facebook_bart_large_xsum"
+                    }
+                ],
+                "Unknown": [
+                    {
+                        "Dataset": "Unknown",
+                        "Model": "Pegasus-large",
+                        "Code": "https://huggingface.co/google/pegasus-large",
+                        "Hugging Face ID": "google/pegasus-large",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "RedditTifu": [
+                    {
+                        "Dataset": "RedditTifu",
+                        "Model": "Pegasus-reddit_tifu",
+                        "Code": "https://huggingface.co/google/pegasus-reddit_tifu",
+                        "Hugging Face ID": "google/pegasus-reddit_tifu",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "RedditTifu": {
+                                "ROUGE-1": 27.99,
+                                "ROUGE-2": 9.81,
+                                "ROUGE-L": 22.94
+                            }
+                        },
+                        "Computed Metrics": {
+                            "RedditTifu": {
+                                "ROUGE-1": 0.272,
+                                "ROUGE-2": 0.1018,
+                                "ROUGE-L": 0.2201,
+                                "Latency": 24.3407
+                            }
+                        },
+                        "Eval": "google_pegasus_reddit_tifu"
+                    }
+                ],
+                "PubMed": [
+                    {
+                        "Dataset": "PubMed",
+                        "Model": "Pegasus-pubmed",
+                        "Code": "https://huggingface.co/google/pegasus-pubmed",
+                        "Hugging Face ID": "google/pegasus-pubmed",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "PubMed": {
+                                "ROUGE-1": 45.97,
+                                "ROUGE-2": 20.15,
+                                "ROUGE-L": 28.25
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Arxiv": [
+                    {
+                        "Dataset": "Arxiv",
+                        "Model": "Pegasus-arxiv",
+                        "Code": "https://huggingface.co/google/pegasus-arxiv",
+                        "Hugging Face ID": "google/pegasus-arxiv",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Arxiv": {
+                                "ROUGE-1": 44.21,
+                                "ROUGE-2": 16.95,
+                                "ROUGE-L": 25.67
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "MultiNews": [
+                    {
+                        "Dataset": "MultiNews",
+                        "Model": "Pegasus-multi_news",
+                        "Code": "https://huggingface.co/google/pegasus-multi_news",
+                        "Hugging Face ID": "google/pegasus-multi_news",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "MultiNews": {
+                                "ROUGE-1": 47.65,
+                                "ROUGE-2": 18.75,
+                                "ROUGE-L": 24.95
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "NewsRoom": [
+                    {
+                        "Dataset": "NewsRoom",
+                        "Model": "Pegasus-newsroom",
+                        "Code": "https://huggingface.co/google/pegasus-newsroom",
+                        "Hugging Face ID": "google/pegasus-newsroom",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "NewsRoom": {
+                                "ROUGE-1": 45.98,
+                                "ROUGE-2": 34.2,
+                                "ROUGE-L": 42.18
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "BillSum": [
+                    {
+                        "Dataset": "BillSum",
+                        "Model": "Pegasus-billsum",
+                        "Code": "https://huggingface.co/google/pegasus-billsum",
+                        "Hugging Face ID": "google/pegasus-billsum",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "BillSum": {
+                                "ROUGE-1": 59.67,
+                                "ROUGE-2": 41.58,
+                                "ROUGE-L": 47.59
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "WikiHow": [
+                    {
+                        "Dataset": "WikiHow",
+                        "Model": "Pegasus-wikihow",
+                        "Code": "https://huggingface.co/google/pegasus-wikihow",
+                        "Hugging Face ID": "google/pegasus-wikihow",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WikiHow": {
+                                "ROUGE-1": 46.39,
+                                "ROUGE-2": 22.12,
+                                "ROUGE-L": 38.41
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Aeslc": [
+                    {
+                        "Dataset": "Aeslc",
+                        "Model": "Pegasus-aeslc",
+                        "Code": "https://huggingface.co/google/pegasus-aeslc",
+                        "Hugging Face ID": "google/pegasus-aeslc",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Aeslc": {
+                                "ROUGE-1": 37.68,
+                                "ROUGE-2": 21.25,
+                                "ROUGE-L": 36.51
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "ScientificPapers": [
+                    {
+                        "Dataset": "ScientificPapers",
+                        "Model": "BigBird-Pegasus-large-pubmed",
+                        "Code": "https://huggingface.co/google/bigbird-pegasus-large-pubmed",
+                        "Hugging Face ID": "google/bigbird-pegasus-large-pubmed",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "ScientificPapers": {
+                                "ROUGE-1": 40.897,
+                                "ROUGE-2": 18.116,
+                                "ROUGE-L": 26.174
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "BigPatent": [
+                    {
+                        "Dataset": "BigPatent",
+                        "Model": "BigBird-Pegasus-large-bigpatent",
+                        "Code": "https://huggingface.co/google/bigbird-pegasus-large-bigpatent",
+                        "Hugging Face ID": "google/bigbird-pegasus-large-bigpatent",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "CNN/DailyMail, X-Sum, SamSum, ScientificPapers": [
+                    {
+                        "Dataset": "CNN/DailyMail, X-Sum, SamSum, ScientificPapers",
+                        "Model": "BigBird-Pegasus-large-arxiv",
+                        "Code": "https://huggingface.co/google/bigbird-pegasus-large-arxiv",
+                        "Hugging Face ID": "google/bigbird-pegasus-large-arxiv",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SamSum": {
+                                "ROUGE-1": 3.621,
+                                "ROUGE-2": 0.17,
+                                "ROUGE-L": 3.202
+                            },
+                            "CNN/DailyMail": {
+                                "ROUGE-1": 9.088,
+                                "ROUGE-2": 1.032,
+                                "ROUGE-L": 7.318
+                            },
+                            "X-Sum": {
+                                "ROUGE-1": 4.979,
+                                "ROUGE-2": 0.353,
+                                "ROUGE-L": 4.368
+                            },
+                            "Scientific Papers": {
+                                "ROUGE-1": 43.47,
+                                "ROUGE-2": 17.43,
+                                "ROUGE-L": 26.259
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            }
+        }
+    },
+    "Extractive Text Summarisation": {
+        "SOTA": {
+            "English": {
+                "CNN/DailyMail(Anonymized)": [
+                    {
+                        "Dataset": "CNN/DailyMail(Anonymized)",
+                        "Model": "SWAP-NET",
+                        "Code": "https://github.com/aishj10/swap-net",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail(Anonymized)": {
+                                "ROUGE-1": 41.6,
+                                "ROUGE-2": 18.3,
+                                "ROUGE-L": 37.7
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CNN/DailyMail(Anonymized)",
+                        "Model": "Summa RuNNer",
+                        "Code": "https://github.com/kedz/nnsum",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail(Anonymized)": {
+                                "ROUGE-1": 39.6,
+                                "ROUGE-2": 16.2,
+                                "ROUGE-L": 35.3
+                            }
+                        }
+                    }
+                ],
+                "CNN/DailyMail(Non-Anonymized)": [
+                    {
+                        "Dataset": "CNN/DailyMail(Non-Anonymized)",
+                        "Model": "MatchSum",
+                        "Code": "https://github.com/maszhongming/MatchSum",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail(Non-Anonymized)": {
+                                "ROUGE-1": 44.41,
+                                "ROUGE-2": 20.86,
+                                "ROUGE-L": 40.55
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CNN/DailyMail(Non-Anonymized)",
+                        "Model": "A2Summ",
+                        "Code": "https://github.com/boheumd/A2Summ",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CNN/DailyMail(Non-Anonymized)": {
+                                "ROUGE-1": 44.11,
+                                "ROUGE-2": 20.31,
+                                "ROUGE-L": 35.92
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Sentence Compression": {
+        "SOTA": {
+            "English": {
+                "Google-SentenceCompression": [
+                    {
+                        "Dataset": "Google-SentenceCompression",
+                        "Model": "SLAHAN",
+                        "Code": "https://github.com/kamigaito/SLAHAN",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Google-SentenceCompression": {
+                                "F1": 0.855,
+                                "CR": 0.407
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "Google-SentenceCompression",
+                        "Model": "BiRNN + LM Evaluator",
+                        "Code": "https://github.com/code4conference/code4sc",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Google-SentenceCompression": {
+                                "F1": 0.851,
+                                "CR": 0.39
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

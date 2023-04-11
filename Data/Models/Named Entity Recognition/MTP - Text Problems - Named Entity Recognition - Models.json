@@ -1,0 +1,1362 @@
+{
+    "Token-wise NER": {
+        "SOTA": {
+            "English": {
+                "CoNLL2003": [
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "ACE + Document Context",
+                        "Code": "https://github.com/Alibaba-NLP/ACE",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "F1": 0.946
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "LUKE",
+                        "Code": "https://github.com/studio-ousia/luke",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "F1": 0.943
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "CL-KL",
+                        "Code": "https://github.com/Alibaba-NLP/CLNER",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "F1": 0.9385
+                            }
+                        }
+                    }
+                ],
+                "CoNLL++": [
+                    {
+                        "Dataset": "CoNLL++",
+                        "Model": "Noise-Robust CoReg + LUKE",
+                        "Code": "https://github.com/wzhouad/NLL-IE",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL++": {
+                                "F1": 0.9588
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CoNLL++",
+                        "Model": "CL-KL",
+                        "Code": "https://github.com/Alibaba-NLP/CLNER",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL++": {
+                                "F1": 0.9481
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CoNLL++",
+                        "Model": "CrossWeigh + Flair",
+                        "Code": "https://github.com/ZihanWangKi/CrossWeigh",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL++": {
+                                "F1": 0.9428
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CoNLL++",
+                        "Model": "Flair Embeddings",
+                        "Code": "https://github.com/zalandoresearch/flair",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL++": {
+                                "F1": 0.9389
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "CoNLL++",
+                        "Model": "BiLSTM-CRF + ELMo",
+                        "Code": "https://github.com/allenai/allennlp",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL++": {
+                                "F1": 0.9342
+                            }
+                        }
+                    }
+                ],
+                "WNUT2017": [
+                    {
+                        "Dataset": "WNUT2017",
+                        "Model": "CL-KL",
+                        "Code": "https://github.com/modelscope/adaseq",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WNUT2017": {
+                                "F1": 0.6045
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "WNUT2017",
+                        "Model": "Bert + RegLER",
+                        "Code": "https://github.com/minstar/PMI",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WNUT2017": {
+                                "F1": 0.589
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "WNUT2017",
+                        "Model": "BertTweet",
+                        "Code": "https://github.com/VinAIResearch/BERTweet",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WNUT2017": {
+                                "F1": 0.565
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "WNUT2017",
+                        "Model": "CrossWeigh + Flair",
+                        "Code": "https://github.com/ZihanWangKi/CrossWeigh",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WNUT2017": {
+                                "F1": 0.5003
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "WNUT2017",
+                        "Model": "Flair Embeddings",
+                        "Code": "https://github.com/zalandoresearch/flair",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WNUT2017": {
+                                "F1": 0.4959
+                            }
+                        }
+                    }
+                ],
+                "OntoNotesV5": [
+                    {
+                        "Dataset": "OntoNotesV5",
+                        "Model": "Bert-MRC + DSC",
+                        "Code": "https://github.com/ShannonAI/dice_loss_for_NLP",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "OntoNotesV5": {
+                                "F1": 0.9207
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "OntoNotesV5",
+                        "Model": "Bert + KVMN",
+                        "Code": "https://github.com/cuhksz-nlp/AESINER",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "OntoNotesV5": {
+                                "F1": 0.9032
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "OntoNotesV5",
+                        "Model": "Flair Embeddings",
+                        "Code": "https://github.com/zalandoresearch/flair",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "OntoNotesV5": {
+                                "F1": 0.8971
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "OntoNotesV5",
+                        "Model": "CVT + Multi-Task",
+                        "Code": "https://github.com/tensorflow/models/tree/master/research/cvt_text",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "OntoNotesV5": {
+                                "F1": 0.8881
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "OntoNotesV5",
+                        "Model": "Bi-LSTM-CRF + Lexical Features",
+                        "Code": "https://github.com/ghaddarAbs/NER-with-LS",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "OntoNotesV5": {
+                                "F1": 0.8795
+                            }
+                        }
+                    }
+                ],
+                "FewNerd": [
+                    {
+                        "Dataset": "FewNerd",
+                        "Model": "PL-Marker",
+                        "Code": "https://github.com/thunlp/pl-marker",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "FewNerd": {
+                                "F1": 0.709
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "FewNerd",
+                        "Model": "Bert-Tagger",
+                        "Code": "https://github.com/thunlp/Few-NERD",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "FewNerd": {
+                                "F1": 0.6713
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "Flair": {
+            "English": {
+                "CoNLL2003": [
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "Flair - 4",
+                        "Code": "https://huggingface.co/flair/ner-english",
+                        "Hugging Face ID": "flair/ner-english",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "F1": 0.9306
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "Flair-large - 4",
+                        "Code": "https://huggingface.co/flair/ner-english-large",
+                        "Hugging Face ID": "flair/ner-english-large",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "F1": 0.9436
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "Flair-fast - 4",
+                        "Code": "https://huggingface.co/flair/ner-english-fast",
+                        "Hugging Face ID": "flair/ner-english-fast",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "F1": 0.9292
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            },
+            "Multilingual / Other Languages": {
+                "CoNLL2003": [
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "Flair-multilingual - 4",
+                        "Code": "https://huggingface.co/flair/ner-multi",
+                        "Hugging Face ID": "flair/ner-multi",
+                        "Language": "English, German, Dutch, Spanish",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "F1 (English)": 0.9216,
+                                "F1 (German)": 0.8733,
+                                "F1 (Dutch)": 0.8896,
+                                "F1 (Spanish)": 0.8665
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "Flair-multilingual-fast - 4",
+                        "Code": "https://huggingface.co/flair/ner-multi-fast",
+                        "Hugging Face ID": "flair/ner-multi-fast",
+                        "Language": "English, German, Dutch, Spanish",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "F1 (English)": 0.9151,
+                                "F1 (German)": 0.8572,
+                                "F1 (Dutch)": 0.8622,
+                                "F1 (Spanish)": 0.8578
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            }
+        },
+        "Hugging Face": {
+            "English": {
+                "CoNLL2003": [
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "Bert-base - 9",
+                        "Code": "https://huggingface.co/dslim/bert-base-NER",
+                        "Hugging Face ID": "dslim/bert-base-NER",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "F1": 0.913
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CoNLL2003": {
+                                "Acc": 0.9791,
+                                "F1": 0.9074,
+                                "Latency": 0.152
+                            }
+                        },
+                        "Eval": "dslim_bert_base_ner"
+                    },
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "Bert-large - 9",
+                        "Code": "https://huggingface.co/dslim/bert-large-NER",
+                        "Hugging Face ID": "dslim/bert-large-NER",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "F1": 0.917
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CoNLL2003": {
+                                "Acc": 0.9805,
+                                "F1": 0.9176,
+                                "Latency": 0.5165
+                            }
+                        },
+                        "Eval": "dslim_bert_large_ner"
+                    },
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "Bert-tiny - 9",
+                        "Code": "https://huggingface.co/gagan3012/bert-tiny-finetuned-ner",
+                        "Hugging Face ID": "gagan3012/bert-tiny-finetuned-ner",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "Loss": 0.1689,
+                                "F1": 0.8177,
+                                "Acc": 0.9598
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CoNLL2003": {
+                                "Acc": 0.809,
+                                "F1": 0.0184,
+                                "Latency": 0.0046
+                            }
+                        },
+                        "Eval": "gagan3012_bert_tiny_finetuned_ner"
+                    },
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "DistilBert-base - 9",
+                        "Code": "https://huggingface.co/elastic/distilbert-base-cased-finetuned-conll03-english",
+                        "Hugging Face ID": "elastic/distilbert-base-cased-finetuned-conll03-english",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "Loss": 0.077,
+                                "F1": 0.987,
+                                "Acc": 0.983
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CoNLL2003": {
+                                "Acc": 0.9785,
+                                "F1": 0.9012,
+                                "Latency": 0.0806
+                            }
+                        },
+                        "Eval": "elastic_distilbert_base_cased_finetuned_conll03_english"
+                    },
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "DistilBert-base - 9",
+                        "Code": "https://huggingface.co/swardiantara/distilbert-base-cased-finetuned-ner",
+                        "Hugging Face ID": "swardiantara/distilbert-base-cased-finetuned-ner",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "Loss": 0.0709,
+                                "F1": 0.9221,
+                                "Acc": 0.9804
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CoNLL2003": {
+                                "Acc": 0.9763,
+                                "F1": 0.8864,
+                                "Latency": 0.0753
+                            }
+                        },
+                        "Eval": "swardiantara_distilbert_base_cased_finetuned_ner"
+                    },
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "AlBert-base-v2 - 9",
+                        "Code": "https://huggingface.co/Jorgeutd/albert-base-v2-finetuned-ner",
+                        "Hugging Face ID": "Jorgeutd/albert-base-v2-finetuned-ner",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "Loss": 0.0626,
+                                "F1": 0.9291,
+                                "Acc": 0.9848
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CoNLL2003": {
+                                "Acc": 0.9754,
+                                "F1": 0.8861,
+                                "Latency": 0.1553
+                            }
+                        },
+                        "Eval": "jorgeutd_albert_base_v2_finetuned_ner"
+                    },
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "AlBert-large-v2 - 9",
+                        "Code": "https://huggingface.co/Gladiator/albert-large-v2_ner_conll2003",
+                        "Hugging Face ID": "Gladiator/albert-large-v2_ner_conll2003",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "Loss": 0.0584,
+                                "F1": 0.9424,
+                                "Acc": 0.9875
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CoNLL2003": {
+                                "Acc": 0.9754,
+                                "F1": 0.8956,
+                                "Latency": 0.5261
+                            }
+                        },
+                        "Eval": "gladiator_albert_large_v2_ner_conll2003"
+                    },
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "Electra-base - 9",
+                        "Code": "https://huggingface.co/bhadresh-savani/electra-base-discriminator-finetuned-conll03-english",
+                        "Hugging Face ID": "bhadresh-savani/electra-base-discriminator-finetuned-conll03-english",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "Loss": 0.1251,
+                                "F1": 0.9137,
+                                "Acc": 0.9813,
+                                "SamplesPerSec": 341.368
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CoNLL2003": {
+                                "Acc": 0.9781,
+                                "F1": 0.9024,
+                                "Latency": 0.1422
+                            }
+                        },
+                        "Eval": "bhadresh_savani_electra_base_discriminator_finetuned_conll03_english"
+                    },
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "RoBertA-base - 9",
+                        "Code": "https://huggingface.co/dominiqueblok/roberta-base-finetuned-ner",
+                        "Hugging Face ID": "dominiqueblok/roberta-base-finetuned-ner",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "Loss": 0.0492,
+                                "F1": 0.9567,
+                                "Acc": 0.9889
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CoNLL2003": {
+                                "Acc": 0.0,
+                                "F1": 0.0,
+                                "Latency": 0.1451
+                            }
+                        },
+                        "Eval": "dominiqueblok_roberta_base_finetuned_ner"
+                    },
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "RoBertA-large - 9",
+                        "Code": "https://huggingface.co/Jean-Baptiste/roberta-large-ner-english",
+                        "Hugging Face ID": "Jean-Baptiste/roberta-large-ner-english",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "F1": 0.9753
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CoNLL2003": {
+                                "Acc": 0.8109,
+                                "F1": 0.0,
+                                "Latency": 0.5072
+                            }
+                        },
+                        "Eval": "jean_baptiste_roberta_large_ner_english"
+                    }
+                ],
+                "CoNLL++": [
+                    {
+                        "Dataset": "CoNLL++",
+                        "Model": "SpacyBert-small - 5",
+                        "Code": "https://huggingface.co/amalnuaimi/en_spacy_bert_small_ner",
+                        "Hugging Face ID": "amalnuaimi/en_spacy_bert_small_ner",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL++": {
+                                "F1": 0.92
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "CoNLL++",
+                        "Model": "SpacyDistilBert-base - 5",
+                        "Code": "https://huggingface.co/amalnuaimi/en_spacy_distilroberta_base_ner",
+                        "Hugging Face ID": "amalnuaimi/en_spacy_distilroberta_base_ner",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL++": {
+                                "F1": 0.953
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "CoNLL++",
+                        "Model": "RoBertA-large - 5",
+                        "Code": "https://huggingface.co/luffycodes/roberta-large-ner-conllpp-v3",
+                        "Hugging Face ID": "luffycodes/roberta-large-ner-conllpp-v3",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL++": {
+                                "Loss": 0.1291,
+                                "F1": 0.9566,
+                                "Acc": 0.984
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CoNLL++": {
+                                "Acc": 0.8146,
+                                "F1": 0.0,
+                                "Latency": 0.4806
+                            }
+                        },
+                        "Eval": "luffycodes_roberta_large_ner_conllpp_v3"
+                    }
+                ],
+                "WNUT2017": [
+                    {
+                        "Dataset": "WNUT2017",
+                        "Model": "Bert-base - 13",
+                        "Code": "https://huggingface.co/AdapterHub/bert-base-uncased-pf-wnut_17",
+                        "Hugging Face ID": "AdapterHub/bert-base-uncased-pf-wnut_17",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "WNUT2017",
+                        "Model": "Bert-large - 13",
+                        "Code": "https://huggingface.co/Gladiator/bert-large-uncased_ner_wnut_17",
+                        "Hugging Face ID": "Gladiator/bert-large-uncased_ner_wnut_17",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WNUT2017": {
+                                "Loss": 0.2516,
+                                "F1": 0.6337,
+                                "Acc": 0.9603
+                            }
+                        },
+                        "Computed Metrics": {
+                            "WNUT2017": {
+                                "Acc": 0.952,
+                                "F1": 0.4526,
+                                "Latency": 0.6775
+                            }
+                        },
+                        "Eval": "gladiator_bert_large_uncased_ner_wnut_17"
+                    },
+                    {
+                        "Dataset": "WNUT2017",
+                        "Model": "Bert-small - 13",
+                        "Code": "https://huggingface.co/muhtasham/bert-small-finetuned-wnut17-ner",
+                        "Hugging Face ID": "muhtasham/bert-small-finetuned-wnut17-ner",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WNUT2017": {
+                                "Loss": 0.3649,
+                                "F1": 0.4913,
+                                "Acc": 0.9255
+                            }
+                        },
+                        "Computed Metrics": {
+                            "WNUT2017": {
+                                "Acc": 0.9415,
+                                "F1": 0.348,
+                                "Latency": 0.0346
+                            }
+                        },
+                        "Eval": "muhtasham_bert_small_finetuned_wnut17_ner"
+                    },
+                    {
+                        "Dataset": "WNUT2017",
+                        "Model": "Bert-tiny - 13",
+                        "Code": "https://huggingface.co/muhtasham/bert-tiny-finetuned-wnut17-ner",
+                        "Hugging Face ID": "muhtasham/bert-tiny-finetuned-wnut17-ner",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WNUT2017": {
+                                "Loss": 0.6054,
+                                "Acc": 0.8961
+                            }
+                        },
+                        "Computed Metrics": {
+                            "WNUT2017": {
+                                "Acc": 0.9285,
+                                "F1": 0.0,
+                                "Latency": 0.0056
+                            }
+                        },
+                        "Eval": "muhtasham_bert_tiny_finetuned_wnut17_ner"
+                    },
+                    {
+                        "Dataset": "WNUT2017",
+                        "Model": "DistilBert-base - 13",
+                        "Code": "https://huggingface.co/Gladiator/distilbert-base-uncased_ner_wnut_17",
+                        "Hugging Face ID": "Gladiator/distilbert-base-uncased_ner_wnut_17",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WNUT2017": {
+                                "Loss": 0.24,
+                                "F1": 0.6021,
+                                "Acc": 0.9559
+                            }
+                        },
+                        "Computed Metrics": {
+                            "WNUT2017": {
+                                "Acc": 0.9497,
+                                "F1": 0.4438,
+                                "Latency": 0.0976
+                            }
+                        },
+                        "Eval": "gladiator_distilbert_base_uncased_ner_wnut_17"
+                    },
+                    {
+                        "Dataset": "WNUT2017",
+                        "Model": "AlBert-large-v2 - 13",
+                        "Code": "https://huggingface.co/Gladiator/albert-large-v2_ner_wnut_17",
+                        "Hugging Face ID": "Gladiator/albert-large-v2_ner_wnut_17",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WNUT2017": {
+                                "Loss": 0.2429,
+                                "F1": 0.6216,
+                                "Acc": 0.9582
+                            }
+                        },
+                        "Computed Metrics": {
+                            "WNUT2017": {
+                                "Acc": 0.9533,
+                                "F1": 0.5053,
+                                "Latency": 0.7676
+                            }
+                        },
+                        "Eval": "gladiator_albert_large_v2_ner_wnut_17"
+                    },
+                    {
+                        "Dataset": "WNUT2017",
+                        "Model": "XLMRoBertA-base - 13",
+                        "Code": "https://huggingface.co/Amir13/xlm-roberta-base-wnut2017-en",
+                        "Hugging Face ID": "Amir13/xlm-roberta-base-wnut2017-en",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WNUT2017": {
+                                "Loss": 0.2319,
+                                "F1": 0.6321,
+                                "Acc": 0.9589
+                            }
+                        },
+                        "Computed Metrics": {
+                            "WNUT2017": {
+                                "Acc": 0.9519,
+                                "F1": 0.525,
+                                "Latency": 0.1958
+                            }
+                        },
+                        "Eval": "amir13_xlm_roberta_base_wnut2017_en"
+                    },
+                    {
+                        "Dataset": "WNUT2017",
+                        "Model": "RoBertA-large - 13",
+                        "Code": "https://huggingface.co/Gladiator/roberta-large_ner_wnut_17",
+                        "Hugging Face ID": "Gladiator/roberta-large_ner_wnut_17",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WNUT2017": {
+                                "Loss": 0.2288,
+                                "F1": 0.6757,
+                                "Acc": 0.965
+                            }
+                        },
+                        "Computed Metrics": {
+                            "WNUT2017": {
+                                "Acc": 0.9567,
+                                "F1": 0.5758,
+                                "Latency": 0.713
+                            }
+                        },
+                        "Eval": "gladiator_roberta_large_ner_wnut_17"
+                    }
+                ],
+                "OntoNotesV5 (TNER)": [
+                    {
+                        "Dataset": "OntoNotesV5 (TNER)",
+                        "Model": "Flair - 37",
+                        "Code": "https://huggingface.co/flair/ner-english-ontonotes",
+                        "Hugging Face ID": "flair/ner-english-ontonotes",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "OntoNotesV5 (TNER)": {
+                                "F1": 0.8927
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "OntoNotesV5 (TNER)",
+                        "Model": "Flair-large - 37",
+                        "Code": "https://huggingface.co/flair/ner-english-ontonotes-large",
+                        "Hugging Face ID": "flair/ner-english-ontonotes-large",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "OntoNotesV5 (TNER)": {
+                                "F1": 0.9093
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "OntoNotesV5 (TNER)",
+                        "Model": "Flair-fast - 37",
+                        "Code": "https://huggingface.co/flair/ner-english-ontonotes-fast",
+                        "Hugging Face ID": "flair/ner-english-ontonotes-fast",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "OntoNotesV5 (TNER)": {
+                                "F1": 0.893
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "OntoNotesV5 (TNER)",
+                        "Model": "DistilBert-base - 37",
+                        "Code": "https://huggingface.co/nickprock/distilbert-finetuned-ner-ontonotes",
+                        "Hugging Face ID": "nickprock/distilbert-finetuned-ner-ontonotes",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "OntoNotesV5 (TNER)": {
+                                "Loss": 0.1448,
+                                "F1": 0.866,
+                                "Acc": 0.975
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "OntoNotesV5 (TNER)",
+                        "Model": "RoBertA-large - 37",
+                        "Code": "https://huggingface.co/tner/roberta-large-ontonotes5",
+                        "Hugging Face ID": "tner/roberta-large-ontonotes5",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "OntoNotesV5 (TNER)": {
+                                "F1 (micro)": 0.9086,
+                                "F1 (macro)": 0.8265
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "OntoNotesV5 (TNER)",
+                        "Model": "DeBertA-large-v3 - 37",
+                        "Code": "https://huggingface.co/tner/deberta-v3-large-ontonotes5",
+                        "Hugging Face ID": "tner/deberta-v3-large-ontonotes5",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "OntoNotesV5 (TNER)": {
+                                "F1 (micro)": 0.9069,
+                                "F1 (macro)": 0.8346
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            },
+            "Multilingual / Other Languages": {
+                "CoNLL2003": [
+                    {
+                        "Dataset": "CoNLL2003",
+                        "Model": "DistilBert-base-multilingual - 9",
+                        "Code": "https://huggingface.co/gunghio/distilbert-base-multilingual-cased-finetuned-conll2003-ner",
+                        "Hugging Face ID": "gunghio/distilbert-base-multilingual-cased-finetuned-conll2003-ner",
+                        "Language": "Multilingual",
+                        "Reported Metrics": {
+                            "CoNLL2003": {
+                                "Loss": 0.0388,
+                                "F1": 0.9409,
+                                "Acc": 0.9902
+                            }
+                        },
+                        "Computed Metrics": {
+                            "CoNLL2003": {
+                                "Acc": 0.9775,
+                                "F1": 0.9111,
+                                "Latency": 0.0749
+                            }
+                        },
+                        "Eval": "gunghio_distilbert_base_multilingual_cased_finetuned_conll2003_ner"
+                    }
+                ]
+            }
+        }
+    },
+    "Token-wise POS": {
+        "SOTA": {
+            "English": {
+                "PennTreebank": [
+                    {
+                        "Dataset": "PennTreebank",
+                        "Model": "Meta BiLSTM",
+                        "Code": "https://github.com/google/meta_tagger",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "PennTreebank": {
+                                "Acc": 0.9796
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "PennTreebank",
+                        "Model": "Flair Embeddings",
+                        "Code": "https://github.com/zalandoresearch/flair",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "PennTreebank": {
+                                "Acc": 0.9785
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "PennTreebank",
+                        "Model": "CVT + Multi-Task",
+                        "Code": "https://github.com/rezkaaufar/pytorch-cvt",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "PennTreebank": {
+                                "Acc": 0.9776
+                            }
+                        }
+                    }
+                ],
+                "RitterSocialMedia": [
+                    {
+                        "Dataset": "RitterSocialMedia",
+                        "Model": "ACE + Finetune",
+                        "Code": "https://github.com/Alibaba-NLP/ACE",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "RitterSocialMedia": {
+                                "Acc": 0.934
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "RitterSocialMedia",
+                        "Model": "BertTweet",
+                        "Code": "https://github.com/VinAIResearch/BERTweet",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "RitterSocialMedia": {
+                                "Acc": 0.901
+                            }
+                        }
+                    }
+                ],
+                "UD": [
+                    {
+                        "Dataset": "UD",
+                        "Model": "BiLSTM-LAN",
+                        "Code": "https://github.com/Nealcly/LAN",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "UD": {
+                                "Acc": 0.9688
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "UD",
+                        "Model": "Adversarial BiLSTM",
+                        "Code": "https://github.com/michiyasunaga/pos_adv",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "UD": {
+                                "Acc": 0.9665
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "UD",
+                        "Model": "MultiBPEmb",
+                        "Code": "https://github.com/bheinzerling/subword-sequence-tagging",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "UD": {
+                                "Acc": 0.9662
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "Flair": {
+            "English": {
+                "OntoNotes": [
+                    {
+                        "Dataset": "OntoNotes",
+                        "Model": "Flair - 41",
+                        "Code": "https://huggingface.co/flair/pos-english",
+                        "Hugging Face ID": "flair/pos-english",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "OntoNotes": {
+                                "F1": 0.9819
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "OntoNotes",
+                        "Model": "Flair-fast - 41",
+                        "Code": "https://huggingface.co/flair/pos-english-fast",
+                        "Hugging Face ID": "flair/pos-english-fast",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "OntoNotes": {
+                                "F1": 0.981
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            }
+        },
+        "Hugging Face": {
+            "English": {
+                "PennTreebank": [
+                    {
+                        "Dataset": "PennTreebank",
+                        "Model": "Bert-base-multilingual-cased-englishfinetuned - 46",
+                        "Code": "https://huggingface.co/QCRI/bert-base-multilingual-cased-pos-english",
+                        "Hugging Face ID": "QCRI/bert-base-multilingual-cased-pos-english",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "PennTreebank": {
+                                "F1": 0.9669
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Unknown": [
+                    {
+                        "Dataset": "Unknown",
+                        "Model": "Bert-base-uncased - 17",
+                        "Code": "https://huggingface.co/vblagoje/bert-english-uncased-finetuned-pos",
+                        "Hugging Face ID": "vblagoje/bert-english-uncased-finetuned-pos",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Unknown": {
+                                "F1": 0.9682
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "Unknown",
+                        "Model": "Bert-base-multilingual-cased - 17",
+                        "Code": "https://huggingface.co/MayaGalvez/bert-base-multilingual-cased-finetuned-pos",
+                        "Hugging Face ID": "MayaGalvez/bert-base-multilingual-cased-finetuned-pos",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Unknown": {
+                                "F1": 0.9501,
+                                "Acc": 0.9551
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "TweeBank-NER": [
+                    {
+                        "Dataset": "TweeBank-NER",
+                        "Model": "BertTweet-base-ewt - 17",
+                        "Code": "https://huggingface.co/TweebankNLP/bertweet-tb2_ewt-pos-tagging",
+                        "Hugging Face ID": "TweebankNLP/bertweet-tb2_ewt-pos-tagging",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "TweeBank-NER": {
+                                "Acc": 0.9538
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "TweeBank-NER",
+                        "Model": "BertTweet-base-baseline - 17",
+                        "Code": "https://huggingface.co/TweebankNLP/bertweet-tb2-pos-tagging",
+                        "Hugging Face ID": "TweebankNLP/bertweet-tb2-pos-tagging",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "TweeBank-NER": {
+                                "Acc": 0.9521
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "CoNLL 2003": [
+                    {
+                        "Dataset": "CoNLL 2003",
+                        "Model": "Bert-base-cased - 47",
+                        "Code": "https://huggingface.co/Tahsin/BERT-finetuned-conll2003-POS",
+                        "Hugging Face ID": "Tahsin/BERT-finetuned-conll2003-POS",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "CoNLL 2003": {
+                                "F1": 0.9303,
+                                "Acc": 0.9332
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "UD": [
+                    {
+                        "Dataset": "UD",
+                        "Model": "XLMRoBertA-base - 17",
+                        "Code": "https://huggingface.co/wietsedv/xlm-roberta-base-ft-udpos28-en",
+                        "Hugging Face ID": "wietsedv/xlm-roberta-base-ft-udpos28-en",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "UD": {
+                                "Acc": 0.96
+                            }
+                        },
+                        "Computed Metrics": {
+                            "UD": {
+                                "Acc": 0.9452,
+                                "F1": 0.9268,
+                                "Latency": 0.1394
+                            }
+                        },
+                        "Eval": "wietsedv_xlm_roberta_base_ft_udpos28_en"
+                    },
+                    {
+                        "Dataset": "UD",
+                        "Model": "RoBertA-base - 208",
+                        "Code": "https://huggingface.co/KoichiYasuoka/roberta-base-english-upos",
+                        "Hugging Face ID": "KoichiYasuoka/roberta-base-english-upos",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "UD": {
+                                "Acc": 0.8696,
+                                "F1": 0.8504,
+                                "Latency": 0.1309
+                            }
+                        },
+                        "Eval": "koichiyasuoka_roberta_base_english_upos"
+                    },
+                    {
+                        "Dataset": "UD",
+                        "Model": "RoBertA-large - 208",
+                        "Code": "https://huggingface.co/KoichiYasuoka/roberta-large-english-upos",
+                        "Hugging Face ID": "KoichiYasuoka/roberta-large-english-upos",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "UD": {
+                                "Acc": 0.8671,
+                                "F1": 0.8487,
+                                "Latency": 0.4637
+                            }
+                        },
+                        "Eval": "koichiyasuoka_roberta_large_english_upos"
+                    },
+                    {
+                        "Dataset": "UD",
+                        "Model": "XLMRoBertA-base - 77",
+                        "Code": "https://huggingface.co/KoichiYasuoka/xlm-roberta-base-english-upos",
+                        "Hugging Face ID": "KoichiYasuoka/xlm-roberta-base-english-upos",
+                        "Language": "English",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {
+                            "UD": {
+                                "Acc": 0.7365,
+                                "F1": 0.7099,
+                                "Latency": 0.138
+                            }
+                        },
+                        "Eval": "koichiyasuoka_xlm_roberta_base_english_upos"
+                    }
+                ]
+            },
+            "Multilingual / Other Languages": {
+                "ASBC": [
+                    {
+                        "Dataset": "ASBC",
+                        "Model": "Bert-base-chinese-CKIP",
+                        "Code": "https://huggingface.co/ckiplab/bert-base-chinese-pos",
+                        "Hugging Face ID": "ckiplab/bert-base-chinese-pos",
+                        "Language": "Chinese",
+                        "Reported Metrics": {
+                            "ASBC": {
+                                "Model Size": "102M",
+                                "Acc": 0.9567
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "ASBC",
+                        "Model": "Bert-tiny-chinese-CKIP",
+                        "Code": "https://huggingface.co/ckiplab/bert-tiny-chinese-pos",
+                        "Hugging Face ID": "ckiplab/bert-tiny-chinese-pos",
+                        "Language": "Chinese",
+                        "Reported Metrics": {
+                            "ASBC": {
+                                "Model Size": "12M",
+                                "Acc": 0.9511
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "ASBC",
+                        "Model": "AlBert-base-chinese-CKIP",
+                        "Code": "https://huggingface.co/ckiplab/albert-base-chinese-pos",
+                        "Hugging Face ID": "ckiplab/albert-base-chinese-pos",
+                        "Language": "Chinese",
+                        "Reported Metrics": {
+                            "ASBC": {
+                                "Model Size": "11M",
+                                "Acc": 0.953
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    },
+                    {
+                        "Dataset": "ASBC",
+                        "Model": "AlBert-tiny-chinese-CKIP",
+                        "Code": "https://huggingface.co/ckiplab/albert-tiny-chinese-pos",
+                        "Hugging Face ID": "ckiplab/albert-tiny-chinese-pos",
+                        "Language": "Chinese",
+                        "Reported Metrics": {
+                            "ASBC": {
+                                "Model Size": "4M",
+                                "Acc": 0.9448
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "PATB": [
+                    {
+                        "Dataset": "PATB",
+                        "Model": "Bert-base-arabic-camel-mix",
+                        "Code": "https://huggingface.co/CAMeL-Lab/bert-base-arabic-camelbert-mix-pos-msa",
+                        "Hugging Face ID": "CAMeL-Lab/bert-base-arabic-camelbert-mix-pos-msa",
+                        "Language": "Arabic",
+                        "Reported Metrics": {
+                            "PATB": {
+                                "F1(Macro)": 0.9491,
+                                "F1(Micro)": 0.9812,
+                                "Acc": 0.9812
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "ARZTB": [
+                    {
+                        "Dataset": "ARZTB",
+                        "Model": "Bert-base-arabic-camel-mix",
+                        "Code": "https://huggingface.co/CAMeL-Lab/bert-base-arabic-camelbert-ca-pos-egy",
+                        "Hugging Face ID": "CAMeL-Lab/bert-base-arabic-camelbert-ca-pos-egy",
+                        "Language": "Arabic",
+                        "Reported Metrics": {
+                            "ARZTB": {
+                                "F1(Macro)": 0.8355,
+                                "F1(Micro)": 0.9225,
+                                "Acc": 0.9225
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Xtreme": [
+                    {
+                        "Dataset": "Xtreme",
+                        "Model": "Bert-base-italian-cased - 19",
+                        "Code": "https://huggingface.co/sachaarbonel/bert-italian-cased-finetuned-pos",
+                        "Hugging Face ID": "sachaarbonel/bert-italian-cased-finetuned-pos",
+                        "Language": "Italian",
+                        "Reported Metrics": {
+                            "Xtreme": {
+                                "F1": 0.9631,
+                                "Acc": 0.9678
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Uknown": [
+                    {
+                        "Dataset": "Uknown",
+                        "Model": "Bert-base-swedish-cased - 26",
+                        "Code": "https://huggingface.co/KBLab/bert-base-swedish-cased-pos",
+                        "Hugging Face ID": "KBLab/bert-base-swedish-cased-pos",
+                        "Language": "Swedish",
+                        "Reported Metrics": {
+                            "Uknown": {
+                                "F1": 0.9866
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "CoNLL Spanish": [
+                    {
+                        "Dataset": "CoNLL Spanish",
+                        "Model": "Bert-base-spanish-cased - 60",
+                        "Code": "https://huggingface.co/mrm8488/bert-spanish-cased-finetuned-pos",
+                        "Hugging Face ID": "mrm8488/bert-spanish-cased-finetuned-pos",
+                        "Language": "Spanish",
+                        "Reported Metrics": {
+                            "CoNLL Spanish": {
+                                "F1": 0.9006
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "NER Telugu AniketHJR": [
+                    {
+                        "Dataset": "NER Telugu AniketHJR",
+                        "Model": "Bert-base-telugu - 24",
+                        "Code": "https://huggingface.co/kuppuluri/telugu_bertu_pos",
+                        "Hugging Face ID": "kuppuluri/telugu_bertu_pos",
+                        "Language": "Telugu",
+                        "Reported Metrics": {
+                            "NER Telugu AniketHJR": {
+                                "F1": 0.9984
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ],
+                "Unknown Malayalam": [
+                    {
+                        "Dataset": "Unknown Malayalam",
+                        "Model": "Bert-base-multilingual-uncased-malayalam - 35",
+                        "Code": "https://huggingface.co/akhisreelibra/bert-malayalam-pos-tagger",
+                        "Hugging Face ID": "akhisreelibra/bert-malayalam-pos-tagger",
+                        "Language": "Malayalam",
+                        "Reported Metrics": {
+                            "Unknown Malayalam": {
+                                "F1": 0.7569,
+                                "Acc": 0.8552
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            }
+        }
+    }
+}

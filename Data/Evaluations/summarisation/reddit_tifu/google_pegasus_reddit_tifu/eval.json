@@ -1,0 +1,30 @@
+{
+    "dataset": "reddit_tifu",
+    "model": "google_pegasus_reddit_tifu",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50,
+        "split": "train"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge"
+        ],
+        "other_params": {
+            "input_column": "documents",
+            "label_column": "tldr"
+        }
+    },
+    "eval": {
+        "rouge1": 0.2720212407906704,
+        "rouge2": 0.10176285627614196,
+        "rougeL": 0.22010293331260006,
+        "rougeLsum": 0.22246491632161655,
+        "total_time_in_seconds": 1217.032661672998,
+        "samples_per_second": 0.04108353175276934,
+        "latency_in_seconds": 24.34065323345996,
+        "model_parameter_count": 569748480
+    }
+}

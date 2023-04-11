@@ -1,0 +1,41 @@
+{
+    "dataset": "squad_v2",
+    "model": "deepset_roberta_base_squad2",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 250
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "squad_v2"
+        ],
+        "other_params": {
+            "question_column": "question",
+            "context_column": "context",
+            "id_column": "id",
+            "label_column": "answers",
+            "squad_v2_format": true
+        }
+    },
+    "eval": {
+        "exact": 80.4,
+        "f1": 83.36444817927173,
+        "total": 250,
+        "HasAns_exact": 78.86178861788618,
+        "HasAns_f1": 84.8870897952677,
+        "HasAns_total": 123,
+        "NoAns_exact": 81.88976377952756,
+        "NoAns_f1": 81.88976377952756,
+        "NoAns_total": 127,
+        "best_exact": 80.4,
+        "best_exact_thresh": 0.986826479434967,
+        "best_f1": 83.3644481792717,
+        "best_f1_thresh": 0.986826479434967,
+        "total_time_in_seconds": 116.75016700000015,
+        "samples_per_second": 2.141324560161012,
+        "latency_in_seconds": 0.4670006680000006,
+        "model_parameter_count": 124056578
+    }
+}

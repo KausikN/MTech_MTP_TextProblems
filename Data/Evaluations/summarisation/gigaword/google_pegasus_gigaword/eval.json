@@ -1,0 +1,30 @@
+{
+    "dataset": "gigaword",
+    "model": "google_pegasus_gigaword",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge"
+        ],
+        "other_params": {
+            "input_column": "document",
+            "label_column": "summary"
+        }
+    },
+    "eval": {
+        "rouge1": 0.26368600534011427,
+        "rouge2": 0.12891799328379605,
+        "rougeL": 0.2381493782643324,
+        "rougeLsum": 0.2385606509194987,
+        "total_time_in_seconds": 578.2491715699998,
+        "samples_per_second": 0.08646791462622487,
+        "latency_in_seconds": 11.564983431399996,
+        "model_parameter_count": 568962048
+    }
+}

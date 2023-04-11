@@ -1,0 +1,346 @@
+{
+    "Text-to-Text (Relation Extraction)": {
+        "SOTA": {
+            "English": {
+                "NewYorkTimes": [
+                    {
+                        "Dataset": "NewYorkTimes",
+                        "Model": "KGPOOL",
+                        "Code": "https://github.com/nadgeri14/KGPool",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "NewYorkTimes": {
+                                "P@10%": 0.923,
+                                "P@30%": 0.867
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "NewYorkTimes",
+                        "Model": "RECON",
+                        "Code": "https://github.com/ansonb/RECON",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "NewYorkTimes": {
+                                "P@10%": 0.875,
+                                "P@30%": 0.741
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "NewYorkTimes",
+                        "Model": "HRERE",
+                        "Code": "https://github.com/billy-inn/HRERE",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "NewYorkTimes": {
+                                "P@10%": 0.849,
+                                "P@30%": 0.728
+                            }
+                        }
+                    }
+                ],
+                "WikiData": [
+                    {
+                        "Dataset": "WikiData",
+                        "Model": "KGPOOL",
+                        "Code": "https://github.com/nadgeri14/KGPool",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WikiData": {
+                                "F1": 0.886
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "WikiData",
+                        "Model": "RECON",
+                        "Code": "https://github.com/ansonb/RECON",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "WikiData": {
+                                "F1": 0.8723
+                            }
+                        }
+                    }
+                ],
+                "NYT29": [
+                    {
+                        "Dataset": "NYT29",
+                        "Model": "WDec",
+                        "Code": "https://github.com/nusnlp/PtrNetDecoding4JERE",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "NYT29": {
+                                "F1": 0.682
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "NYT29",
+                        "Model": "HRLRE",
+                        "Code": "https://github.com/truthless11/HRL-RE",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "NYT29": {
+                                "F1": 0.643
+                            }
+                        }
+                    }
+                ],
+                "NYT24": [
+                    {
+                        "Dataset": "NYT24",
+                        "Model": "WDec",
+                        "Code": "https://github.com/nusnlp/PtrNetDecoding4JERE",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "NYT24": {
+                                "F1": 0.817
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "NYT24",
+                        "Model": "HRLRE",
+                        "Code": "https://github.com/truthless11/HRL-RE",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "NYT24": {
+                                "F1": 0.776
+                            }
+                        }
+                    }
+                ],
+                "TACRED": [
+                    {
+                        "Dataset": "TACRED",
+                        "Model": "Deep-Struct",
+                        "Code": "https://github.com/cgraywang/deepstruct",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "TACRED": {
+                                "F1": 0.768
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "TACRED",
+                        "Model": "LUKE",
+                        "Code": "https://github.com/studio-ousia/luke",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "TACRED": {
+                                "F1": 0.727
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "TACRED",
+                        "Model": "C-GCN + PA-LSTM",
+                        "Code": "https://github.com/qipeng/gcn-over-pruned-trees",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "TACRED": {
+                                "F1": 0.682
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "Hugging Face": {
+            "English": {
+                "Unknown": [
+                    {
+                        "Dataset": "Unknown",
+                        "Model": "DistilBert-base-uncased",
+                        "Code": "https://huggingface.co/mfigurski80/relation-distilbert-em",
+                        "Hugging Face ID": "mfigurski80/relation-distilbert-em",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Unknown": {
+                                "Loss": 0.7801
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            },
+            "Multilingual / Other Languages": {
+                "CNDBPedia": [
+                    {
+                        "Dataset": "CNDBPedia",
+                        "Model": "fnlp/bart-base-chinese",
+                        "Code": "https://huggingface.co/fanxiao/CGRE_CNDBPedia-Generative-Relation-Extraction",
+                        "Hugging Face ID": "fanxiao/CGRE_CNDBPedia-Generative-Relation-Extraction",
+                        "Language": "Chinese",
+                        "Reported Metrics": {},
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            }
+        }
+    },
+    "Relation Classification": {
+        "SOTA": {
+            "English": {
+                "SemEval2010Task8": [
+                    {
+                        "Dataset": "SemEval2010Task8",
+                        "Model": "REDN",
+                        "Code": "https://github.com/slczgwh/REDN",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SemEval2010Task8": {
+                                "F1": 0.91
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "SemEval2010Task8",
+                        "Model": "Skeleton-Aware BERT",
+                        "Code": "https://github.com/taoqiongxing/Enhancing-Relation-Extraction-using-Syntactic-Indicators-and-Sentential-Contexts",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SemEval2010Task8": {
+                                "F1": 0.9036
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "SemEval2010Task8",
+                        "Model": "A-GCN",
+                        "Code": "https://github.com/cuhksz-nlp/RE-AGCN",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SemEval2010Task8": {
+                                "F1": 0.8985
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "SemEval2010Task8",
+                        "Model": "R-BERT",
+                        "Code": "https://github.com/mickeystroller/R-BERT",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SemEval2010Task8": {
+                                "F1": 0.8925
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "SemEval2010Task8",
+                        "Model": "Multi-Attention CNN",
+                        "Code": "https://github.com/lawlietAi/relation-classification-via-attention-model",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SemEval2010Task8": {
+                                "F1": 0.88
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "SemEval2010Task8",
+                        "Model": "CR-CNN",
+                        "Code": "https://github.com/pratapbhanu/CRCNN",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SemEval2010Task8": {
+                                "F1": 0.841
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "SemEval2010Task8",
+                        "Model": "Entity-Attention BiLSTM",
+                        "Code": "https://github.com/roomylee/entity-aware-relation-classification",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SemEval2010Task8": {
+                                "F1": 0.852
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "SemEval2010Task8",
+                        "Model": "SDP-LSTM",
+                        "Code": "https://github.com/Sshanu/Relation-Classification",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SemEval2010Task8": {
+                                "F1": 0.837
+                            }
+                        }
+                    }
+                ],
+                "FewRel": [
+                    {
+                        "Dataset": "FewRel",
+                        "Model": "DeepStruct MultiTask Finetune",
+                        "Code": "https://github.com/cgraywang/deepstruct",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "FewRel": {
+                                "F1 (10-Way 1-Shot)": 0.978
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "Hugging Face": {
+            "English": {
+                "Wikimedia, IFRS, Investopedia": [
+                    {
+                        "Dataset": "Wikimedia, IFRS, Investopedia",
+                        "Model": "DistilBert-base-uncased",
+                        "Code": "https://huggingface.co/yseop/distilbert-base-financial-relation-extraction",
+                        "Hugging Face ID": "yseop/distilbert-base-financial-relation-extraction",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "Wikimedia, IFRS, Investopedia": {
+                                "F1": 0.8243
+                            }
+                        },
+                        "Computed Metrics": {},
+                        "Eval": ""
+                    }
+                ]
+            }
+        }
+    },
+    "Attribute-Concept Discrimination": {
+        "SOTA": {
+            "English": {
+                "SemEval2018Task10": [
+                    {
+                        "Dataset": "SemEval2018Task10",
+                        "Model": "SVM + GloVe",
+                        "Code": "https://github.com/Yermouth/sunnynlp",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SemEval2018Task10": {
+                                "F1": 0.76
+                            }
+                        }
+                    },
+                    {
+                        "Dataset": "SemEval2018Task10",
+                        "Model": "LexVec + Max Entropy Classifier",
+                        "Code": "https://github.com/dpaperno/DiscriminAtt",
+                        "Language": "English",
+                        "Reported Metrics": {
+                            "SemEval2018Task10": {
+                                "F1": 0.72
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

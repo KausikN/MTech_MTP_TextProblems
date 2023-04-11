@@ -1,0 +1,37 @@
+{
+    "dataset": "sst2",
+    "model": "pig4431_yelp_roberta_5e",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "validation"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "accuracy",
+            "recall",
+            "precision",
+            "f1"
+        ],
+        "other_params": {
+            "input_column": "sentence",
+            "label_column": "label",
+            "label_mapping": {
+                "LABEL_0": 0,
+                "LABEL_1": 1
+            }
+        }
+    },
+    "eval": {
+        "accuracy": 0.892,
+        "recall": 0.8812260536398467,
+        "precision": 0.9090909090909091,
+        "f1": 0.8949416342412451,
+        "total_time_in_seconds": 88.66949658699991,
+        "samples_per_second": 5.638917770435458,
+        "latency_in_seconds": 0.17733899317399984,
+        "model_parameter_count": 124647170
+    }
+}

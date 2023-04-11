@@ -1,0 +1,54 @@
+{
+    "dataset": "conll2003",
+    "model": "gunghio_distilbert_base_multilingual_cased_finetuned_conll2003_ner",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "seqeval"
+        ],
+        "other_params": {
+            "input_column": "tokens",
+            "label_column": "ner_tags"
+        }
+    },
+    "eval": {
+        "LOC": {
+            "precision": 0.9240506329113924,
+            "recall": 0.948051948051948,
+            "f1": 0.9358974358974359,
+            "number": 231
+        },
+        "MISC": {
+            "precision": 0.7547169811320755,
+            "recall": 0.8163265306122449,
+            "f1": 0.7843137254901962,
+            "number": 98
+        },
+        "ORG": {
+            "precision": 0.8646616541353384,
+            "recall": 0.9126984126984127,
+            "f1": 0.888030888030888,
+            "number": 252
+        },
+        "PER": {
+            "precision": 0.9722222222222222,
+            "recall": 0.953307392996109,
+            "f1": 0.962671905697446,
+            "number": 257
+        },
+        "overall_precision": 0.8989547038327527,
+        "overall_recall": 0.9236276849642004,
+        "overall_f1": 0.9111241907004121,
+        "overall_accuracy": 0.9775114661932238,
+        "total_time_in_seconds": 37.46704429700003,
+        "samples_per_second": 13.345061223311784,
+        "latency_in_seconds": 0.07493408859400005,
+        "model_parameter_count": 134741001
+    }
+}

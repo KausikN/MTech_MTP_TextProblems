@@ -1,0 +1,64 @@
+{
+    "dataset": "wmt14_de_en",
+    "model": "facebook_wmt19_de_en",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge",
+            "bleu",
+            "sacrebleu"
+        ],
+        "other_params": {
+            "input_column": "text_source",
+            "label_column": "text_target"
+        }
+    },
+    "eval": {
+        "rouge1": 0.6784975072769501,
+        "rouge2": 0.438654513957426,
+        "rougeL": 0.6331686231845621,
+        "rougeLsum": 0.6329390317559458,
+        "bleu": 0.3314293474838833,
+        "bleu_precisions": [
+            0.6893039049235993,
+            0.42819148936170215,
+            0.274582560296846,
+            0.1819066147859922
+        ],
+        "brevity_penalty": 0.9511486784013183,
+        "length_ratio": 0.952303961196443,
+        "translation_length": 1178,
+        "reference_length": 1237,
+        "score": 33.14293474838833,
+        "counts": [
+            812,
+            483,
+            296,
+            187
+        ],
+        "totals": [
+            1178,
+            1128,
+            1078,
+            1028
+        ],
+        "sacrebleu_precisions": [
+            68.93039049235993,
+            42.819148936170215,
+            27.458256029684602,
+            18.19066147859922
+        ],
+        "bp": 0.9511486784013183,
+        "sys_len": 1178,
+        "ref_len": 1237,
+        "total_time_in_seconds": 199.2349764290002,
+        "samples_per_second": 0.2509599513909552,
+        "latency_in_seconds": 3.9846995285800038,
+        "model_parameter_count": 314880000
+    }
+}

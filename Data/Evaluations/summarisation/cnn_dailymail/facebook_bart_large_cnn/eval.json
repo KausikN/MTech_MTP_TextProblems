@@ -1,0 +1,30 @@
+{
+    "dataset": "cnn_dailymail",
+    "model": "facebook_bart_large_cnn",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge"
+        ],
+        "other_params": {
+            "input_column": "article",
+            "label_column": "highlights"
+        }
+    },
+    "eval": {
+        "rouge1": 0.4022436762978254,
+        "rouge2": 0.17267779883573567,
+        "rougeL": 0.2698022508934159,
+        "rougeLsum": 0.33529586714257836,
+        "total_time_in_seconds": 1260.3390909320005,
+        "samples_per_second": 0.039671863199153654,
+        "latency_in_seconds": 25.20678181864001,
+        "model_parameter_count": 406290432
+    }
+}

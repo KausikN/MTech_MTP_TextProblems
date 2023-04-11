@@ -1,0 +1,37 @@
+{
+    "dataset": "sst2",
+    "model": "pig4431_rtm_distilbert_5e",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "validation"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "accuracy",
+            "recall",
+            "precision",
+            "f1"
+        ],
+        "other_params": {
+            "input_column": "sentence",
+            "label_column": "label",
+            "label_mapping": {
+                "LABEL_0": 0,
+                "LABEL_1": 1
+            }
+        }
+    },
+    "eval": {
+        "accuracy": 0.958,
+        "recall": 0.946360153256705,
+        "precision": 0.9724409448818898,
+        "f1": 0.9592233009708738,
+        "total_time_in_seconds": 46.35423304899996,
+        "samples_per_second": 10.786501406925703,
+        "latency_in_seconds": 0.09270846609799992,
+        "model_parameter_count": 65783042
+    }
+}

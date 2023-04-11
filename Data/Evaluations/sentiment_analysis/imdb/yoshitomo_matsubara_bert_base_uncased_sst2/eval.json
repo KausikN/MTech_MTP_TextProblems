@@ -1,0 +1,37 @@
+{
+    "dataset": "imdb",
+    "model": "yoshitomo_matsubara_bert_base_uncased_sst2",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "accuracy",
+            "recall",
+            "precision",
+            "f1"
+        ],
+        "other_params": {
+            "input_column": "text",
+            "label_column": "label",
+            "label_mapping": {
+                "LABEL_0": 0,
+                "LABEL_1": 1
+            }
+        }
+    },
+    "eval": {
+        "accuracy": 0.896,
+        "recall": 0.8414634146341463,
+        "precision": 0.9409090909090909,
+        "f1": 0.888412017167382,
+        "total_time_in_seconds": 532.9245426109992,
+        "samples_per_second": 0.9382191286411967,
+        "latency_in_seconds": 1.0658490852219984,
+        "model_parameter_count": 109483778
+    }
+}

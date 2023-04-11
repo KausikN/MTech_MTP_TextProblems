@@ -1,0 +1,30 @@
+{
+    "dataset": "samsum",
+    "model": "philschmid_distilbart_cnn_12_6_samsum",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge"
+        ],
+        "other_params": {
+            "input_column": "dialogue",
+            "label_column": "summary"
+        }
+    },
+    "eval": {
+        "rouge1": 0.4322699539954993,
+        "rouge2": 0.22754859507805386,
+        "rougeL": 0.3179907935823424,
+        "rougeLsum": 0.3184697478977176,
+        "total_time_in_seconds": 436.5988182679994,
+        "samples_per_second": 0.11452161093415576,
+        "latency_in_seconds": 8.731976365359987,
+        "model_parameter_count": 305510400
+    }
+}

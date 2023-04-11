@@ -1,0 +1,30 @@
+{
+    "dataset": "gigaword",
+    "model": "facebook_bart_large_cnn",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 50,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "rouge"
+        ],
+        "other_params": {
+            "input_column": "document",
+            "label_column": "summary"
+        }
+    },
+    "eval": {
+        "rouge1": 0.16884577868316525,
+        "rouge2": 0.05208634561582103,
+        "rougeL": 0.1385519030034757,
+        "rougeLsum": 0.13818147085835272,
+        "total_time_in_seconds": 645.4327703060007,
+        "samples_per_second": 0.07746740218395623,
+        "latency_in_seconds": 12.908655406120014,
+        "model_parameter_count": 406290432
+    }
+}

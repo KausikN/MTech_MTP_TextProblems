@@ -1,0 +1,66 @@
+{
+    "dataset": "wnut_17",
+    "model": "gladiator_distilbert_base_uncased_ner_wnut_17",
+    "dataset_params": {
+        "shuffle": true,
+        "shuffle_seed": 0,
+        "N": 500,
+        "split": "test"
+    },
+    "eval_params": {
+        "device": "cpu",
+        "metrics": [
+            "seqeval"
+        ],
+        "other_params": {
+            "input_column": "tokens",
+            "label_column": "ner_tags"
+        }
+    },
+    "eval": {
+        "corporation": {
+            "precision": 0.23333333333333334,
+            "recall": 0.2916666666666667,
+            "f1": 0.2592592592592593,
+            "number": 24
+        },
+        "creative-work": {
+            "precision": 0.34782608695652173,
+            "recall": 0.16666666666666666,
+            "f1": 0.22535211267605634,
+            "number": 48
+        },
+        "group": {
+            "precision": 0.3333333333333333,
+            "recall": 0.08955223880597014,
+            "f1": 0.1411764705882353,
+            "number": 67
+        },
+        "location": {
+            "precision": 0.54,
+            "recall": 0.5,
+            "f1": 0.5192307692307693,
+            "number": 54
+        },
+        "person": {
+            "precision": 0.7352941176470589,
+            "recall": 0.6060606060606061,
+            "f1": 0.664451827242525,
+            "number": 165
+        },
+        "product": {
+            "precision": 0.14285714285714285,
+            "recall": 0.0425531914893617,
+            "f1": 0.06557377049180327,
+            "number": 47
+        },
+        "overall_precision": 0.5535055350553506,
+        "overall_recall": 0.37037037037037035,
+        "overall_f1": 0.4437869822485207,
+        "overall_accuracy": 0.9497172236503856,
+        "total_time_in_seconds": 48.80636210300008,
+        "samples_per_second": 10.244566045402212,
+        "latency_in_seconds": 0.09761272420600017,
+        "model_parameter_count": 66372877
+    }
+}
