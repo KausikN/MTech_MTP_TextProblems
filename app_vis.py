@@ -29,7 +29,7 @@ PATHS = {
     }
 }
 SETTINGS = {}
-
+## Eval Vars
 EVAL_METRICS_FILTER = {
     "Sentiment Analysis": {
         "rank_weights": {
@@ -92,6 +92,8 @@ METRICS_INVERT_RANGE = [
     "latency_in_seconds", 
     "model_parameter_count"
 ]
+## Models Vars
+
 
 # Progress Classes
 class ProgressBar:
@@ -201,42 +203,13 @@ def UI_EvalVis(TASK, USERINPUT_EvalDataset, USERINPUT_EvalModels):
         }
     }
     
-    # Display Evals Table
+    # Display Evals
     st.markdown("## Evaluations")
+    # Display Evals Table
     EVALS_DF = pd.DataFrame(METRICS_DATA, index=EVAL_MODELS_NAMES)
     st.write(EVALS_DF)
-
     # Display Evals Plots
     # Plot Rank Data
-    ############# Using Matplotlib
-    # ## Init
-    # FIG_RANK_BAR = plt.figure()#figsize=(45, 30))
-    # N_MODELS = len(RANK_DATA["overall_ranking"]["rank"])
-    # MAX_OVERALL_RANK = N_MODELS * sum([OVERALL_RANK_METRIC_WEIGHTS[em] for em in OVERALL_RANK_METRIC_WEIGHTS.keys()])
-    # CUR_JOINT_RANK = list(JOINT_RANK)
-    # ## Plot Overall Ranks with proper label color
-    # for i in range(N_MODELS):
-    #     score = MAX_OVERALL_RANK - CUR_JOINT_RANK[i]
-    #     plt.bar([i], [score], label=EVAL_MODELS_NAMES[i])
-    # # Plot Metric Ranks with alternating black and white masks
-    # cur_color_white = True
-    # for em in list(OVERALL_RANK_METRIC_WEIGHTS.keys())[1:][::-1]:
-    #     ### Update Cur Joint Rank
-    #     MAX_OVERALL_RANK -= OVERALL_RANK_METRIC_WEIGHTS[em] * N_MODELS
-    #     for cri in range(len(CUR_JOINT_RANK)):
-    #         CUR_JOINT_RANK[RANKINGS[em][cri]] -= OVERALL_RANK_METRIC_WEIGHTS[em] * cri
-    #     ### Set Color
-    #     cur_color_white = not cur_color_white
-    #     cur_color = "white" if cur_color_white else "black"
-    #     ### Plot
-    #     for i in range(N_MODELS):
-    #         score = MAX_OVERALL_RANK - CUR_JOINT_RANK[i]
-    #         plt.bar([i], [score], color=cur_color, edgecolor="black", alpha=0.25)
-    # # Other Params
-    # plt.legend()
-    # plt.title("Overall Score: " + str(OVERALL_RANK_METRIC_WEIGHTS))
-    # st.markdown("## Overall Ranking")
-    # PLOT_FUNC(FIG_RANK_BAR)
     ############# Using Plotly
     ## Init
     N_MODELS = len(RANK_DATA["overall_ranking"]["rank"])
@@ -256,7 +229,6 @@ def UI_EvalVis(TASK, USERINPUT_EvalDataset, USERINPUT_EvalModels):
     )
     st.markdown("## Overall Ranking Score")
     PLOT_FUNC(FIG_RANK_BAR)
-
     # Plot Radar
     FIG_RADAR = plt.figure(figsize=(10, 10))
     FIG_RADAR = radar_plot(
@@ -267,6 +239,42 @@ def UI_EvalVis(TASK, USERINPUT_EvalDataset, USERINPUT_EvalModels):
     )
     st.markdown("## Radar Plot")
     st.pyplot(FIG_RADAR)
+
+def UI_ModelsVis(MODELS_DATA, params):
+    '''
+    UI - Visualise Models
+    '''
+    # Init
+    N_MODELS = len(MODELS_DATA)
+    # Display Models
+    st.markdown("## Models")
+    # Display Models Table
+    MODELS_DF_DATA = {
+        "Reported Metrics": [],
+        "Computed Metrics": []
+    }
+    MODELS_CHECK = {k: False for k in MODELS_DF_DATA.keys()}
+    for m in MODELS_DATA:
+        ## Basic Data
+        for dfk in MODELS_DF_DATA.keys():
+            MODELS_DF_DATA[dfk].append({
+                "Model": m["Model"],
+                "Code": m["Code"],
+                "Language": m["Language"]
+            })
+        ## Metrics
+        for mtk in ["Reported Metrics", "Computed Metrics"]:
+            if mtk in m.keys():
+                for dk in m[mtk].keys():
+                    for emk in m[mtk][dk].keys():
+                        MODELS_DF_DATA[mtk][-1][f"{emk} - {dk}"] = m[mtk][dk][emk]
+                    if not MODELS_CHECK[mtk] and len(m[mtk][dk].keys()) > 0: MODELS_CHECK[mtk] = True
+
+    for dfk in MODELS_DF_DATA.keys():
+        if not MODELS_CHECK[dfk]: continue
+        MODELS_DF = pd.DataFrame(MODELS_DF_DATA[dfk])
+        st.markdown(f"### {dfk}")
+        st.write(MODELS_DF)
 
 # Main Functions
 def textproblems_vis_evals_basic(TASK="Sentiment Analysis"):
@@ -289,6 +297,55 @@ def textproblems_vis_evals_basic(TASK="Sentiment Analysis"):
     ## Run Vis
     UI_EvalVis(TASK, USERINPUT_EvalDataset, USERINPUT_EvalModels)
 
+def textproblems_vis_models_basic(TASK="Sentiment Analysis"):
+    # Title
+    st.markdown(f"# Models - {TASK}")
+
+    # Load Inputs
+    # Init
+    PROGRESS_BARS = {}
+    # Load Models for Task
+    TASK_MODELS_DATA = json.load(open(os.path.join(
+        PATHS["data"]["models"], TASK, f"MTP - Text Problems - {TASK} - Models.json"
+    ), "r"))
+    # Select Task Subtype
+    USERINPUT_TaskSubtype = st.selectbox(
+        "Select Task Subtype",
+        TASK_MODELS_DATA.keys()
+    )
+    # Select Model Type
+    USERINPUT_ModelType = st.selectbox(
+        "Select Model Type",
+        TASK_MODELS_DATA[USERINPUT_TaskSubtype].keys()
+    )
+    # Select Model Subtype
+    USERINPUT_ModelSubtype = st.selectbox(
+        "Select Model Subtype",
+        TASK_MODELS_DATA[USERINPUT_TaskSubtype][USERINPUT_ModelType].keys()
+    )
+    # Select Dataset
+    USERINPUT_Dataset = st.selectbox(
+        "Select Dataset",
+        TASK_MODELS_DATA[USERINPUT_TaskSubtype][USERINPUT_ModelType][USERINPUT_ModelSubtype].keys()
+    )
+
+    # Process Check
+    USERINPUT_Process = st.checkbox("Stream Process", value=False)
+    if not USERINPUT_Process: USERINPUT_Process = st.button("Process")
+    if not USERINPUT_Process: st.stop()
+    # Process Inputs
+    ## Load Data
+    MODELS_DATA = TASK_MODELS_DATA[USERINPUT_TaskSubtype][USERINPUT_ModelType][USERINPUT_ModelSubtype][USERINPUT_Dataset]
+    ## Run Vis
+    USERINPUT_Selections = {
+        "task": TASK,
+        "task_subtype": USERINPUT_TaskSubtype,
+        "model_type": USERINPUT_ModelType,
+        "model_subtype": USERINPUT_ModelSubtype,
+        "dataset": USERINPUT_Dataset
+    }
+    UI_ModelsVis(MODELS_DATA, USERINPUT_Selections)
+
 # Mode Vars
 APP_MODES = {
     "Evaluations": {
@@ -298,6 +355,18 @@ APP_MODES = {
             "POS Tagging",
             # "Relationship Extraction",
             # "Dialogue",
+            "Summarisation",
+            "Translation",
+            "Question Answering"
+        ]
+    },
+    "Models": {
+        k: functools.partial(textproblems_vis_models_basic, TASK=k) for k in [
+            "Sentiment Analysis",
+            "Named Entity Recognition",
+            # "POS Tagging",
+            "Relationship Extraction",
+            "Dialogue",
             "Summarisation",
             "Translation",
             "Question Answering"
