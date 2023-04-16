@@ -1,5 +1,7 @@
 """
 Streamlit App - Visualisation
+
+Total Models in Models Data: 454
 """
 
 # Imports
@@ -114,6 +116,179 @@ class ProgressBar:
         self.bar.empty()
 
 # Utils Functions
+def Utils_GetModelsInfo(TASK_MODELS_DATA):
+    '''
+    Utils - Get Task Models Info
+    '''
+    # Init
+    TASK_MODELS_INFO = {
+        "overall": {},
+        "separate": {}
+    }
+    # Iterate over subtasks
+    for subtask in TASK_MODELS_DATA.keys():
+        ## Init
+        TASK_MODELS_INFO["separate"][subtask] = {
+            "overall": {},
+            "separate": {}
+        }
+        CUR_INFO_SUBTASK = TASK_MODELS_INFO["separate"][subtask]
+        CUR_MODELS_SUBTASK = TASK_MODELS_DATA[subtask]
+        ## Iterate over model types
+        for model_type in CUR_MODELS_SUBTASK.keys():
+            ### Init
+            CUR_INFO_SUBTASK["separate"][model_type] = {
+                "overall": {},
+                "separate": {}
+            }
+            CUR_INFO_MODELTYPE = CUR_INFO_SUBTASK["separate"][model_type]
+            CUR_MODELS_MODELTYPE = CUR_MODELS_SUBTASK[model_type]
+            ### Iterate over models subtypes
+            for model_subtype in CUR_MODELS_MODELTYPE.keys():
+                #### Init
+                CUR_INFO_MODELTYPE["separate"][model_subtype] = {
+                    "overall": {},
+                    "separate": {}
+                }
+                CUR_INFO_MODELSUBTYPE = CUR_INFO_MODELTYPE["separate"][model_subtype]
+                CUR_MODELS_MODELSUBTYPE = CUR_MODELS_MODELTYPE[model_subtype]
+                #### Iterate over datasets
+                for dataset in CUR_MODELS_MODELSUBTYPE.keys():
+                    ##### Init
+                    CUR_INFO_MODELSUBTYPE["separate"][dataset] = {}
+                    CUR_INFO = CUR_INFO_MODELSUBTYPE["separate"][dataset]
+                    CUR_MODELS = CUR_MODELS_MODELSUBTYPE[dataset]
+                    ##### Iterate over models
+                    CUR_INFO.update({
+                        "models_count": len(CUR_MODELS)
+                    })
+                #### Set Overall
+                CUR_INFO_MODELSUBTYPE["overall"].update({
+                    "models_count": sum([
+                        CUR_INFO_MODELSUBTYPE["separate"][k]["models_count"] 
+                        for k in CUR_INFO_MODELSUBTYPE["separate"].keys()
+                    ])
+                })
+            ### Set Overall
+            CUR_INFO_MODELTYPE["overall"].update({
+                "models_count": sum([
+                    CUR_INFO_MODELTYPE["separate"][k]["overall"]["models_count"] 
+                    for k in CUR_INFO_MODELTYPE["separate"].keys()
+                ])
+            })
+        ## Set Overall
+        CUR_INFO_SUBTASK["overall"].update({
+            "models_count": sum([
+                CUR_INFO_SUBTASK["separate"][k]["overall"]["models_count"] 
+                for k in CUR_INFO_SUBTASK["separate"].keys()
+            ])
+        })
+    # Set Overall
+    TASK_MODELS_INFO["overall"].update({
+        "models_count": sum([
+            TASK_MODELS_INFO["separate"][k]["overall"]["models_count"] 
+            for k in TASK_MODELS_INFO["separate"].keys()
+        ])
+    })
+
+    return TASK_MODELS_INFO
+
+def Utils_PieChart(data, labels, title=""):
+    '''
+    Utils - Construct Pie Chart
+    '''
+    # Init
+    CUR_FIG = plt.figure()
+    labels_withvals = [f"{labels[i]} ({data[i]})" for i in range(len(data))]
+    # Plot
+    plt.pie(data, labels=labels_withvals, shadow=True, autopct="%1.2f%%", explode=[0.1]*len(data))
+    plt.title(title)
+    # plt.legend()
+
+    return CUR_FIG
+
+def Utils_GetModelsInfoVis(TASK_MODELS_INFO):
+    '''
+    Utils - Get Task Models Info Visualisations
+    '''
+    # Init
+    TASK_MODELS_INFO_VIS = {
+        "overall": {},
+        "separate": {}
+    }
+    # Iterate over subtasks
+    for subtask in TASK_MODELS_INFO["separate"].keys():
+        ## Init
+        TASK_MODELS_INFO_VIS["separate"][subtask] = {
+            "overall": {},
+            "separate": {}
+        }
+        CUR_VIS_SUBTASK = TASK_MODELS_INFO_VIS["separate"][subtask]
+        CUR_INFO_SUBTASK = TASK_MODELS_INFO["separate"][subtask]
+        ## Iterate over model types
+        for model_type in CUR_INFO_SUBTASK["separate"].keys():
+            ### Init
+            CUR_VIS_SUBTASK["separate"][model_type] = {
+                "overall": {},
+                "separate": {}
+            }
+            CUR_VIS_MODELTYPE = CUR_VIS_SUBTASK["separate"][model_type]
+            CUR_INFO_MODELTYPE = CUR_INFO_SUBTASK["separate"][model_type]
+            ### Iterate over models subtypes
+            for model_subtype in CUR_INFO_MODELTYPE["separate"].keys():
+                #### Init
+                CUR_VIS_MODELTYPE["separate"][model_subtype] = {
+                    "overall": {},
+                    "separate": {}
+                }
+                CUR_VIS_MODELSUBTYPE = CUR_VIS_MODELTYPE["separate"][model_subtype]
+                CUR_INFO_MODELSUBTYPE = CUR_INFO_MODELTYPE["separate"][model_subtype]
+                #### Set Overall
+                CUR_VIS_MODELSUBTYPE["overall"].update({
+                    "pie": Utils_PieChart(
+                        [
+                            CUR_INFO_MODELSUBTYPE["separate"][k]["models_count"] 
+                            for k in CUR_INFO_MODELSUBTYPE["separate"].keys()
+                        ],
+                        labels=list(CUR_INFO_MODELSUBTYPE["separate"].keys()),
+                        title=f"{subtask} - {model_type} - {model_subtype}"
+                    )
+                })
+            ### Set Overall
+            CUR_VIS_MODELTYPE["overall"].update({
+                "pie": Utils_PieChart(
+                    [
+                        CUR_INFO_MODELTYPE["separate"][k]["overall"]["models_count"] 
+                        for k in CUR_INFO_MODELTYPE["separate"].keys()
+                    ],
+                    labels=list(CUR_INFO_MODELTYPE["separate"].keys()),
+                    title=f"{subtask} - {model_type}"
+                )
+            })
+        ## Set Overall
+        CUR_VIS_SUBTASK["overall"].update({
+            "pie": Utils_PieChart(
+                [
+                    CUR_INFO_SUBTASK["separate"][k]["overall"]["models_count"] 
+                    for k in CUR_INFO_SUBTASK["separate"].keys()
+                ],
+                labels=list(CUR_INFO_SUBTASK["separate"].keys()),
+                title=f"{subtask}"
+            )
+        })
+    # Set Overall
+    TASK_MODELS_INFO_VIS["overall"].update({
+        "pie": Utils_PieChart(
+            [
+                TASK_MODELS_INFO["separate"][k]["overall"]["models_count"] 
+                for k in TASK_MODELS_INFO["separate"].keys()
+            ],
+            labels=list(TASK_MODELS_INFO["separate"].keys()),
+            title=f"Overall"
+        )
+    })
+
+    return TASK_MODELS_INFO_VIS
 
 # Cache Data Functions
 
@@ -304,30 +479,66 @@ def textproblems_vis_models_basic(TASK="Sentiment Analysis"):
     # Load Inputs
     # Init
     PROGRESS_BARS = {}
+    INFO_DISPLAY_COLRATIO = (1, 3)
     # Load Models for Task
     TASK_MODELS_DATA = json.load(open(os.path.join(
         PATHS["data"]["models"], TASK, f"MTP - Text Problems - {TASK} - Models.json"
     ), "r"))
+    # Get Models Info and InfoVis
+    TASK_MODELS_INFO = Utils_GetModelsInfo(TASK_MODELS_DATA)
+    TASK_MODELS_INFO_VIS = Utils_GetModelsInfoVis(TASK_MODELS_INFO)
+    CUR_DATA = {
+        "info": TASK_MODELS_INFO,
+        "vis": TASK_MODELS_INFO_VIS
+    }
+    cols = st.columns(INFO_DISPLAY_COLRATIO)
+    cols[0].markdown("Total Model Count: " + "```" + str(CUR_DATA["info"]["overall"]["models_count"]) + "```")
+    cols[1].pyplot(CUR_DATA["vis"]["overall"]["pie"])
     # Select Task Subtype
     USERINPUT_TaskSubtype = st.selectbox(
         "Select Task Subtype",
         TASK_MODELS_DATA.keys()
     )
+    CUR_DATA = {
+        "info": CUR_DATA["info"]["separate"][USERINPUT_TaskSubtype],
+        "vis": CUR_DATA["vis"]["separate"][USERINPUT_TaskSubtype]
+    }
+    cols = st.columns(INFO_DISPLAY_COLRATIO)
+    cols[0].markdown(f"{USERINPUT_TaskSubtype} Model Count: " + "```" + str(CUR_DATA["info"]["overall"]["models_count"]) + "```")
+    cols[1].pyplot(CUR_DATA["vis"]["overall"]["pie"])
     # Select Model Type
     USERINPUT_ModelType = st.selectbox(
         "Select Model Type",
         TASK_MODELS_DATA[USERINPUT_TaskSubtype].keys()
     )
+    CUR_DATA = {
+        "info": CUR_DATA["info"]["separate"][USERINPUT_ModelType],
+        "vis": CUR_DATA["vis"]["separate"][USERINPUT_ModelType]
+    }
+    cols = st.columns(INFO_DISPLAY_COLRATIO)
+    cols[0].markdown(f"{USERINPUT_ModelType} Model Count: " + "```" + str(CUR_DATA["info"]["overall"]["models_count"]) + "```")
+    cols[1].pyplot(CUR_DATA["vis"]["overall"]["pie"])
     # Select Model Subtype
     USERINPUT_ModelSubtype = st.selectbox(
         "Select Model Subtype",
         TASK_MODELS_DATA[USERINPUT_TaskSubtype][USERINPUT_ModelType].keys()
     )
+    CUR_DATA = {
+        "info": CUR_DATA["info"]["separate"][USERINPUT_ModelSubtype],
+        "vis": CUR_DATA["vis"]["separate"][USERINPUT_ModelSubtype]
+    }
+    cols = st.columns(INFO_DISPLAY_COLRATIO)
+    cols[0].markdown(f"{USERINPUT_ModelSubtype} Model Count: " + "```" + str(CUR_DATA["info"]["overall"]["models_count"]) + "```")
+    cols[1].pyplot(CUR_DATA["vis"]["overall"]["pie"])
     # Select Dataset
     USERINPUT_Dataset = st.selectbox(
         "Select Dataset",
         TASK_MODELS_DATA[USERINPUT_TaskSubtype][USERINPUT_ModelType][USERINPUT_ModelSubtype].keys()
     )
+    CUR_DATA = {
+        "info": CUR_DATA["info"]["separate"][USERINPUT_Dataset]
+    }
+    st.markdown(f"{USERINPUT_Dataset} Model Count: " + "```" + str(CUR_DATA["info"]["models_count"]) + "```")
 
     # Process Check
     USERINPUT_Process = st.checkbox("Stream Process", value=False)
