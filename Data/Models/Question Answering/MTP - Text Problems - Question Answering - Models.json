@@ -1058,10 +1058,8 @@
                         "Eval": "srikanthkb_xlnet_base_cased_finetuned_squad"
                     }
                 ]
-            }
-        },
-        "Multilingual / Other Languages": {
-            "": {
+            },
+            "Multilingual / Other Languages": {
                 "SQuAD2.0 Spanish": [
                     {
                         "Dataset": "SQuAD2.0 Spanish",

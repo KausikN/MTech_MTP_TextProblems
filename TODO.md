@@ -2,14 +2,9 @@
  - Other
    - Notebook for converting dataset to Hugging Face format
    - Cost analysis of different models (GCP - Per inference cost)
- - Sentiment Analysis
- - Named Entity Recognition
-  - Try more generative model based approaches (give prompt, text and ner tags and ask to extract entities in another text)
- - Relationship Extraction
- - Dialogue
- - Question Answering
- - Text Summarization
- - Multimodal tasks
 
  - Other
-    - Notebook for converting dataset to Hugging Face format, finetune and predict (Barebones)
+ - Report
+  - Introduction: Write intro as to why we are doing the tasks - Surveyed, Came up with concrete rules which professionals can apply
+  - In NLP, Make table with task, input, output
+  - Experimentation: Write overall about the process followed
