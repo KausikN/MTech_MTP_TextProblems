@@ -13,9 +13,11 @@ import functools
 import streamlit as st
 import numpy as np
 import pandas as pd
+# import graphviz
 import plotly.express as px
 import matplotlib.pyplot as plt
 from evaluate.visualization import radar_plot
+from sklearn.tree import DecisionTreeClassifier, plot_tree#, export_graphviz
 
 # from TextProblems import *
 from Utils.Utils import *
@@ -414,6 +416,41 @@ def UI_EvalVis(TASK, USERINPUT_EvalDataset, USERINPUT_EvalModels):
     )
     st.markdown("## Radar Plot")
     st.pyplot(FIG_RADAR)
+
+    # Construct Decision Tree
+    st.markdown("## Decision Tree")
+    # F_keys = list(EVAL_METRICS_FILTER[TASK]["rank_weights"].keys())[:]
+    F_keys = list(EVAL_METRIC_KEYS)[:]
+    Fs = np.array([d[f] for d in METRICS_DATA for f in F_keys]).reshape(-1, len(F_keys))
+    Ls = np.arange(len(METRICS_DATA)).reshape(-1, 1)
+    # Ls_onehot = np.zeros((Ls.size, Ls.max()+1))
+    # Ls_onehot[np.arange(Ls.size),Ls.reshape(-1)] = 1
+    MAX_DEPTH = int(Ls.shape[0]/2)
+    classifier_data = DecisionTreeClassifier(
+        criterion="entropy",
+        random_state=0,
+        max_depth=MAX_DEPTH
+    ).fit(Fs, Ls)
+    # Plot Tree
+    st.markdown("### Tree Plot")
+    FIG_TREE = plt.figure(figsize=(75, 40))
+    plot_tree(
+        classifier_data, 
+        max_depth=MAX_DEPTH, 
+        feature_names=F_keys, 
+        class_names=[str(L) for L in Ls],
+        impurity=False,
+        filled=True,
+        rounded=True
+    )
+    # st.pyplot(FIG_TREE)
+    TREE_SAVE_PATH = os.path.join(PATHS["temp"], "tree.jpg")
+    FIG_TREE.savefig(TREE_SAVE_PATH)
+    st.image(TREE_SAVE_PATH, use_column_width=True)
+    ## Display Models IDs
+    MODELIDS_DF = pd.DataFrame({"ID": Ls.reshape(-1), "Name": EVAL_MODELS_NAMES})
+    st.table(MODELIDS_DF)
+
 
 def UI_ModelsVis(MODELS_DATA, params):
     '''
