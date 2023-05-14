@@ -13,11 +13,10 @@ import functools
 import streamlit as st
 import numpy as np
 import pandas as pd
-# import graphviz
 import plotly.express as px
 import matplotlib.pyplot as plt
 from evaluate.visualization import radar_plot
-from sklearn.tree import DecisionTreeClassifier, plot_tree#, export_graphviz
+from sklearn.tree import DecisionTreeClassifier, plot_tree
 
 # from TextProblems import *
 from Utils.Utils import *
@@ -422,9 +421,7 @@ def UI_EvalVis(TASK, USERINPUT_EvalDataset, USERINPUT_EvalModels):
     # F_keys = list(EVAL_METRICS_FILTER[TASK]["rank_weights"].keys())[:]
     F_keys = list(EVAL_METRIC_KEYS)[:]
     Fs = np.array([d[f] for d in METRICS_DATA for f in F_keys]).reshape(-1, len(F_keys))
-    Ls = np.arange(len(METRICS_DATA)).reshape(-1, 1)
-    # Ls_onehot = np.zeros((Ls.size, Ls.max()+1))
-    # Ls_onehot[np.arange(Ls.size),Ls.reshape(-1)] = 1
+    Ls = np.arange(len(METRICS_DATA)).reshape(-1)
     MAX_DEPTH = int(Ls.shape[0]/2)
     classifier_data = DecisionTreeClassifier(
         criterion="entropy",
@@ -433,23 +430,26 @@ def UI_EvalVis(TASK, USERINPUT_EvalDataset, USERINPUT_EvalModels):
     ).fit(Fs, Ls)
     # Plot Tree
     st.markdown("### Tree Plot")
-    FIG_TREE = plt.figure(figsize=(75, 40))
+    FIG_TREE = plt.figure(figsize=(50, 30))
     plot_tree(
         classifier_data, 
-        max_depth=MAX_DEPTH, 
+        max_depth=None, 
         feature_names=F_keys, 
-        class_names=[str(L) for L in Ls],
+        # class_names=[str(L) for L in Ls.reshape(-1)],
+        class_names=EVAL_MODELS_NAMES,
+        label="all",
         impurity=False,
         filled=True,
-        rounded=True
+        rounded=True,
+        proportion=False
     )
     # st.pyplot(FIG_TREE)
-    TREE_SAVE_PATH = os.path.join(PATHS["temp"], "tree.jpg")
+    TREE_SAVE_PATH = os.path.join(PATHS["temp"], "tree.svg")
     FIG_TREE.savefig(TREE_SAVE_PATH)
     st.image(TREE_SAVE_PATH, use_column_width=True)
-    ## Display Models IDs
-    MODELIDS_DF = pd.DataFrame({"ID": Ls.reshape(-1), "Name": EVAL_MODELS_NAMES})
-    st.table(MODELIDS_DF)
+    # ## Display Models IDs
+    # MODELIDS_DF = pd.DataFrame({"ID": Ls.reshape(-1), "Name": EVAL_MODELS_NAMES})
+    # st.table(MODELIDS_DF)
 
 
 def UI_ModelsVis(MODELS_DATA, params):
