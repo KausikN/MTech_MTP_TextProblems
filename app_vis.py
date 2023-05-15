@@ -28,7 +28,9 @@ PATHS = {
 
     "data": {
         "evaluations": "Data/Evaluations/",
+        "evaluations_file": "eval.json",
         "models": "Data/Models/",
+        "models_file": "MTP - Text Problems - {TASK} - Models.json"
     }
 }
 SETTINGS = {}
@@ -311,7 +313,7 @@ def Utils_TrainEvalDecisionTree(METRICS_DATA):
     
     return DECISION_TREE
 
-def Utils_LoadEvalMetrics(TASK, EVAL_MODELS_NAMES, EVAL_MODELS_PARENT_DIR, EVAL_FILE_NAME="eval.json"):
+def Utils_LoadEvalMetrics(TASK, EVAL_MODELS_NAMES, EVAL_MODELS_PARENT_DIR, EVAL_FILE_NAME=PATHS["data"]["evaluations_file"]):
     '''
     Utils - Load Eval Metrics
     '''
@@ -336,6 +338,29 @@ def Utils_LoadEvalMetrics(TASK, EVAL_MODELS_NAMES, EVAL_MODELS_PARENT_DIR, EVAL_
         "metric_keys": EVAL_METRIC_KEYS
     }
     return OUT
+
+def Utils_GetModelIDMap(TASK):
+    '''
+    Utils - Get Model ID Map
+    '''
+    # Load Models Data
+    TASK_MODELS_DATA = json.load(open(os.path.join(
+        PATHS["data"]["models"], TASK, PATHS["data"]["models_file"].format(TASK=TASK)
+    ), "r"))
+    TASK_MODELS_DATA = TASK_MODELS_DATA[list(TASK_MODELS_DATA.keys())[0]]["Hugging Face"]
+    MODELS_ID_MAP = {}
+    for language in TASK_MODELS_DATA.keys():
+        for dataset in TASK_MODELS_DATA[language].keys():
+            for model_data in TASK_MODELS_DATA[language][dataset]:
+                MODELS_ID_MAP[model_data["Eval"]] = {
+                    "Hugging Face ID": model_data["Hugging Face ID"],
+                    "Hugging Face Link": model_data["Code"],
+                    "Base Model": model_data["Model"],
+                    "Language": model_data["Language"],
+                    "Reported Metrics": model_data["Reported Metrics"]
+                }
+
+    return MODELS_ID_MAP
 
 # Cache Data Functions
 
@@ -428,7 +453,7 @@ def UI_EvalVis(TASK, USERINPUT_EvalDataset, USERINPUT_EvalModels):
     EVAL_MODELS_PARENT_DIR = os.path.join(PATHS["data"]["evaluations"], name_to_path(TASK), USERINPUT_EvalDataset)
     OVERALL_RANK_METRIC_WEIGHTS = EVAL_METRICS_FILTER[TASK]["rank_weights"]
     # Load Eval Data
-    OUT = Utils_LoadEvalMetrics(TASK, EVAL_MODELS_NAMES, EVAL_MODELS_PARENT_DIR, EVAL_FILE_NAME="eval.json")
+    OUT = Utils_LoadEvalMetrics(TASK, EVAL_MODELS_NAMES, EVAL_MODELS_PARENT_DIR, EVAL_FILE_NAME=PATHS["data"]["evaluations_file"])
     METRICS_DATA = OUT["metrics_data"]
     EVAL_METRIC_KEYS = OUT["metric_keys"]
     # Rank Models
@@ -559,10 +584,12 @@ def textproblems_vis_evals_decisiontree(TASK="Sentiment Analysis"):
     # Load Metrics
     EVAL_MODELS_NAMES = USERINPUT_EvalModels
     EVAL_MODELS_PARENT_DIR = os.path.join(PATHS["data"]["evaluations"], name_to_path(TASK), USERINPUT_EvalDataset)
-    EVAL_FILE_NAME = "eval.json"
-    OUT = Utils_LoadEvalMetrics(TASK, EVAL_MODELS_NAMES, EVAL_MODELS_PARENT_DIR, EVAL_FILE_NAME=EVAL_FILE_NAME)
-    METRICS_DATA = OUT["metrics_data"]
-    EVAL_METRIC_KEYS = OUT["metric_keys"]
+    EVAL_FILE_NAME = PATHS["data"]["evaluations_file"]
+    OUT_METRICS = Utils_LoadEvalMetrics(TASK, EVAL_MODELS_NAMES, EVAL_MODELS_PARENT_DIR, EVAL_FILE_NAME=EVAL_FILE_NAME)
+    METRICS_DATA = OUT_METRICS["metrics_data"]
+    EVAL_METRIC_KEYS = OUT_METRICS["metric_keys"]
+    # Load Model ID Map
+    MODELS_ID_MAP = Utils_GetModelIDMap(TASK)
     ## Select Metrics
     USERINPUT_Metrics = st.multiselect(
         "Select Metrics", EVAL_METRIC_KEYS, 
@@ -607,8 +634,16 @@ def textproblems_vis_evals_decisiontree(TASK="Sentiment Analysis"):
     PREDICTED_MODEL_NAME = EVAL_MODELS_NAMES[PREDICTED_MODEL_INDEX]
     ## Display Predicted Model
     st.markdown("## Recommended Model")
+    ### Display Model Info
+    if PREDICTED_MODEL_NAME in MODELS_ID_MAP.keys():
+        st.markdown(f"### Model Info")
+        st.write(MODELS_ID_MAP[PREDICTED_MODEL_NAME])
+    ### Display Eval Info
     PREDICTED_MODEL_DATA = json.load(open(os.path.join(EVAL_MODELS_PARENT_DIR, PREDICTED_MODEL_NAME, EVAL_FILE_NAME), "r"))
+    st.markdown(f"### Evaluation Info")
     st.write(PREDICTED_MODEL_DATA)
+    
+    
 
 def textproblems_vis_evals_basic(TASK="Sentiment Analysis"):
     # Title
@@ -640,7 +675,7 @@ def textproblems_vis_models_basic(TASK="Sentiment Analysis"):
     INFO_DISPLAY_COLRATIO = (1, 3)
     # Load Models for Task
     TASK_MODELS_DATA = json.load(open(os.path.join(
-        PATHS["data"]["models"], TASK, f"MTP - Text Problems - {TASK} - Models.json"
+        PATHS["data"]["models"], TASK, PATHS["data"]["models_file"].format(TASK=TASK)
     ), "r"))
     # Get Models Info and InfoVis
     TASK_MODELS_INFO = Utils_GetModelsInfo(TASK_MODELS_DATA)
