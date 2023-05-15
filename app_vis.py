@@ -291,6 +291,52 @@ def Utils_GetModelsInfoVis(TASK_MODELS_INFO):
 
     return TASK_MODELS_INFO_VIS
 
+@st.cache_resource
+def Utils_TrainEvalDecisionTree(METRICS_DATA):
+    '''
+    Utils - Train Decision Tree for Evaluations
+    '''
+    # Init
+    EVAL_METRIC_KEYS = list(METRICS_DATA[0].keys())
+    # Train Decision Tree
+    F_keys = EVAL_METRIC_KEYS
+    Fs = np.array([d[f] for d in METRICS_DATA for f in F_keys]).reshape(-1, len(F_keys))
+    Ls = np.arange(len(METRICS_DATA)).reshape(-1)
+    MAX_DEPTH = int(Ls.shape[0]/2)
+    DECISION_TREE = DecisionTreeClassifier(
+        criterion="entropy",
+        random_state=0,
+        max_depth=MAX_DEPTH
+    ).fit(Fs, Ls)
+    
+    return DECISION_TREE
+
+def Utils_LoadEvalMetrics(TASK, EVAL_MODELS_NAMES, EVAL_MODELS_PARENT_DIR, EVAL_FILE_NAME="eval.json"):
+    '''
+    Utils - Load Eval Metrics
+    '''
+    # Load Eval Data
+    MODELS_EVAL_DATA = [json.load(open(os.path.join(EVAL_MODELS_PARENT_DIR, f, EVAL_FILE_NAME), "r")) for f in EVAL_MODELS_NAMES]
+    METRICS_DATA = [d["eval"] for d in MODELS_EVAL_DATA]
+    # Filter Eval Metrics
+    if "ignore" in EVAL_METRICS_FILTER[TASK].keys():
+        METRICS_DATA = [{
+            k: d[k] for k in d.keys() 
+            if k not in EVAL_METRICS_FILTER[TASK]["ignore"]
+        } for d in METRICS_DATA]
+    if "keep" in EVAL_METRICS_FILTER[TASK].keys():
+        METRICS_DATA = [{
+            k: d[k] for k in d.keys() 
+            if k in EVAL_METRICS_FILTER[TASK]["keep"]
+        } for d in METRICS_DATA]
+    EVAL_METRIC_KEYS = list(METRICS_DATA[0].keys())
+
+    OUT = {
+        "metrics_data": METRICS_DATA,
+        "metric_keys": EVAL_METRIC_KEYS
+    }
+    return OUT
+
 # Cache Data Functions
 
 # UI Functions
@@ -323,6 +369,53 @@ def UI_SelectEvalModels(TASK, USERINPUT_EvalDataset):
 
     return USERINPUT_EvalModels
 
+def UI_DisplayDecisionTree(DECISION_TREE, FEATURE_NAMES, CLASS_NAMES, display=True):
+    '''
+    UI - Display Decision Tree
+    '''
+    # Plot Tree
+    FIG_TREE = plt.figure(figsize=(50, 30))
+    plot_tree(
+        DECISION_TREE, 
+        max_depth=None, 
+        feature_names=FEATURE_NAMES, 
+        class_names=CLASS_NAMES,
+        label="all",
+        impurity=False,
+        filled=True,
+        rounded=True,
+        proportion=False
+    )
+    # st.pyplot(FIG_TREE)
+    TREE_SAVE_PATH = os.path.join(PATHS["temp"], "tree.svg")
+    FIG_TREE.savefig(TREE_SAVE_PATH)
+    if display: st.image(TREE_SAVE_PATH, width=100)
+
+def UI_DisplayMetricsDistribution(METRICS_DATA, n_cols=2):
+    '''
+    UI - Display Metrics Distribution
+    '''
+    # Init
+    N_METRICS = len(METRICS_DATA[0].keys())
+    N_ROWS = int(np.ceil(N_METRICS / n_cols))
+    EVAL_METRICS = list(METRICS_DATA[0].keys())
+    # Get Bins
+    BINS = st.number_input("Bins", min_value=1, max_value=len(METRICS_DATA), value=min(5, len(METRICS_DATA)))
+    # Display Metrics Distribution
+    for row_i in range(N_ROWS):
+        cols = st.columns(n_cols)
+        for col_i in range(n_cols):
+            i = row_i * n_cols + col_i
+            if i >= N_METRICS: break
+            FIG = plt.figure()
+            METRIC_DATA = np.round([d[EVAL_METRICS[i]] for d in METRICS_DATA], 5)
+            plt.hist(METRIC_DATA, bins=BINS)
+            plt.title(list(METRICS_DATA[0].keys())[i])
+            if SETTINGS["plots_interactive"]:
+                cols[col_i].plotly_chart(FIG)
+            else:
+                cols[col_i].pyplot(FIG)
+
 def UI_EvalVis(TASK, USERINPUT_EvalDataset, USERINPUT_EvalModels):
     '''
     UI - Visualise Evaluations
@@ -332,24 +425,12 @@ def UI_EvalVis(TASK, USERINPUT_EvalDataset, USERINPUT_EvalModels):
     # Init
     DATASET_DIR = USERINPUT_EvalDataset
     EVAL_MODELS_NAMES = USERINPUT_EvalModels
-    EVAL_FILE_NAME = "eval.json"
     EVAL_MODELS_PARENT_DIR = os.path.join(PATHS["data"]["evaluations"], name_to_path(TASK), USERINPUT_EvalDataset)
     OVERALL_RANK_METRIC_WEIGHTS = EVAL_METRICS_FILTER[TASK]["rank_weights"]
     # Load Eval Data
-    MODELS_EVAL_DATA = [json.load(open(os.path.join(EVAL_MODELS_PARENT_DIR, f, EVAL_FILE_NAME), "r")) for f in EVAL_MODELS_NAMES]
-    METRICS_DATA = [d["eval"] for d in MODELS_EVAL_DATA]
-    # Filter Eval Metrics
-    if "ignore" in EVAL_METRICS_FILTER[TASK].keys():
-        METRICS_DATA = [{
-            k: d[k] for k in d.keys() 
-            if k not in EVAL_METRICS_FILTER[TASK]["ignore"]
-        } for d in METRICS_DATA]
-    if "keep" in EVAL_METRICS_FILTER[TASK].keys():
-        METRICS_DATA = [{
-            k: d[k] for k in d.keys() 
-            if k in EVAL_METRICS_FILTER[TASK]["keep"]
-        } for d in METRICS_DATA]
-    EVAL_METRIC_KEYS = list(METRICS_DATA[0].keys())
+    OUT = Utils_LoadEvalMetrics(TASK, EVAL_MODELS_NAMES, EVAL_MODELS_PARENT_DIR, EVAL_FILE_NAME="eval.json")
+    METRICS_DATA = OUT["metrics_data"]
+    EVAL_METRIC_KEYS = OUT["metric_keys"]
     # Rank Models
     # Compute Rankings based on each metric
     RANKINGS = {}
@@ -418,39 +499,9 @@ def UI_EvalVis(TASK, USERINPUT_EvalDataset, USERINPUT_EvalModels):
 
     # Construct Decision Tree
     st.markdown("## Decision Tree")
-    # F_keys = list(EVAL_METRICS_FILTER[TASK]["rank_weights"].keys())[:]
-    F_keys = list(EVAL_METRIC_KEYS)[:]
-    Fs = np.array([d[f] for d in METRICS_DATA for f in F_keys]).reshape(-1, len(F_keys))
-    Ls = np.arange(len(METRICS_DATA)).reshape(-1)
-    MAX_DEPTH = int(Ls.shape[0]/2)
-    classifier_data = DecisionTreeClassifier(
-        criterion="entropy",
-        random_state=0,
-        max_depth=MAX_DEPTH
-    ).fit(Fs, Ls)
+    DECISION_TREE = Utils_TrainEvalDecisionTree(METRICS_DATA)
     # Plot Tree
-    st.markdown("### Tree Plot")
-    FIG_TREE = plt.figure(figsize=(50, 30))
-    plot_tree(
-        classifier_data, 
-        max_depth=None, 
-        feature_names=F_keys, 
-        # class_names=[str(L) for L in Ls.reshape(-1)],
-        class_names=EVAL_MODELS_NAMES,
-        label="all",
-        impurity=False,
-        filled=True,
-        rounded=True,
-        proportion=False
-    )
-    # st.pyplot(FIG_TREE)
-    TREE_SAVE_PATH = os.path.join(PATHS["temp"], "tree.svg")
-    FIG_TREE.savefig(TREE_SAVE_PATH)
-    st.image(TREE_SAVE_PATH, use_column_width=True)
-    # ## Display Models IDs
-    # MODELIDS_DF = pd.DataFrame({"ID": Ls.reshape(-1), "Name": EVAL_MODELS_NAMES})
-    # st.table(MODELIDS_DF)
-
+    UI_DisplayDecisionTree(DECISION_TREE, EVAL_METRIC_KEYS, EVAL_MODELS_NAMES)
 
 def UI_ModelsVis(MODELS_DATA, params):
     '''
@@ -489,6 +540,76 @@ def UI_ModelsVis(MODELS_DATA, params):
         st.write(MODELS_DF)
 
 # Main Functions
+def textproblems_vis_evals_decisiontree(TASK="Sentiment Analysis"):
+    # Title
+    st.markdown(f"# Recommend HF Model - {TASK}")
+
+    # Load Inputs
+    # Init
+    PROGRESS_BARS = {}
+    # Select Dataset
+    USERINPUT_EvalDataset = UI_SelectEvalDataset(TASK)
+    # Select Models
+    USERINPUT_EvalModels = UI_SelectEvalModels(TASK, USERINPUT_EvalDataset)
+    st.markdown(f"{len(USERINPUT_EvalModels)} Models Selected.")
+
+    # Process Check
+    USERINPUT_Process = st.checkbox("Load Metrics", value=False)
+    if not USERINPUT_Process: st.stop()
+    # Load Metrics
+    EVAL_MODELS_NAMES = USERINPUT_EvalModels
+    EVAL_MODELS_PARENT_DIR = os.path.join(PATHS["data"]["evaluations"], name_to_path(TASK), USERINPUT_EvalDataset)
+    EVAL_FILE_NAME = "eval.json"
+    OUT = Utils_LoadEvalMetrics(TASK, EVAL_MODELS_NAMES, EVAL_MODELS_PARENT_DIR, EVAL_FILE_NAME=EVAL_FILE_NAME)
+    METRICS_DATA = OUT["metrics_data"]
+    EVAL_METRIC_KEYS = OUT["metric_keys"]
+    ## Select Metrics
+    USERINPUT_Metrics = st.multiselect(
+        "Select Metrics", EVAL_METRIC_KEYS, 
+        default=EVAL_METRICS_FILTER[TASK]["rank_weights"].keys()
+    )
+    METRICS_DATA_REDUCED = [{
+        k: d[k] for k in d.keys() 
+        if k in USERINPUT_Metrics
+    } for d in METRICS_DATA]
+    EVAL_METRIC_KEYS_REDUCED = list(METRICS_DATA_REDUCED[0].keys())
+    ## Display Metrics
+    st.markdown("## Metrics")
+    cols = st.columns(2)
+    if cols[0].checkbox("Display Metrics", value=False):
+        METRICS_DF = pd.DataFrame(METRICS_DATA_REDUCED, index=EVAL_MODELS_NAMES)
+        st.write(METRICS_DF)
+    if cols[1].checkbox("Display Metric Distributions", value=True):
+        UI_DisplayMetricsDistribution(METRICS_DATA_REDUCED, n_cols=2)
+
+    # Process Check
+    USERINPUT_Process = st.checkbox("Process Decision Tree", value=False)
+    if not USERINPUT_Process: st.stop()
+    # Process Inputs
+    ## Construct Decision Tree
+    DECISION_TREE = Utils_TrainEvalDecisionTree(METRICS_DATA_REDUCED)
+    # Plot Tree
+    UI_DisplayDecisionTree(DECISION_TREE, EVAL_METRIC_KEYS_REDUCED, EVAL_MODELS_NAMES, display=False)
+
+    # Process Check
+    USERINPUT_Process = st.checkbox("Recommend Model", value=False)
+    if not USERINPUT_Process: st.stop()
+    ## Get Input Metrics
+    USERINPUT_InputMetrics = json.loads(st.text_area(
+        "Target Metrics", 
+        value=json.dumps(METRICS_DATA_REDUCED[0], indent=8),
+        height=200
+    ))
+    ## Predict Model
+    PREDICTED_MODEL_INDEX = DECISION_TREE.predict([[
+        USERINPUT_InputMetrics[k] for k in EVAL_METRIC_KEYS_REDUCED
+    ]])[0]
+    PREDICTED_MODEL_NAME = EVAL_MODELS_NAMES[PREDICTED_MODEL_INDEX]
+    ## Display Predicted Model
+    st.markdown("## Recommended Model")
+    PREDICTED_MODEL_DATA = json.load(open(os.path.join(EVAL_MODELS_PARENT_DIR, PREDICTED_MODEL_NAME, EVAL_FILE_NAME), "r"))
+    st.write(PREDICTED_MODEL_DATA)
+
 def textproblems_vis_evals_basic(TASK="Sentiment Analysis"):
     # Title
     st.markdown(f"# Evaluations - {TASK}")
@@ -619,7 +740,19 @@ APP_MODES = {
             "Translation",
             "Question Answering"
         ]
-    }
+    },
+    "Recommend HF Model": {
+        k: functools.partial(textproblems_vis_evals_decisiontree, TASK=k) for k in [
+            "Sentiment Analysis",
+            "Named Entity Recognition",
+            "POS Tagging",
+            # "Relationship Extraction",
+            # "Dialogue",
+            "Summarisation",
+            "Translation",
+            "Question Answering"
+        ]
+    },
 }
 
 # App Functions
