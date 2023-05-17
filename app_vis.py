@@ -343,11 +343,14 @@ def Utils_GetModelIDMap(TASK):
     '''
     Utils - Get Model ID Map
     '''
+    # Init
+    ParentTask = TASK if name_to_path(TASK) != "pos_tagging" else "Named Entity Recognition"
+    select_sub_task = lambda data: data[0] if name_to_path(TASK) != "pos_tagging" else data[1]
     # Load Models Data
     TASK_MODELS_DATA = json.load(open(os.path.join(
-        PATHS["data"]["models"], TASK, PATHS["data"]["models_file"].format(TASK=TASK)
+        PATHS["data"]["models"], ParentTask, PATHS["data"]["models_file"].format(TASK=ParentTask)
     ), "r"))
-    TASK_MODELS_DATA = TASK_MODELS_DATA[list(TASK_MODELS_DATA.keys())[0]]["Hugging Face"]
+    TASK_MODELS_DATA = TASK_MODELS_DATA[select_sub_task(list(TASK_MODELS_DATA.keys()))]["Hugging Face"]
     MODELS_ID_MAP = {}
     for language in TASK_MODELS_DATA.keys():
         for dataset in TASK_MODELS_DATA[language].keys():
