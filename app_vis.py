@@ -414,6 +414,12 @@ def UI_DisplayDecisionTree(DECISION_TREE, FEATURE_NAMES, CLASS_NAMES, display=Tr
     # st.pyplot(FIG_TREE)
     TREE_SAVE_PATH = os.path.join(PATHS["temp"], "tree.svg")
     FIG_TREE.savefig(TREE_SAVE_PATH)
+    st.download_button(
+        "Download Decision Tree",
+        data=open(TREE_SAVE_PATH, "rb").read(),
+        file_name="tree.svg",
+        mime="image/svg+xml"
+    )
     if display: st.image(TREE_SAVE_PATH, width=100)
 
 def UI_DisplayMetricsDistribution(METRICS_DATA, n_cols=2):
