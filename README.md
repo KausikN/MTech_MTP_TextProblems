@@ -17,6 +17,7 @@
  - GUI built using streamlit
  - Visualise the evaluations of Hugging-Face models done as part of the project
  - Visualise the models and their metrics documented as part of the project
+ - Recommend HF model based on required target metrics (Using Decision Tree)
 
 ## Documentations
  - [Master Sheet](https://docs.google.com/spreadsheets/d/1vv7MDkevIHnBCnnEGuchi1wEmNBDAUqHT6vAUxFWRV8/edit?usp=share_link) contains links to all the documents, research papers, datasets, etc.
